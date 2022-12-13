@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # uses GitHub's checkout action to checkout code form the master branch
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.403' # Check for latest at link at .NET 6 download page
       - run: dotnet build
       - run: dotnet publish LockEscape.csproj -c Release -o release --nologo
       
       # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-      - name: Change base-tag in index.html from / to ConwaysGameOfLife
+      - name: Change base-tag in index.html from / to Lock-Escape
         run: sed -i 's/<base href="\/" \/>/<base href="\/Lock-Escape\/" \/>/g' release/wwwroot/index.html
       
       # copy index.html to 404.html to serve the same file when a file is not found
@@ -33,7 +33,7 @@ jobs:
         run: touch release/wwwroot/.nojekyll
 
       - name: Commit wwwroot to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
