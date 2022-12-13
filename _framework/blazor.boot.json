@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "LockEscape.dll": "sha256-yt6nMjnkngsDzM3Y+KFu555m4wi37KSjm2JyRKnvSQs=",
+      "LockEscape.dll": "sha256-PY5hM3vVYAUKShv+A\/bkaRi+OC9WTX9sy2DZFk4rafU=",
       "Microsoft.AspNetCore.Components.dll": "sha256-YC4GfOKyCev33ONJrPir1+1qtKlv9QavrLpA2kwyOgU=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-9Gu1nciFkF1fZ8QylM3o8F3W9asmJPOxKM0VJrPrRt0=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-OuF3PtqJ0AQyftLXwGLYpmtHPsGz9bvqyNn3WIbe1hc=",
