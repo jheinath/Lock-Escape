@@ -27,7 +27,7 @@ public class RiddleSolution
         if (result.IsFailed)
             return result;
 
-        result.WithValue(new RiddleSolution(riddleSolution));
+        result.WithValue(new RiddleSolution(riddleSolution!));
         
         return result;
     }
