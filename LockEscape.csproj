@@ -15,21 +15,25 @@
       <Content Include=".github\workflows\main.yml" />
       <Content Remove="Application\**" />
       <Content Remove="Domain\**" />
+      <Content Remove="Domain.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="Application\**" />
       <Compile Remove="Domain\**" />
+      <Compile Remove="Domain.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Application\**" />
       <EmbeddedResource Remove="Domain\**" />
+      <EmbeddedResource Remove="Domain.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Application\**" />
       <None Remove="Domain\**" />
+      <None Remove="Domain.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -39,6 +43,11 @@
       <_ContentIncludedByDefault Remove="Domain\obj\Domain.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="Domain\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="Domain\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.deps.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\obj\Domain.Test.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\obj\project.packagespec.json" />
     </ItemGroup>
 
     <ItemGroup>

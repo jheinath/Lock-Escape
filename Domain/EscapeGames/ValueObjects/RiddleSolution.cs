@@ -1,4 +1,5 @@
-﻿using FluentResults;
+﻿using Domain.EscapeGames.Errors;
+using FluentResults;
 
 namespace Domain.EscapeGames.ValueObjects;
 
@@ -11,7 +12,7 @@ public class RiddleSolution
         Value = value;
     }
     
-    public static Result<RiddleSolution> Create(string riddleSolution)
+    public static Result<RiddleSolution> Create(string? riddleSolution)
     {
         var result = new Result<RiddleSolution>();
         if (string.IsNullOrWhiteSpace(riddleSolution))
@@ -20,8 +21,8 @@ public class RiddleSolution
         if (IsDigitsOnly(riddleSolution))
             result.WithError(new Error("Riddle solutions must only contain digits (0-9)."));
 
-        if (riddleSolution.Trim().Length != 3)
-            result.WithError(new Error("Riddle solution must have 3 digits"));
+        if (riddleSolution?.Trim().Length != 3)
+            result.WithError(new RiddleSolutionInvalidLengthError(expectedLength: 3));
 
         if (result.IsFailed)
             return result;
@@ -31,8 +32,10 @@ public class RiddleSolution
         return result;
     }
     
-    private static bool IsDigitsOnly(string str)
+    private static bool IsDigitsOnly(string? str)
     {
+        if (str is null)
+            return false;
         return str.All(c => c is >= '0' and <= '9');
     }
 }
