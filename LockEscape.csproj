@@ -13,6 +13,36 @@
 
     <ItemGroup>
       <Content Include=".github\workflows\main.yml" />
+      <Content Remove="Application\**" />
+      <Content Remove="Domain\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Application\**" />
+      <Compile Remove="Domain\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Application\**" />
+      <EmbeddedResource Remove="Domain\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Application\**" />
+      <None Remove="Domain\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Application\obj\Application.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Application\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Application\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\Domain.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\project.packagespec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="Application\Application.csproj" />
     </ItemGroup>
 
 </Project>

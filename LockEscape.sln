@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockEscape", "LockEscape.csproj", "{FA0F1A65-10A1-444D-BD83-F868C54B09A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{0DA01767-A25F-4717-84BE-7B93A15A9FF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{7465A3BF-B98E-466E-8954-5513EBAD2D88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{FA0F1A65-10A1-444D-BD83-F868C54B09A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0F1A65-10A1-444D-BD83-F868C54B09A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0F1A65-10A1-444D-BD83-F868C54B09A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA01767-A25F-4717-84BE-7B93A15A9FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA01767-A25F-4717-84BE-7B93A15A9FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA01767-A25F-4717-84BE-7B93A15A9FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA01767-A25F-4717-84BE-7B93A15A9FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7465A3BF-B98E-466E-8954-5513EBAD2D88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7465A3BF-B98E-466E-8954-5513EBAD2D88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7465A3BF-B98E-466E-8954-5513EBAD2D88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7465A3BF-B98E-466E-8954-5513EBAD2D88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
