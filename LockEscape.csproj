@@ -13,45 +13,47 @@
 
     <ItemGroup>
       <Content Include=".github\workflows\main.yml" />
-      <Content Remove="Application\**" />
-      <Content Remove="Domain\**" />
       <Content Remove="Domain.Test\**" />
+      <Content Remove="Domain\**" />
+      <Content Remove="Application\**" />
+      <Content Remove="Domain.Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Application\**" />
-      <Compile Remove="Domain\**" />
       <Compile Remove="Domain.Test\**" />
+      <Compile Remove="Domain\**" />
+      <Compile Remove="Application\**" />
+      <Compile Remove="Domain.Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Application\**" />
-      <EmbeddedResource Remove="Domain\**" />
       <EmbeddedResource Remove="Domain.Test\**" />
+      <EmbeddedResource Remove="Domain\**" />
+      <EmbeddedResource Remove="Application\**" />
+      <EmbeddedResource Remove="Domain.Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Application\**" />
-      <None Remove="Domain\**" />
       <None Remove="Domain.Test\**" />
+      <None Remove="Domain\**" />
+      <None Remove="Application\**" />
+      <None Remove="Domain.Tests\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Application\obj\Application.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="Application\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Application\obj\project.packagespec.json" />
-      <_ContentIncludedByDefault Remove="Domain\obj\Domain.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="Domain\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Domain\obj\project.packagespec.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.deps.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.runtimeconfig.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\Domain.Test.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Domain\bin\Debug\net6.0\Domain.deps.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\Domain.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Domain\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Application\obj\Application.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Application\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Application\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Domain.Tests\obj\Domain.Tests.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="Domain.Tests\obj\project.assets.json" />
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="Application\Application.csproj" />
-    </ItemGroup>
-
 </Project>
