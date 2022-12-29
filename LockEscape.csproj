@@ -56,4 +56,8 @@
       <_ContentIncludedByDefault Remove="Domain.Tests\obj\Domain.Tests.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="Domain.Tests\obj\project.assets.json" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="Application\Application.csproj" />
+    </ItemGroup>
 </Project>
