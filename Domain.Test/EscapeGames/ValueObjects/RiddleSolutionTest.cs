@@ -12,7 +12,6 @@ public class RiddleSolutionTest
     [InlineData("")]
     [InlineData(" ")]
     [InlineData(null)]
-    [InlineData("123")]
     public void Create_InvalidInput_ReturnsRiddleSolutionsMustNotBeEmptyError(string inputValue)
     {
         //Arrange
