@@ -5,8 +5,8 @@ namespace Domain.EscapeGames.Entities;
 
 public class Riddle
 {
-    public RiddleSolution RiddleSolution { get; private set; }
-    public IsSolved IsSolved { get; private set; }
+    public RiddleSolution RiddleSolution { get; }
+    public IsSolved IsSolved { get; }
     
     private Riddle(RiddleSolution riddleSolution, IsSolved isIsSolved)
     {

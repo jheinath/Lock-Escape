@@ -60,11 +60,47 @@ namespace Domain.EscapeGames.Errors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid culture provided..
+        /// </summary>
+        internal static string InvalidCultureErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidCultureErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There must be at least one riddle..
+        /// </summary>
+        internal static string RiddlesMustNotBeEmptyErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddlesMustNotBeEmptyErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riddle solutions must only contain digits (0-9)..
+        /// </summary>
+        internal static string RiddleSolutionInvalidFormatErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddleSolutionInvalidFormatErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Riddle solution must have length {0}..
         /// </summary>
         internal static string RiddleSolutionInvalidLengthErrorMessage {
             get {
                 return ResourceManager.GetString("RiddleSolutionInvalidLengthErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riddle solutions must not be empty..
+        /// </summary>
+        internal static string RiddleSolutionMustNotBeEmptyErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddleSolutionMustNotBeEmptyErrorMessage", resourceCulture);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Domain.EscapeGames.Entities;
+using Domain.EscapeGames.Errors;
 using FluentResults;
 
 namespace Domain.EscapeGames.Aggregate;
@@ -26,13 +27,13 @@ public class EscapeGame
         catch (Exception e)
         {
             if (e is ArgumentNullException or CultureNotFoundException)
-                result.WithError(new Error("InvalidCulture"));
+                result.WithError(new InvalidCultureError());
 
             return result;
         }
 
         if (!riddles.Any())
-            result.WithError(new Error("There must be at least one riddle"));
+            result.WithError(new RiddlesMustNotBeEmptyError());
 
         if (result.IsFailed)
             return result;

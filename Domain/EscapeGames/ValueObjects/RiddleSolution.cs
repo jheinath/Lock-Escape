@@ -5,7 +5,7 @@ namespace Domain.EscapeGames.ValueObjects;
 
 public class RiddleSolution
 {
-    public string Value { get; private set; }
+    public string Value { get; }
     
     private RiddleSolution(string value)
     {
@@ -16,10 +16,10 @@ public class RiddleSolution
     {
         var result = new Result<RiddleSolution>();
         if (string.IsNullOrWhiteSpace(riddleSolution))
-            result.WithError(new Error("Riddle solutions must not be empty."));
+            result.WithError(new RiddleSolutionMustNotBeEmptyError());
 
-        if (IsDigitsOnly(riddleSolution))
-            result.WithError(new Error("Riddle solutions must only contain digits (0-9)."));
+        if (!IsDigitsOnly(riddleSolution))
+            result.WithError(new RiddleSolutionInvalidFormatError());
 
         if (riddleSolution?.Trim().Length != 3)
             result.WithError(new RiddleSolutionInvalidLengthError(expectedLength: 3));
@@ -32,10 +32,6 @@ public class RiddleSolution
         return result;
     }
     
-    private static bool IsDigitsOnly(string? str)
-    {
-        if (str is null)
-            return false;
-        return str.All(c => c is >= '0' and <= '9');
-    }
+    private static bool IsDigitsOnly(string? str) => 
+        str is not null && str.All(char.IsDigit);
 }

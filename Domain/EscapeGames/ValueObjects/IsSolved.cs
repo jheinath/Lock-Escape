@@ -4,7 +4,7 @@ namespace Domain.EscapeGames.ValueObjects;
 
 public class IsSolved
 {
-    public bool Value { get; private set; }
+    public bool Value { get; }
 
     private IsSolved(bool value)
     {

@@ -21,4 +21,16 @@
     <data name="RiddleSolutionInvalidLengthErrorMessage" xml:space="preserve">
         <value>Riddle solution must have length {0}.</value>
     </data>
+    <data name="RiddleSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Riddle solutions must not be empty.</value>
+    </data>
+    <data name="RiddleSolutionInvalidFormatErrorMessage" xml:space="preserve">
+        <value>Riddle solutions must only contain digits (0-9).</value>
+    </data>
+    <data name="InvalidCultureErrorMessage" xml:space="preserve">
+        <value>Invalid culture provided.</value>
+    </data>
+    <data name="RiddlesMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>There must be at least one riddle.</value>
+    </data>
 </root>
