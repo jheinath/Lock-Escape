@@ -1,4 +1,15 @@
-﻿@page "/scan"
+﻿@inject IJSRuntime JSRuntime
+@inject HttpClient Http
+@using SixLabors.ImageSharp
+@using SixLabors.ImageSharp.Drawing
+@using SixLabors.ImageSharp.Drawing.Processing
+@using SixLabors.ImageSharp.Processing;
+@using SixLabors.ImageSharp.Formats.Jpeg
+@using SixLabors.Fonts
+@using System.IO
+
+@page "/scan"
+
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -10,9 +21,64 @@
                     <h4 class="text-white">Scan QR code from your teacher!</h4>
                 </div>
                 <div class="card-body d-flex justify-content-center text-white bg-white">
-           
+                    <video id="videoFeed" width="320" height="240"></video>
+                    <canvas class="d-none" id="currentFrame" width="320" height="240"></canvas><br/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@code {
+    private string captionText;
+    private string frameUri;
+
+    FontCollection collection = new FontCollection();
+    FontFamily sansFamily;
+    Font captionFont;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("startVideo", "videoFeed");
+
+    //Font stored in wwwroot. Fetch it as byte array, and use it
+        var fontBytes = await Http.GetByteArrayAsync("OpenSans-Regular.ttf");
+        collection.Install(new MemoryStream(fontBytes));
+        collection.TryFind("Open Sans", out sansFamily);
+        captionFont = sansFamily.CreateFont(16, FontStyle.Regular);
+    }
+
+    private async Task CaptureFrame()
+    {
+        await JSRuntime.InvokeAsync<String>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
+    }
+
+
+    [JSInvokable]
+    public void ProcessImage(string imageString)
+    {
+        byte[] imageData = Convert.FromBase64String(imageString.Split(',')[1]);
+
+    //Do image processing here
+
+        DrawingOptions alignCenter = new DrawingOptions()
+        {
+            TextOptions = new TextOptions()
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                WrapTextWidth = 304, //Image is 320px wide. This will center with 8px margin on left and right
+                HorizontalAlignment = HorizontalAlignment.Center
+            }
+        };
+
+        using (var image = Image.Load(imageData))
+        {
+            image.Mutate(x => x
+                .Flip(FlipMode.Horizontal) //To match mirrored webcam image
+                .Fill(Color.ParseHex("0008"), new RectangularPolygon(0,220, 320, 20)) //Set footer bar for caption
+                .DrawText(alignCenter, captionText, captionFont, Color.White, new PointF(8, 230)) //center in footer bar)
+                );
+            frameUri = image.ToBase64String(JpegFormat.Instance);
+        }
+    }
+}
