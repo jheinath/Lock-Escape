@@ -1,11 +1,5 @@
 ﻿@inject IJSRuntime JSRuntime
-@inject HttpClient Http
 @using SixLabors.ImageSharp
-@using SixLabors.ImageSharp.Drawing
-@using SixLabors.ImageSharp.Drawing.Processing
-@using SixLabors.ImageSharp.Processing;
-@using SixLabors.Fonts
-@using System.IO
 
 @page "/scan"
 
@@ -29,21 +23,14 @@
 </div>
 
 @code {
-    private readonly string _captionText = null!;
-
-    readonly FontCollection _collection = new ();
-    FontFamily _sansFamily = null!;
-    Font _captionFont = null!;
-
     protected override async Task OnInitializedAsync()
     {
         await JSRuntime.InvokeVoidAsync("startVideo", "videoFeed");
-
-    //Font stored in wwwroot. Fetch it as byte array, and use it
-        var fontBytes = await Http.GetByteArrayAsync("OpenSans-Regular.ttf");
-        _collection.Install(new MemoryStream(fontBytes));
-        _collection.TryFind("Open Sans", out _sansFamily!);
-        _captionFont = _sansFamily.CreateFont(16, FontStyle.Regular);
+        while (true)
+        {
+            await Task.Delay(500);
+            await CaptureFrame();
+        }
     }
 
     private async Task CaptureFrame()
@@ -51,28 +38,11 @@
         await JSRuntime.InvokeAsync<string>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
     }
 
-
     [JSInvokable]
     public void ProcessImage(string imageString)
     {
         var imageData = Convert.FromBase64String(imageString.Split(',')[1]);
 
-        //Do image processing here
-        var alignCenter = new DrawingOptions
-        {
-            TextOptions = new TextOptions
-            {
-                VerticalAlignment = VerticalAlignment.Center,
-                WrapTextWidth = 304, //Image is 320px wide. This will center with 8px margin on left and right
-                HorizontalAlignment = HorizontalAlignment.Center
-            }
-        };
-
-        using var image = Image.Load(imageData);
-        image.Mutate(x => x
-            .Flip(FlipMode.Horizontal) //To match mirrored webcam image
-            .Fill(Color.ParseHex("0008"), new RectangularPolygon(0,220, 320, 20)) //Set footer bar for caption
-            .DrawText(alignCenter, _captionText, _captionFont, Color.White, new PointF(8, 230)) //center in footer bar)
-            );
+        var image = Image.Load(imageData);
     }
 }
