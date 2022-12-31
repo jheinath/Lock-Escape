@@ -1,7 +1,8 @@
 ﻿function startVideo(src) {
-    
+    let isMobile = false;
     let constraints;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        isMobile = true;
         constraints = {
             video: {
                 facingMode: {
@@ -24,6 +25,11 @@
             video.onloadedmetadata = function (e) {
                 video.play();
             };
+            //mirror image
+            if (!isMobile){
+                video.style.webkitTransform = "scaleX(-1)";
+                video.style.transform = "scaleX(-1)";
+            }
         });
     }
 }
