@@ -24,9 +24,6 @@
             video.onloadedmetadata = function (e) {
                 video.play();
             };
-            //mirror image
-            video.style.webkitTransform = "scaleX(-1)";
-            video.style.transform = "scaleX(-1)";
         });
     }
 }
