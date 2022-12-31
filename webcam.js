@@ -1,6 +1,20 @@
 ﻿function startVideo(src) {
+    
+    let constraints;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        constraints = {
+            video: {
+                facingMode: {
+                    exact: 'environment'
+                }
+            }
+        };
+    } else {
+        constraints = { video: true };
+    }
+    
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+        navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
             let video = document.getElementById(src);
             if ("srcObject" in video) {
                 video.srcObject = stream;
