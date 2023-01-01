@@ -1,5 +1,4 @@
 ﻿using Adapters.Decoding;
-using Application.Ports;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;

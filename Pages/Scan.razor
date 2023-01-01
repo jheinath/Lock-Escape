@@ -1,5 +1,7 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@inject IJSRuntime JsRuntime
+@inject IDecodeQrCodesRepository DecodeQrCodesRepository
 @using SixLabors.ImageSharp
+@using Adapters.Decoding
 
 @page "/scan"
 
@@ -25,7 +27,7 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await JSRuntime.InvokeVoidAsync("startVideo", "videoFeed");
+        await JsRuntime.InvokeVoidAsync("startVideo", "videoFeed");
         while (true)
         {
             await Task.Delay(500);
@@ -35,14 +37,14 @@
 
     private async Task CaptureFrame()
     {
-        await JSRuntime.InvokeAsync<string>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
+        await JsRuntime.InvokeAsync<string>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
     }
 
     [JSInvokable]
     public void ProcessImage(string imageString)
     {
         var imageData = Convert.FromBase64String(imageString.Split(',')[1]);
-
         var image = Image.Load(imageData);
+        var url = DecodeQrCodesRepository.DecodeQrCodeToUrl(imageData, image.Width, image.Height);
     }
 }

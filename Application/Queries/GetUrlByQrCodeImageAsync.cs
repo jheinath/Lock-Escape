@@ -1,4 +1,4 @@
-﻿using Application.Ports;
+﻿using Adapters.Decoding;
 
 namespace Application.Queries;
 
@@ -11,8 +11,8 @@ public class GetUrlByQrCodeImageAsync
         _decodeQrCodesRepository = decodeQrCodesRepository;
     }
 
-    public string Execute(byte[] qrCodeImage)
+    public string Execute(byte[] qrCodeImage, int imageHeight, int imageWidth)
     {
-        return _decodeQrCodesRepository.DecodeQrCodeToUrl(qrCodeImage);
+        return _decodeQrCodesRepository.DecodeQrCodeToUrl(qrCodeImage, imageHeight, imageWidth);
     }
 }
