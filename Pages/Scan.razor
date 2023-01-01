@@ -16,8 +16,7 @@
                     <h4 class="text-white">Scan QR code from your teacher!</h4>
                 </div>
                 <div class="card-body d-flex justify-content-center text-white bg-white">
-                    <video id="videoFeed" width="320" height="240"></video>
-                    <canvas class="d-none" id="currentFrame" width="320" height="240"></canvas><br/>
+                    <video id="video"></video>
                 </div>
             </div>
         </div>
@@ -25,26 +24,10 @@
 </div>
 
 @code {
+
     protected override async Task OnInitializedAsync()
     {
-        await JsRuntime.InvokeVoidAsync("startVideo", "videoFeed");
-        while (true)
-        {
-            await Task.Delay(500);
-            await CaptureFrame();
-        }
+        await JsRuntime.InvokeVoidAsync("scan");
     }
 
-    private async Task CaptureFrame()
-    {
-        await JsRuntime.InvokeAsync<string>("getFrame", "videoFeed", "currentFrame", DotNetObjectReference.Create(this));
-    }
-
-    [JSInvokable]
-    public void ProcessImage(string imageString)
-    {
-        var imageData = Convert.FromBase64String(imageString.Split(',')[1]);
-        var image = Image.Load(imageData);
-        var url = DecodeQrCodesRepository.DecodeQrCodeToUrl(imageData, image.Width, image.Height);
-    }
 }

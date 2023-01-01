@@ -21,13 +21,16 @@
       <Content Remove="Domain\**" />
       <Content Remove="Application\**" />
       <Content Remove="Domain.Tests\**" />
-      <Content Update="wwwroot\webcam.js">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Update="wwwroot\OpenSans-Regular.ttf">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <Content Remove="Adapters.Decoding\**" />
+      <Content Update="wwwroot\qr-scanner.min.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\qr-scanner-worker.min.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\scan.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
