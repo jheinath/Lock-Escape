@@ -9,9 +9,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.10" PrivateAssets="all" />
-        <PackageReference Include="SixLabors.Fonts" Version="1.0.0-beta15" />
-        <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
-        <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta13" />
         <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     </ItemGroup>
 
@@ -21,7 +18,6 @@
       <Content Remove="Domain\**" />
       <Content Remove="Application\**" />
       <Content Remove="Domain.Tests\**" />
-      <Content Remove="Adapters.Decoding\**" />
       <Content Update="wwwroot\qr-scanner.min.js">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
@@ -38,7 +34,6 @@
       <Compile Remove="Domain\**" />
       <Compile Remove="Application\**" />
       <Compile Remove="Domain.Tests\**" />
-      <Compile Remove="Adapters.Decoding\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -46,7 +41,6 @@
       <EmbeddedResource Remove="Domain\**" />
       <EmbeddedResource Remove="Application\**" />
       <EmbeddedResource Remove="Domain.Tests\**" />
-      <EmbeddedResource Remove="Adapters.Decoding\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -72,9 +66,6 @@
       <_ContentIncludedByDefault Remove="Application\obj\project.packagespec.json" />
       <_ContentIncludedByDefault Remove="Domain.Tests\obj\Domain.Tests.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="Domain.Tests\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Adapters.Decoding\obj\Adapters.Decoding.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="Adapters.Decoding\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Adapters.Decoding\obj\project.packagespec.json" />
     </ItemGroup>
 
     <ItemGroup>

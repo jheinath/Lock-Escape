@@ -1,10 +1,6 @@
 ﻿@inject IJSRuntime JsRuntime
-@inject IDecodeQrCodesRepository DecodeQrCodesRepository
-@using SixLabors.ImageSharp
-@using Adapters.Decoding
 
 @page "/scan"
-
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -29,5 +25,4 @@
     {
         await JsRuntime.InvokeVoidAsync("scan");
     }
-
 }
