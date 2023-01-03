@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "Application.dll": "sha256-qIj3xvDZaHONOrQVNlk6aSHMEgY6DAcySrJhNj2r5NI=",
-      "LockEscape.dll": "sha256-m23LyvBbE89t0yuxlDx5cK9xG0dNgo1o8RJ1VTjQid0=",
+      "LockEscape.dll": "sha256-iEQX4mt63VWzIlYnmcklCGFFQtqCRe1ThWQB3hJ5ne4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-YC4GfOKyCev33ONJrPir1+1qtKlv9QavrLpA2kwyOgU=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-9Gu1nciFkF1fZ8QylM3o8F3W9asmJPOxKM0VJrPrRt0=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-OuF3PtqJ0AQyftLXwGLYpmtHPsGz9bvqyNn3WIbe1hc=",
