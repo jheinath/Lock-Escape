@@ -10,16 +10,39 @@
                     <h4 class="text-white">Create new game</h4>
                 </div>
                 <div class="card-body d-flex justify-content-center text-white container bg-white">
-                    <div class="row d-flex flex-wrap gx-2 g-2">
-                        <div class="col">
-                            <a class="btn btn-success" href="#" role="button">Create new game</a>
+                    <form>
+                        <div class="form-group">
+                            <label for="lang">Game language</label>
+                            <select class="form-control" id="lang">
+                                <option>English</option>
+                                <option>German</option>
+                            </select>
                         </div>
-                        <div class="col">
-                            <a class="btn btn-success" href="#" role="button">Edit game</a>
+                        <div class="form-group">
+                            <label for="countRiddles">Amount of riddles</label>
+                            <input type="number" class="form-control" id="countRiddles" @bind="_amountGames">
                         </div>
-                    </div>
+                        @for (var i = 0; i < _amountGames; i++)
+                        {
+                            <div class="form-group">
+                                <label for="solution@i">Amount of riddles</label>
+                                <input type="text" class="form-control" id="solution@i">
+                            </div>
+                        }
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@code
+{
+    private int _amountGames;
+
+    protected override void OnInitialized()
+    {
+        _amountGames = 1;
+    }
+}
