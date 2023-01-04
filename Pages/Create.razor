@@ -3,33 +3,46 @@
 <PageTitle>Lock Escape</PageTitle>
 
 <div class="container-fluid d-flex justify-content-center align-items-center w-100 h-75">
-    <div class="row d-flex flex-wrap g-2">
-        <div class="col-lg-8 col-md-12">
+    <div class="row g-2">
+        <div class="col-lg-12 col-md-12">
             <div class="card border-success bg-success rounded-0">
                 <div class="card-header text-center">
                     <h4 class="text-white">Create new game</h4>
                 </div>
-                <div class="card-body d-flex justify-content-center text-white container bg-white">
+                <div class="card-body d-flex justify-content-center container bg-white">
                     <form>
-                        <div class="form-group">
-                            <label for="lang">Game language</label>
-                            <select class="form-control" id="lang">
-                                <option>English</option>
-                                <option>German</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="countRiddles">Amount of riddles</label>
-                            <input type="number" class="form-control" id="countRiddles" @bind="_amountGames">
-                        </div>
-                        @for (var i = 0; i < _amountGames; i++)
-                        {
-                            <div class="form-group">
-                                <label for="solution@i">Amount of riddles</label>
-                                <input type="text" class="form-control" id="solution@i">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="lang">Game language</label>
+                                    <select class="form-control" id="lang">
+                                        <option>English</option>
+                                        <option>German</option>
+                                    </select>
+                                </div>
                             </div>
-                        }
-                        <button type="submit" class="btn btn-primary">Create</button>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="countRiddles">Amount of riddles</label>
+                                    <input type="number" class="form-control" id="countRiddles" @bind="_amountGames">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @for (var i = 0; i < _amountGames; i++)
+                            {
+                                var j = i;
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="@($"solution{i}")">Riddle Solution @j</label>
+                                        <input type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -40,9 +53,22 @@
 @code
 {
     private int _amountGames;
+    private List<string?> _solutions = null!;
 
     protected override void OnInitialized()
     {
         _amountGames = 1;
+        _solutions = new List<string?> { string.Empty };
+    }
+
+    private void OnChangeSolutionItem(ChangeEventArgs e, int j)
+    {
+        var listElement = _solutions.ElementAtOrDefault(j);
+        if (listElement is null)
+        {
+            _solutions.Add(e.Value?.ToString());
+            return;
+        }
+        _solutions[j] = e.Value?.ToString();
     }
 }
