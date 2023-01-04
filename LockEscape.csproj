@@ -20,11 +20,18 @@
       <Content Remove="Domain.Tests\**" />
       <Content Update="wwwroot\qr-scanner.min.js">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <DependentUpon>qr-scanner-worker.min.js</DependentUpon>
       </Content>
       <Content Update="wwwroot\qr-scanner-worker.min.js">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Update="wwwroot\scan.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\qrcode.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\qrcode.min.js">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

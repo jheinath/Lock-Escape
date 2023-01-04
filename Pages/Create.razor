@@ -1,4 +1,6 @@
 ﻿@page "/create"
+@using Application.Enums
+@inject IJSRuntime JsRuntime
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -16,8 +18,8 @@
                                 <div class="form-group">
                                     <label for="lang">Game language</label>
                                     <select class="form-control" id="lang">
-                                        <option>English</option>
-                                        <option>German</option>
+                                        <option value="@Language.English">@Language.English.ToString()</option>
+                                        <option value="@Language.German">@Language.German.ToString()</option>
                                     </select>
                                 </div>
                             </div>
@@ -49,6 +51,9 @@
                                 <div class="btn btn-primary d-block" @onclick="@HandleCreate">Create</div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div id="qrcode"></div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -78,7 +83,9 @@
         _solutions[j] = e.Value?.ToString();
     }
 
-    private void HandleCreate()
+    private async Task HandleCreate()
     {
+        var url = "https://www.heise.de";
+        await JsRuntime.InvokeVoidAsync("createQrCode", url);
     }
 }
