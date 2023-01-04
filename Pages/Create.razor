@@ -24,7 +24,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="countRiddles">Amount of riddles</label>
-                                    <input type="number" class="form-control" id="countRiddles" @bind="_amountGames">
+                                    <input type="number" min="3" max="20" class="form-control" id="countRiddles" @bind="_amountGames">
                                 </div>
                             </div>
                         </div>
@@ -34,14 +34,19 @@
                                 var j = i;
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="@($"solution{i}")">Riddle Solution @j</label>
+                                        <label for="@($"solution{i}")">Riddle Solution @(j + 1)</label>
                                         <input type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
                                     </div>
                                 </div>
                             }
                         </div>
-                        <div class="row">
-                            <button type="submit" class="btn btn-primary">Create</button>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <a class="btn btn-primary d-block" href="#" role="button">Back</a>
+                            </div>
+                            <div class="col">
+                                <div class="btn btn-primary d-block" @onclick="@HandleCreate">Create</div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -57,8 +62,8 @@
 
     protected override void OnInitialized()
     {
-        _amountGames = 1;
-        _solutions = new List<string?> { string.Empty };
+        _amountGames = 3;
+        _solutions = new List<string?> { string.Empty, string.Empty, string.Empty };
     }
 
     private void OnChangeSolutionItem(ChangeEventArgs e, int j)
@@ -70,5 +75,9 @@
             return;
         }
         _solutions[j] = e.Value?.ToString();
+    }
+
+    private void HandleCreate()
+    {
     }
 }
