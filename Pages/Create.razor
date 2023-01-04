@@ -2,16 +2,16 @@
 
 <PageTitle>Lock Escape</PageTitle>
 
-<div class="container-fluid d-flex justify-content-center align-items-center w-100 h-75">
-    <div class="row g-2">
-        <div class="col-lg-12 col-md-12">
+<div class="container d-flex justify-content-center align-items-center w-100">
+    <div class="row g-2 w-100">
+        <div class="col-12">
             <div class="card border-success bg-success rounded-0">
                 <div class="card-header text-center">
-                    <h4 class="text-white">Create new game</h4>
+                    <h4 class="text-white mb-0">Create new game</h4>
                 </div>
-                <div class="card-body d-flex justify-content-center container bg-white">
-                    <form>
-                        <div class="row">
+                <div class="card-body d-flex justify-content-center container bg-white w-100">
+                    <form class="w-100">
+                        <div class="row w-100">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="lang">Game language</label>
@@ -23,16 +23,17 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="countRiddles">Amount of riddles</label>
-                                    <input type="number" min="3" max="20" class="form-control" id="countRiddles" @bind="_amountGames">
+                                    <label for="countRiddles">Amount riddles</label>
+                                    <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
                                 </div>
                             </div>
                         </div>
+                        <hr/>
                         <div class="row">
                             @for (var i = 0; i < _amountGames; i++)
                             {
                                 var j = i;
-                                <div class="col">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="@($"solution{i}")">Riddle Solution @(j + 1)</label>
                                         <input type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
@@ -62,8 +63,8 @@
 
     protected override void OnInitialized()
     {
-        _amountGames = 3;
-        _solutions = new List<string?> { string.Empty, string.Empty, string.Empty };
+        _amountGames = 1;
+        _solutions = new List<string?> { string.Empty };
     }
 
     private void OnChangeSolutionItem(ChangeEventArgs e, int j)
