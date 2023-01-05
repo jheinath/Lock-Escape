@@ -23,5 +23,4 @@ public class GameSolutionForGroupTest
         result.Value.GameSolution.Should().BeEquivalentTo(gameSolution);
         result.Value.GroupNumber.Should().BeEquivalentTo(groupNumber);
     }
-
 }

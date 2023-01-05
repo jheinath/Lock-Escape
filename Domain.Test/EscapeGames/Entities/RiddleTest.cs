@@ -23,5 +23,4 @@ public class RiddleTest
         result.Value.IsSolved.Should().BeEquivalentTo(isSolved);
         result.Value.RiddleSolution.Should().BeEquivalentTo(riddleSolution);
     }
-
 }

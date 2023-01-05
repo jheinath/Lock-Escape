@@ -55,7 +55,6 @@
       <None Remove="Domain\**" />
       <None Remove="Application\**" />
       <None Remove="Domain.Tests\**" />
-      <None Remove="Adapters.Decoding\**" />
     </ItemGroup>
 
     <ItemGroup>

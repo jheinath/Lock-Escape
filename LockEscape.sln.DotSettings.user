@@ -5,6 +5,8 @@
     &lt;TestId&gt;xUnit::CEB66958-B3FB-464E-B2AB-415515174F25::net6.0::Domain.Test.EscapeGames.ValueObjects.RiddleSolutionTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::CEB66958-B3FB-464E-B2AB-415515174F25::net6.0::Domain.Test.EscapeGames.Entities.RiddleTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::CEB66958-B3FB-464E-B2AB-415515174F25::net6.0::Domain.Test.EscapeGames.Aggregate.EscapeGameTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::CEB66958-B3FB-464E-B2AB-415515174F25::net6.0::Domain.Test.EscapeGames.ValueObjects.GameSolutionTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::CEB66958-B3FB-464E-B2AB-415515174F25::net6.0::Domain.Test.EscapeGames.ValueObjects.GroupNumberTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
