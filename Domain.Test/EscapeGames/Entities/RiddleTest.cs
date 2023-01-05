@@ -1,7 +1,6 @@
 ﻿using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.ValueObjects;
 using FluentAssertions;
-using Moq;
 using Xunit;
 
 namespace Domain.Test.EscapeGames.Entities;

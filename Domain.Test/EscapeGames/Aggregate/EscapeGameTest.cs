@@ -18,7 +18,7 @@ public class EscapeGameTest
         var expectedError = new InvalidCultureError();
         
         //Act
-        var result = EscapeGame.Create(null, new List<Riddle>());
+        var result = EscapeGame.Create(null, new List<Riddle>(), new List<GameSolutionForGroup>());
         
         //Assert
         result.IsFailed.Should().BeTrue();
@@ -32,11 +32,25 @@ public class EscapeGameTest
         var expectedError = new RiddlesMustNotBeEmptyError();
         
         //Act
-        var result = EscapeGame.Create("de-DE", new List<Riddle>());
+        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>());
         
         //Assert
         result.IsFailed.Should().BeTrue();
-        result.Errors.Should().BeEquivalentTo(new List<Error>() { expectedError });
+        result.Errors.Should().ContainEquivalentOf(expectedError);
+    }
+    
+    [Fact]
+    public void Create_EmptyListOfGameSolutionForGroups_ameSolutionForGroupsMustNotBeEmptyError()
+    {
+        //Arrange
+        var expectedError = new GameSolutionForGroupsMustNotBeEmptyError();
+        
+        //Act
+        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>());
+        
+        //Assert
+        result.IsFailed.Should().BeTrue();
+        result.Errors.Should().ContainEquivalentOf(expectedError);
     }
 
     [Fact]
@@ -47,9 +61,12 @@ public class EscapeGameTest
         var riddleSolution = RiddleSolution.Create("123").Value;
         var isSolved = IsSolved.Create().Value;
         var riddle = Riddle.Create(riddleSolution, isSolved).Value;
+        var gameSolution = GameSolution.Create("SolutionPhrase 123").Value;
+        var groupNumber = GroupNumber.Create(2).Value;
+        var gameSolutionForGroup = GameSolutionForGroup.Create(groupNumber, gameSolution).Value;
         
         //Act
-        var result = EscapeGame.Create(culture, new[] { riddle });
+        var result = EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup });
         
         //Assert
         result.IsSuccess.Should().BeTrue();

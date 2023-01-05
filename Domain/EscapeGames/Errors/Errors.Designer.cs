@@ -60,6 +60,33 @@ namespace Domain.EscapeGames.Errors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game solution for groups must not be empty..
+        /// </summary>
+        internal static string GameSolutionForGroupsMustNotBeEmptyErrorMessage {
+            get {
+                return ResourceManager.GetString("GameSolutionForGroupsMustNotBeEmptyErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game solution must not be empty..
+        /// </summary>
+        internal static string GameSolutionMustNotBeEmptyErrorMessage {
+            get {
+                return ResourceManager.GetString("GameSolutionMustNotBeEmptyErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group number must be at least 1..
+        /// </summary>
+        internal static string GroupNumberMustBeAtLeastOneErrorMessage {
+            get {
+                return ResourceManager.GetString("GroupNumberMustBeAtLeastOneErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid culture provided..
         /// </summary>
         internal static string InvalidCultureErrorMessage {

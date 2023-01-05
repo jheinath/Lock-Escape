@@ -9,14 +9,16 @@ public class EscapeGame
 {
     public CultureInfo CultureInfo { get; private set; }
     public IEnumerable<Riddle> Riddles { get; private set; }
+    public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
 
-    public EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles)
+    private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles, IEnumerable<GameSolutionForGroup> gameSolutionForGroups)
     {
         CultureInfo = cultureInfo;
         Riddles = riddles;
+        GameSolutionForGroups = gameSolutionForGroups;
     }
 
-    public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles)
+    public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles, IEnumerable<GameSolutionForGroup> gameSolutionForGroups)
     {
         var result = new Result<EscapeGame>();
 
@@ -35,9 +37,12 @@ public class EscapeGame
         if (!riddles.Any())
             result.WithError(new RiddlesMustNotBeEmptyError());
 
+        if (!gameSolutionForGroups.Any())
+            result.WithError(new GameSolutionForGroupsMustNotBeEmptyError());
+
         if (result.IsFailed)
             return result;
 
-        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles));
+        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups));
     }
 }
