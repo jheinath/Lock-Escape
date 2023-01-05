@@ -31,6 +31,34 @@
                             </div>
                         </div>
                         <hr/>
+                        <div class="row w-100">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="password">Creator Password</label>
+                                    <input type="text" class="form-control" id="password" @bind="_creatorPassword">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="countGroups">Amount groups</label>
+                                    <input type="number" min="1" max="30" class="form-control" id="countGroups" @bind="_amountGroups">
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            @for (var i = 0; i < _amountGroups; i++)
+                            {
+                                var j = i;
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="@($"group{i}game-solution")">Game solution Group @(j + 1)</label>
+                                        <input type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <hr/>
                         <div class="row">
                             @for (var i = 0; i < _amountGames; i++)
                             {
@@ -65,10 +93,14 @@
 {
     private int _amountGames;
     private List<string?> _solutions = null!;
+    private List<string?> _gameSolutions = null!;
+    private string? _creatorPassword;
+    private int _amountGroups;
 
     protected override void OnInitialized()
     {
         _amountGames = 1;
+        _amountGroups = 1;
         _solutions = new List<string?> { string.Empty };
     }
 
@@ -81,6 +113,17 @@
             return;
         }
         _solutions[j] = e.Value?.ToString();
+    }
+    
+    private void OnChangeGameSolutionItem(ChangeEventArgs e, int j)
+    {
+        var listElement = _gameSolutions.ElementAtOrDefault(j);
+        if (listElement is null)
+        {
+            _gameSolutions.Add(e.Value?.ToString());
+            return;
+        }
+        _gameSolutions[j] = e.Value?.ToString();
     }
 
     private async Task HandleCreate()
