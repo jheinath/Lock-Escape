@@ -21,14 +21,14 @@ namespace Domain.EscapeGames.Errors {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Errors {
+    internal class _Errors {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Errors() {
+        internal _Errors() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace Domain.EscapeGames.Errors {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domain.EscapeGames.Errors.Errors", typeof(Errors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domain.EscapeGames.Errors._Errors", typeof(_Errors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -56,6 +56,15 @@ namespace Domain.EscapeGames.Errors {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must not be empty..
+        /// </summary>
+        internal static string CreatorPasswordMustNotBeEmptyErrorMessage {
+            get {
+                return ResourceManager.GetString("CreatorPasswordMustNotBeEmptyErrorMessage", resourceCulture);
             }
         }
         

@@ -11,14 +11,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="EscapeGames\Errors\Errors.resx">
+      <EmbeddedResource Update="EscapeGames\Errors\_Errors.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+        <LastGenOutput>_Errors.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="EscapeGames\Errors\Errors.Designer.cs">
+      <Compile Update="EscapeGames\Errors\_Errors.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Errors.resx</DependentUpon>

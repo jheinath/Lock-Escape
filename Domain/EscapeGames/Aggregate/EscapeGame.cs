@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.Errors;
+using Domain.EscapeGames.ValueObjects;
 using FluentResults;
 
 namespace Domain.EscapeGames.Aggregate;
@@ -10,15 +11,19 @@ public class EscapeGame
     public CultureInfo CultureInfo { get; private set; }
     public IEnumerable<Riddle> Riddles { get; private set; }
     public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
+    public CreatorPassword CreatorPassword { get; }
 
-    private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles, IEnumerable<GameSolutionForGroup> gameSolutionForGroups)
+    private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
+        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword)
     {
         CultureInfo = cultureInfo;
         Riddles = riddles;
         GameSolutionForGroups = gameSolutionForGroups;
+        CreatorPassword = creatorPassword;
     }
 
-    public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles, IEnumerable<GameSolutionForGroup> gameSolutionForGroups)
+    public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles,
+        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword)
     {
         var result = new Result<EscapeGame>();
 
@@ -43,6 +48,6 @@ public class EscapeGame
         if (result.IsFailed)
             return result;
 
-        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups));
+        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups, creatorPassword));
     }
 }

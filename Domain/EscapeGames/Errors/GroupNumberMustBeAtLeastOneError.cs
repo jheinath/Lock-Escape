@@ -5,6 +5,6 @@ namespace Domain.EscapeGames.Errors;
 public class GroupNumberMustBeAtLeastOneError : Error
 {
     public GroupNumberMustBeAtLeastOneError()
-        : base(Errors.GroupNumberMustBeAtLeastOneErrorMessage)
+        : base(_Errors.GroupNumberMustBeAtLeastOneErrorMessage)
     { }
 }

@@ -11,6 +11,13 @@ namespace Domain.Test.EscapeGames.Aggregate;
 
 public class EscapeGameTest
 {
+    private readonly CreatorPassword _defaultCreatorPassword;
+
+    public EscapeGameTest()
+    {
+        _defaultCreatorPassword = CreatorPassword.Create("PasswordIsABadPassword").Value;
+    }
+    
     [Fact]
     public void Create_InvalidCultureInput_ReturnInvalidCultureError()
     {
@@ -18,7 +25,7 @@ public class EscapeGameTest
         var expectedError = new InvalidCultureError();
         
         //Act
-        var result = EscapeGame.Create(null, new List<Riddle>(), new List<GameSolutionForGroup>());
+        var result = EscapeGame.Create(null, new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
         result.IsFailed.Should().BeTrue();
@@ -32,7 +39,7 @@ public class EscapeGameTest
         var expectedError = new RiddlesMustNotBeEmptyError();
         
         //Act
-        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>());
+        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
         result.IsFailed.Should().BeTrue();
@@ -46,7 +53,7 @@ public class EscapeGameTest
         var expectedError = new GameSolutionForGroupsMustNotBeEmptyError();
         
         //Act
-        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>());
+        var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
         result.IsFailed.Should().BeTrue();
@@ -66,12 +73,15 @@ public class EscapeGameTest
         var gameSolutionForGroup = GameSolutionForGroup.Create(groupNumber, gameSolution).Value;
         
         //Act
-        var result = EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup });
+        var result = EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup }, _defaultCreatorPassword);
         
         //Assert
         result.IsSuccess.Should().BeTrue();
         result.Errors.Should().BeEmpty();
         result.Value.CultureInfo.Should().BeEquivalentTo(new CultureInfo(culture));
         result.Value.Riddles.Should().BeEquivalentTo(new[] { riddle });
+        result.Value.GameSolutionForGroups.Should()
+            .BeEquivalentTo(new List<GameSolutionForGroup> { gameSolutionForGroup });
+        result.Value.CreatorPassword.Should().Be(_defaultCreatorPassword);
     }
 }
