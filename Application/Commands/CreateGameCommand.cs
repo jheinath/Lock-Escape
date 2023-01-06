@@ -18,13 +18,13 @@ public class CreateGameCommand : ICreateGameCommand
         public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; set; }
     }
 
-    public Result Execute(Language language, IEnumerable<string> riddleSolutions, IEnumerable<string> gameSolutions)
+    public Result<GameSolutionForGroup> Execute(Language language, IEnumerable<string> riddleSolutions, IEnumerable<string> gameSolutions)
     {
         var context = new CommandContext();
-        return new Result()
-            .OnSuccess(_ => CreateRiddles(riddleSolutions, context))
-            .OnSuccess(_ => CreateGameSolutionForGroups(gameSolutions, context))
-            .OnSuccess(_ => Result.Ok()));
+        return new Result<GameSolutionForGroup>()
+            .OnSuccess(x => CreateRiddles(riddleSolutions, context)
+                .OnSuccess(_ => CreateGameSolutionForGroups(gameSolutions, context)
+                    .OnSuccess(y => new Result<GameSolutionForGroup>())));
     }
 
     private static Result<IEnumerable<GameSolutionForGroup>> CreateGameSolutionForGroups(
