@@ -8,10 +8,6 @@ namespace Application.Commands;
 
 public class CreateGameCommand : ICreateGameCommand
 {
-    public CreateGameCommand()
-    {
-    }
-
     private sealed class CommandContext
     {
         public IEnumerable<Riddle> Riddles { get; set; }
@@ -25,6 +21,7 @@ public class CreateGameCommand : ICreateGameCommand
             .OnSuccess(x => CreateRiddles(riddleSolutions, context)
                 .OnSuccess(_ => CreateGameSolutionForGroups(gameSolutions, context)
                     .OnSuccess(y => new Result<GameSolutionForGroup>())));
+        //Create Gameboard and return it
     }
 
     private static Result<IEnumerable<GameSolutionForGroup>> CreateGameSolutionForGroups(
