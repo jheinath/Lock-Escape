@@ -80,7 +80,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div id="qrcode"></div>
+                            <div class="col">
+                                <div id="qrcode"></div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -102,6 +104,7 @@
         _amountGames = 1;
         _amountGroups = 1;
         _solutions = new List<string?> { string.Empty };
+        _gameSolutions = new List<string?> { string.Empty };
     }
 
     private void OnChangeSolutionItem(ChangeEventArgs e, int j)
@@ -114,7 +117,7 @@
         }
         _solutions[j] = e.Value?.ToString();
     }
-    
+
     private void OnChangeGameSolutionItem(ChangeEventArgs e, int j)
     {
         var listElement = _gameSolutions.ElementAtOrDefault(j);
@@ -128,6 +131,7 @@
 
     private async Task HandleCreate()
     {
+        
         var url = "https://www.heise.de";
         await JsRuntime.InvokeVoidAsync("createQrCode", url);
     }
