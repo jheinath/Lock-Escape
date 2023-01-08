@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Text;
-using System.Web;
 using Domain.EscapeGames.ValueObjects;
 using HashidsNet;
 using LockEscape.Helpers;
@@ -16,9 +15,6 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
         var byteArray = FromHex(decodedHex);
         var queryString = Encoding.ASCII.GetString(byteArray);
 
-        var creatorPassword = HttpUtility.ParseQueryString(queryString).Get(nameof(CreatorPassword));
-        var cultureInfo = HttpUtility.ParseQueryString(queryString).Get(nameof(CultureInfo));
-
         var dic = queryString.DecodeQueryParameters();
 
         return new EscapeGameDto
@@ -32,26 +28,30 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
 
     private static IEnumerable<GameSolutionForGroupDto> CreateSolutionForGroupDtos(Dictionary<string, string?> dic)
     {
-        var solutions = dic.Where(x => x.Key.StartsWith(nameof(GameSolution))).OrderBy(x => x.Key);
-        var groupNumber = dic.Where(x => x.Key.StartsWith(nameof(GroupNumber))).OrderBy(x => x.Key);
+        var solutions = dic.Where(x => x.Key.StartsWith(nameof(GameSolution))).OrderBy(x => x.Key).ToList();
+        var groupNumbers = dic.Where(x => x.Key.StartsWith(nameof(GroupNumber))).OrderBy(x => x.Key).ToList();
 
-        return solutions.Select(x => new GameSolutionForGroupDto
+        var dtos = new List<GameSolutionForGroupDto>();
+        for (var i = 0; i < solutions.Count; i++)
         {
-            GameSolution = x.Value,
-            GroupNumber = int.Parse(groupNumber.ElementAt(x.Key[^1]).Value ?? string.Empty)
-        });
+            dtos.Add(new GameSolutionForGroupDto
+            {
+                GameSolution = solutions.ElementAtOrDefault(i).Value,
+                GroupNumber = int.Parse(groupNumbers.ElementAtOrDefault(i).Value ?? "1")
+            });
+        }
+
+        return dtos;
     }
 
     private static IEnumerable<RiddleSolutionDto> CreateRiddleSolutionDtos(Dictionary<string, string?> dic)
     {
         var solutions = dic.Where(x => x.Key.StartsWith(nameof(RiddleSolution))).OrderBy(x => x.Key);
-        var isSolvedValues = dic.Where(x => x.Key.StartsWith(nameof(IsSolved))).OrderBy(x => x.Key);
 
         return solutions.Select(x => new RiddleSolutionDto()
         {
             RiddleSolution = x.Value,
-            IsSolved = bool.Parse(isSolvedValues.ElementAt(x.Key[^1]).Value ?? string.Empty)
-        });
+        }).ToList();
     }
 
     private static byte[] FromHex(string hex)

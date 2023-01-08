@@ -22,7 +22,7 @@ public class GenerateQueryParametersService : IGenerateQueryParametersService
             queryString.Add(nameof(IsSolved) + i, escapeGame.Riddles.ElementAt(i).IsSolved.Value.ToString());
         }
         
-        for (var i = 0; i < escapeGame.Riddles.Count(); i++)
+        for (var i = 0; i < escapeGame.GameSolutionForGroups.Count(); i++)
         {
             queryString.Add(nameof(GroupNumber) + i, escapeGame.GameSolutionForGroups.ElementAt(i).GroupNumber.Value.ToString());
             queryString.Add(nameof(GameSolution) + i, escapeGame.GameSolutionForGroups.ElementAt(i).GameSolution.Value);

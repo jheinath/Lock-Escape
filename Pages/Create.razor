@@ -81,7 +81,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="@($"group{i}game-solution")">Game solution Group @(j + 1)</label>
-                                        <input type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
+                                        <input value="@_gameSolutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
                                     </div>
                                 </div>
                             }
@@ -94,7 +94,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="@($"solution{i}")">Riddle Solution @(j + 1)</label>
-                                        <input type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
+                                        <input value="@_solutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
                                     </div>
                                 </div>
                             }

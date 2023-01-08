@@ -25,7 +25,7 @@ public class EscapeGameTest
         var expectedError = new InvalidCultureError();
         
         //Act
-        var result = EscapeGame.Create(null, new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
+        var result = EscapeGame.Create(null!, new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
         result.IsFailed.Should().BeTrue();
