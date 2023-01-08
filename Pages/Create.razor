@@ -1,6 +1,7 @@
 ﻿@page "/create"
 @using Application.Enums
 @using Application.Ports
+@using FluentResults
 @using LockEscape.Services.EncodingToQueryParameters
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
@@ -18,6 +19,17 @@
                 </div>
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
                     <form class="w-100">
+                        @if (_errors.Any())
+                        {
+                            <div class="row w-100">
+                                <div class="col-12">
+                                    <div class="alert alert-warning" role="alert">
+                                      @_errors.First().Message
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                        }
                         <div class="row w-100">
                             <div class="col-6">
                                 <div class="form-group">
@@ -104,11 +116,13 @@
     private string? _creatorPassword;
     private int _amountGroups;
     private Language _language;
+    private List<IError> _errors = null!;
 
     protected override void OnInitialized()
     {
         _amountGames = 1;
         _amountGroups = 1;
+        _errors = new List<IError>();
         _solutions = new List<string?> { string.Empty };
         _gameSolutions = new List<string?> { string.Empty };
     }
@@ -137,12 +151,20 @@
 
     private async Task HandleCreate()
     {
+        _errors = new List<IError>();
         var result = CreateGameCommand.Execute(_language, _solutions, _gameSolutions, _creatorPassword);
+
+        if (result.IsFailed)
+        {
+            _errors = result.Errors;
+            return;
+        }
+        
         var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
         var currentUrl = NavigationManager.BaseUri;
         var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
         queryString.Add("gameDataLockEscapeGame", queryParametersEncoded);
-        var url = currentUrl + queryString;
+        var url = currentUrl + "play?"+ queryString;
         await JsRuntime.InvokeVoidAsync("createQrCode", url);
     }
 }
