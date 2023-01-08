@@ -1,13 +1,18 @@
-﻿function scan() {
+﻿function scan(shouldGoToEditPage) {
     import('./qr-scanner.min.js').then((module) => {
         const QrScanner = module.default;
-        // do something with QrScanner
         const videoElem = document.getElementById('video');
-        console.log('videoElem found')
         if (videoElem === null) return;
         const qrScanner = new QrScanner(
             videoElem,
-            r => window.open(r.data, "_self"),
+            r => {
+                if (!shouldGoToEditPage){
+                    window.open(r.data, "_self")
+                    return;
+                }
+                const dataCopyModified = r.data.replace('play', 'create')
+                window.open(dataCopyModified, "_self")
+            },
             {returnDetailedScanResult: true}
         );
         qrScanner.start()
