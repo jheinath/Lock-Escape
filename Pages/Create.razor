@@ -1,8 +1,11 @@
 ﻿@page "/create"
 @using Application.Enums
 @using Application.Ports
+@using LockEscape.Services.EncodingToQueryParameters
 @inject IJSRuntime JsRuntime
-@inject ICreateGameCommand _createGameCommand
+@inject NavigationManager NavigationManager
+@inject ICreateGameCommand CreateGameCommand
+@inject IGenerateQueryParametersService GenerateQueryParametersService
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -82,7 +85,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12 d-flex justify-content-center mt-2">
                                 <div id="qrcode"></div>
                             </div>
                         </div>
@@ -132,9 +135,14 @@
         _gameSolutions[j] = e.Value?.ToString();
     }
 
-    private void HandleCreate()
+    private async Task HandleCreate()
     {
-        var result = _createGameCommand.Execute(_language, _solutions, _gameSolutions, _creatorPassword);
-        Console.WriteLine(result.Value);
+        var result = CreateGameCommand.Execute(_language, _solutions, _gameSolutions, _creatorPassword);
+        var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
+        var currentUrl = NavigationManager.BaseUri;
+        var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+        queryString.Add("gameDataLockEscapeGame", queryParametersEncoded);
+        var url = currentUrl + queryString;
+        await JsRuntime.InvokeVoidAsync("createQrCode", url);
     }
 }
