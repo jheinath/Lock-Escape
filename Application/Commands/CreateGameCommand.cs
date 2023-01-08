@@ -1,5 +1,6 @@
 ﻿using Application.Enums;
 using Application.Ports;
+using Domain.EscapeGames.Aggregate;
 using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.ValueObjects;
 using FluentResults;
@@ -8,75 +9,63 @@ namespace Application.Commands;
 
 public class CreateGameCommand : ICreateGameCommand
 {
-    private sealed class CommandContext
+    public Result<EscapeGame> Execute(Language language, IEnumerable<string?> riddleSolutions,
+        IEnumerable<string?> gameSolutions, string? creatorPassword)
     {
-        public IEnumerable<Riddle> Riddles { get; set; }
-        public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; set; }
-    }
+        var riddlesResult = CreateRiddles(riddleSolutions);
+        var gameSolutionsResult = CreateGameSolutionForGroups(gameSolutions);
+        var creatorPasswordResult = CreateCreatorPassword(creatorPassword);
+        var mergedResult = Result.Merge(riddlesResult, creatorPasswordResult, gameSolutionsResult);
 
-    public Result<GameSolutionForGroup> Execute(Language language, IEnumerable<string> riddleSolutions, IEnumerable<string> gameSolutions)
-    {
-        var context = new CommandContext();
-        return new Result<GameSolutionForGroup>()
-            .OnSuccess(x => CreateRiddles(riddleSolutions, context)
-                .OnSuccess(_ => CreateGameSolutionForGroups(gameSolutions, context)
-                    .OnSuccess(y => new Result<GameSolutionForGroup>())));
-        //Create Gameboard and return it
+        if (mergedResult.IsFailed) return mergedResult;
+
+        return EscapeGame.Create(MapCulture(language), riddlesResult.Value, gameSolutionsResult.Value,
+            creatorPasswordResult.Value);
     }
 
     private static Result<IEnumerable<GameSolutionForGroup>> CreateGameSolutionForGroups(
-        IEnumerable<string> gameSolutions, CommandContext context)
+        IEnumerable<string?> gameSolutions)
     {
         var i = 1;
         var results = gameSolutions.Select(x => CreateGameSolution(x, i++)).ToList();
 
-        var mergedResult = results.Merge();
-        if (mergedResult.IsSuccess)
-        {
-            context.GameSolutionForGroups = mergedResult.Value;
-        }
-
-        return mergedResult;
+        return results.Merge();
     }
 
-    private static Result<GameSolutionForGroup> CreateGameSolution(string gameSolution, int groupNumber)
+    private static Result<CreatorPassword> CreateCreatorPassword(string? creatorPassword)
     {
-        Result<GameSolution> gameSolutionTemp;
-        return new Result<GameSolutionForGroup>()
-            .OnSuccess(_ =>
-            {
-                gameSolutionTemp = GameSolution.Create(gameSolution);
-                gameSolutionTemp
-                    .OnSuccess(_ => GroupNumber.Create(groupNumber)
-                        .OnSuccess(number => GameSolutionForGroup.Create(number, gameSolutionTemp.Value)));
-            });
+        return CreatorPassword.Create(creatorPassword);
     }
 
-    private static Result<IEnumerable<Riddle>> CreateRiddles(IEnumerable<string> riddleSolutions,
-        CommandContext context)
+    private static Result<GameSolutionForGroup> CreateGameSolution(string? gameSolution, int groupNumber)
+    {
+        var gameSolutionResult = GameSolution.Create(gameSolution);
+        if (gameSolutionResult.IsFailed)
+            return new Result<GameSolutionForGroup>().WithErrors(gameSolutionResult.Errors);
+
+        var groupNumberResult = GroupNumber.Create(groupNumber);
+        if (groupNumberResult.IsFailed)
+            return new Result<GameSolutionForGroup>().WithErrors(groupNumberResult.Errors);
+
+        return GameSolutionForGroup.Create(groupNumberResult.Value, gameSolutionResult.Value);
+    }
+
+    private static Result<IEnumerable<Riddle>> CreateRiddles(IEnumerable<string?> riddleSolutions)
     {
         var results = riddleSolutions.Select(CreateRiddle).ToList();
 
-        var mergedResult = results.Merge();
-        if (mergedResult.IsSuccess)
-        {
-            context.Riddles = mergedResult.Value;
-        }
-
-        return mergedResult;
+        return results.Merge();
     }
 
-    private static Result<Riddle> CreateRiddle(string riddleSolution)
+    private static Result<Riddle> CreateRiddle(string? riddleSolution)
     {
-        Result<RiddleSolution> riddleSolutionTemp;
-        return new Result<Riddle>()
-            .OnSuccess(_ =>
-            {
-                riddleSolutionTemp = RiddleSolution.Create(riddleSolution);
-                riddleSolutionTemp
-                    .OnSuccess(x => IsSolved.Create()
-                        .OnSuccess(isSolved => Riddle.Create(riddleSolutionTemp.Value, isSolved)));
-            });
+        var riddleSolutionResult = RiddleSolution.Create(riddleSolution);
+        if (riddleSolutionResult.IsFailed) return new Result<Riddle>().WithErrors(riddleSolutionResult.Errors);
+
+        var isSolvedResult = IsSolved.Create();
+        if (isSolvedResult.IsFailed) return new Result<Riddle>().WithErrors(isSolvedResult.Errors);
+
+        return Riddle.Create(riddleSolutionResult.Value, isSolvedResult.Value);
     }
 
     private static string MapCulture(Language language)

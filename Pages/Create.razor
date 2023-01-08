@@ -1,6 +1,8 @@
 ﻿@page "/create"
 @using Application.Enums
+@using Application.Ports
 @inject IJSRuntime JsRuntime
+@inject ICreateGameCommand _createGameCommand
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -17,7 +19,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="lang">Game language</label>
-                                    <select class="form-control" id="lang">
+                                    <select class="form-control" id="lang" @bind="_language">
                                         <option value="@Language.English">@Language.English.ToString()</option>
                                         <option value="@Language.German">@Language.German.ToString()</option>
                                     </select>
@@ -98,6 +100,7 @@
     private List<string?> _gameSolutions = null!;
     private string? _creatorPassword;
     private int _amountGroups;
+    private Language _language;
 
     protected override void OnInitialized()
     {
@@ -129,10 +132,9 @@
         _gameSolutions[j] = e.Value?.ToString();
     }
 
-    private async Task HandleCreate()
+    private void HandleCreate()
     {
-        
-        var url = "https://www.heise.de";
-        await JsRuntime.InvokeVoidAsync("createQrCode", url);
+        var result = _createGameCommand.Execute(_language, _solutions, _gameSolutions, _creatorPassword);
+        Console.WriteLine(result.Value);
     }
 }
