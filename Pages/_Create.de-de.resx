@@ -1,0 +1,44 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="GameLanguage" xml:space="preserve">
+        <value>Spielsprache</value>
+    </data>
+    <data name="AmountRiddles" xml:space="preserve">
+        <value>Anzahl Rätsel</value>
+    </data>
+    <data name="CreateNewGame" xml:space="preserve">
+        <value>Neues Spiel erstellen</value>
+    </data>
+    <data name="CreatorPassword" xml:space="preserve">
+        <value>Lehrerpasswort</value>
+    </data>
+    <data name="AmountGroups" xml:space="preserve">
+        <value>Anzahl Gruppen</value>
+    </data>
+    <data name="GameSolutionGroup" xml:space="preserve">
+        <value>Spiellösung Gruppe</value>
+    </data>
+    <data name="RiddleSolution" xml:space="preserve">
+        <value>Rätsel Lösung</value>
+    </data>
+    <data name="Back" xml:space="preserve">
+        <value>Zurück</value>
+    </data>
+    <data name="Create" xml:space="preserve">
+        <value>Erstellen</value>
+    </data>
+    <data name="EditGame" xml:space="preserve">
+        <value>Spiel bearbeiten</value>
+    </data>
+</root>

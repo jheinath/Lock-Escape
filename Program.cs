@@ -11,5 +11,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddApplicationServices();
 builder.Services.AddRestServices();
+builder.Services.AddLocalization();
 
 await builder.Build().RunAsync();

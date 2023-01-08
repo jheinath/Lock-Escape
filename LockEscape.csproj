@@ -11,6 +11,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.10" PrivateAssets="all" />
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.1" />
         <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     </ItemGroup>
 
@@ -43,6 +44,11 @@
       <Compile Remove="Domain\**" />
       <Compile Remove="Application\**" />
       <Compile Remove="Domain.Tests\**" />
+      <Compile Update="Pages\_Create.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Create.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -50,6 +56,10 @@
       <EmbeddedResource Remove="Domain\**" />
       <EmbeddedResource Remove="Application\**" />
       <EmbeddedResource Remove="Domain.Tests\**" />
+      <EmbeddedResource Update="Pages\_Create.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Create.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="CreatorPasswordMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Das Lehrer-Passwort darf nicht leer sein.</value>
+    </data>
+    <data name="GameSolutionForGroupsMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Es darf keine Lösung für eine Gruppe leer sein.</value>
+    </data>
+    <data name="GameSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Es darf keine Lösung für eine Gruppe leer sein.</value>
+    </data>
+    <data name="GroupNumberMustBeAtLeastOneErrorMessage" xml:space="preserve">
+        <value>Die Gruppennummer muss mindestens 1 sein.</value>
+    </data>
+    <data name="InvalidCultureErrorMessage" xml:space="preserve">
+        <value>Falsche Übersetzung.</value>
+    </data>
+    <data name="RiddlesMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Es muss mindestens ein Rätsel geben.</value>
+    </data>
+    <data name="RiddleSolutionInvalidFormatErrorMessage" xml:space="preserve">
+        <value>Die Rätsellösung darf nur Zahlen von 0-9 enthalten.</value>
+    </data>
+    <data name="RiddleSolutionInvalidLengthErrorMessage" xml:space="preserve">
+        <value>Die Rätsellösung muss {0} Zeichen lang sein.</value>
+    </data>
+    <data name="RiddleSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Die Rästellösungen dürfen nicht leer sein.</value>
+    </data>
+</root>

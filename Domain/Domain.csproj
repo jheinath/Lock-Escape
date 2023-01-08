@@ -15,6 +15,11 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Errors.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="EscapeGames\Errors\_Errors.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Errors.de-DE.Designer.cs</LastGenOutput>
+        <DependentUpon>_Errors.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +27,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Errors.resx</DependentUpon>
+      </Compile>
+      <Compile Update="EscapeGames\Errors\_Errors.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Errors.de-DE.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

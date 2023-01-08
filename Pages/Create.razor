@@ -4,11 +4,13 @@
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using LockEscape.Services.EncodingToQueryParameters
+@using Microsoft.Extensions.Localization
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 @inject ICreateGameCommand CreateGameCommand
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
+@inject IStringLocalizer<Create> Localizer
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -20,11 +22,11 @@
                     <h4 class="text-white mb-0">
                         @if (_isEditMode)
                         {
-                            @("Edit game")
+                            @(Localizer.GetString(nameof(_Create.EditGame)))
                         }
                         else
                         {
-                            @("Create new game")
+                            @(Localizer.GetString(nameof(_Create.CreateNewGame)))
                         }
                     </h4>
                 </div>
@@ -44,7 +46,7 @@
                         <div class="row w-100">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="lang">Game language</label>
+                                    <label for="lang">@_Create.GameLanguage</label>
                                     <select class="form-control" id="lang" @bind="_language">
                                         <option value="@Language.English">@Language.English.ToString()</option>
                                         <option value="@Language.German">@Language.German.ToString()</option>
@@ -53,7 +55,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="countRiddles">Amount riddles</label>
+                                    <label for="countRiddles">@_Create.AmountRiddles</label>
                                     <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
                                 </div>
                             </div>
@@ -62,13 +64,13 @@
                         <div class="row w-100">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="password">Creator Password</label>
+                                    <label for="password">@_Create.CreatorPassword</label>
                                     <input type="text" class="form-control" id="password" @bind="_creatorPassword">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="countGroups">Amount groups</label>
+                                    <label for="countGroups">@_Create.AmountGroups</label>
                                     <input type="number" min="1" max="30" class="form-control" id="countGroups" @bind="_amountGroups">
                                 </div>
                             </div>
@@ -80,7 +82,7 @@
                                 var j = i;
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="@($"group{i}game-solution")">Game solution Group @(j + 1)</label>
+                                        <label for="@($"group{i}game-solution")">@_Create.GameSolutionGroup @(j + 1)</label>
                                         <input value="@_gameSolutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
                                     </div>
                                 </div>
@@ -93,7 +95,7 @@
                                 var j = i;
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="@($"solution{i}")">Riddle Solution @(j + 1)</label>
+                                        <label for="@($"solution{i}")">@_Create.RiddleSolution @(j + 1)</label>
                                         <input value="@_solutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
                                     </div>
                                 </div>
@@ -101,10 +103,10 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col">
-                                <a class="btn btn-primary d-block" href="#" role="button">Back</a>
+                                <a class="btn btn-primary d-block" href="#" role="button">@_Create.Back</a>
                             </div>
                             <div class="col">
-                                <div class="btn btn-primary d-block" @onclick="@HandleCreate">Create</div>
+                                <div class="btn btn-primary d-block" @onclick="@HandleCreate">@_Create.Create</div>
                             </div>
                         </div>
                         <div class="row">
