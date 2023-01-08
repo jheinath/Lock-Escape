@@ -10,7 +10,16 @@
         <div class="col">
             <div class="card border-primary bg-primary rounded-0">
                 <div class="card-header text-center">
-                    <h4 class="text-white mb-0">Scan QR code from your teacher!</h4>
+                    <h4 class="text-white mb-0">
+                        @if (_shouldGoToEditPage)
+                        {
+                            @("Scan the QR code you created!")
+                        }
+                        else
+                        {
+                            @("Scan QR code from your teacher!")
+                        }
+                    </h4>
                 </div>
                 <div class="card-body text-white bg-white text-center">
                     <video id="video" width="300px" height="400px"></video>
@@ -22,9 +31,19 @@
 </div>
 
 @code {
+
+    private bool _shouldGoToEditPage;
+
     protected override async Task OnInitializedAsync()
     {
-        NavigationManager.TryGetQueryString("edit", out bool shouldGoToEditPage);
-        await JsRuntime.InvokeVoidAsync("scan", shouldGoToEditPage);
+        _shouldGoToEditPage = false;
+        NavigationManager.TryGetQueryString("edit", out string shouldGoToEditPageString);
+        if (bool.TryParse(shouldGoToEditPageString, out var shouldGoToEditPageBool))
+        {
+            _shouldGoToEditPage = shouldGoToEditPageBool;
+        }
+
+        await JsRuntime.InvokeVoidAsync("scan", _shouldGoToEditPage);
     }
+
 }
