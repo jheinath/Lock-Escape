@@ -11,7 +11,9 @@
 var QRCode;
 
 function createQrCode(url) {
-    new QRCode(document.getElementById("qrcode"), url)
+    const element = document.getElementById("qrcode");
+    element.outerHTML = "<div id=\"qrcode\"></div>";
+    new QRCode(document.getElementById("qrcode"), url);
 }
 
 (function () {
