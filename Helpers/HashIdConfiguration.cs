@@ -1,4 +1,4 @@
-﻿namespace LockEscape.Services;
+﻿namespace LockEscape.Helpers;
 
 public static class HashIdConfiguration
 {

@@ -3,6 +3,7 @@ using System.Text;
 using Domain.EscapeGames.Aggregate;
 using Domain.EscapeGames.ValueObjects;
 using HashidsNet;
+using LockEscape.Helpers;
 
 namespace LockEscape.Services.EncodingToQueryParameters;
 
@@ -12,7 +13,6 @@ public class GenerateQueryParametersService : IGenerateQueryParametersService
     {
         var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-        
         queryString.Add(nameof(CreatorPassword), escapeGame.CreatorPassword.Value);
         queryString.Add(nameof(CultureInfo), escapeGame.CultureInfo.Name);
 
