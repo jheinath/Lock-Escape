@@ -1,4 +1,5 @@
 ﻿@inject IJSRuntime JsRuntime
+@inject NavigationManager NavigationManager
 
 @page "/scan"
 
@@ -21,9 +22,9 @@
 </div>
 
 @code {
-
     protected override async Task OnInitializedAsync()
     {
-        await JsRuntime.InvokeVoidAsync("scan");
+        NavigationManager.TryGetQueryString("edit", out bool shouldGoToEditPage);
+        await JsRuntime.InvokeVoidAsync("scan", shouldGoToEditPage);
     }
 }
