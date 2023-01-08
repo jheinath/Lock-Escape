@@ -21,8 +21,8 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
         {
             CreatorPassword = dic.GetValueOrDefault(nameof(CreatorPassword)),
             CultureInfo = dic.GetValueOrDefault(nameof(CultureInfo)),
-            RiddleSolutionDtos = CreateRiddleSolutionDtos(dic),
-            GameSolutionForGroupDtos = CreateSolutionForGroupDtos(dic)
+            RiddleSolutionDtos = CreateRiddleSolutionDtos(dic!),
+            GameSolutionForGroupDtos = CreateSolutionForGroupDtos(dic!)
         };
     }
 

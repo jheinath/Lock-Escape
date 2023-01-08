@@ -2,20 +2,21 @@
 
 public class EscapeGameDto
 {
-    public string? CreatorPassword { get; set; }
-    public string? CultureInfo { get; set; }
-    public IEnumerable<GameSolutionForGroupDto> GameSolutionForGroupDtos { get; set; }
-    public IEnumerable<RiddleSolutionDto> RiddleSolutionDtos { get; set; }
+    public string? CreatorPassword { get; init; }
+    public string? CultureInfo { get; init; }
+    public IEnumerable<GameSolutionForGroupDto> GameSolutionForGroupDtos { get; init; } = null!;
+    public IEnumerable<RiddleSolutionDto> RiddleSolutionDtos { get; init; } = null!;
 }
 
 public class GameSolutionForGroupDto
 {
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public int GroupNumber { get; set; }
-    public string? GameSolution { get; set; }
+    public string? GameSolution { get; init; }
 }
 
 public class RiddleSolutionDto
 {
     public bool IsSolved { get; set; }
-    public string? RiddleSolution { get; set; }
+    public string? RiddleSolution { get; init; }
 }

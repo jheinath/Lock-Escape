@@ -1,14 +1,14 @@
 ﻿namespace LockEscape.Helpers;
 
-public static class UriHelper
+public static class QueryStringExtensions
 {
-    public static Dictionary<string, string?> DecodeQueryParameters(this string queryParameterString)
+    public static Dictionary<string, string> DecodeQueryParameters(this string queryParameterString)
     {
         if (queryParameterString == null)
             throw new ArgumentNullException(nameof(queryParameterString));
 
         if (queryParameterString.Length == 0)
-            return new Dictionary<string, string?>();
+            return new Dictionary<string, string>();
 
         return queryParameterString.TrimStart('?')
             .Split(new[] { '&', ';' }, StringSplitOptions.RemoveEmptyEntries)
