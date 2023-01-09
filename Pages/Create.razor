@@ -4,13 +4,11 @@
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using LockEscape.Services.EncodingToQueryParameters
-@using Microsoft.Extensions.Localization
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 @inject ICreateGameCommand CreateGameCommand
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
-@inject IStringLocalizer<Create> Localizer
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -22,11 +20,11 @@
                     <h4 class="text-white mb-0">
                         @if (_isEditMode)
                         {
-                            @(Localizer.GetString(nameof(_Create.EditGame)))
+                            @(_Create.EditGame)
                         }
                         else
                         {
-                            @(Localizer.GetString(nameof(_Create.CreateNewGame)))
+                            @(_Create.CreateNewGame)
                         }
                     </h4>
                 </div>

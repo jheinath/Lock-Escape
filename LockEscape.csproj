@@ -44,6 +44,11 @@
       <Compile Remove="Domain\**" />
       <Compile Remove="Application\**" />
       <Compile Remove="Domain.Tests\**" />
+      <Compile Update="Pages\_Create.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Create.de-DE.resx</DependentUpon>
+      </Compile>
       <Compile Update="Pages\_Create.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -56,9 +61,15 @@
       <EmbeddedResource Remove="Domain\**" />
       <EmbeddedResource Remove="Application\**" />
       <EmbeddedResource Remove="Domain.Tests\**" />
+      <EmbeddedResource Update="Pages\_Create.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Create.de-DE.Designer.cs</LastGenOutput>
+        <DependentUpon>_Create.resx</DependentUpon>
+      </EmbeddedResource>
       <EmbeddedResource Update="Pages\_Create.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Create.Designer.cs</LastGenOutput>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>
 
@@ -88,5 +99,9 @@
 
     <ItemGroup>
       <ProjectReference Include="Application\Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources" />
     </ItemGroup>
 </Project>
