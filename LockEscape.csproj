@@ -54,6 +54,26 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Create.resx</DependentUpon>
       </Compile>
+      <Compile Update="Pages\_Index.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Index.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Pages\_Index.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Index.de-DE.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Pages\_Scan.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Scan.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Pages\_Scan.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Scan.de-DE.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -70,6 +90,27 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Create.Designer.cs</LastGenOutput>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <DependentUpon>Create.razor</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Index.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Index.Designer.cs</LastGenOutput>
+        <DependentUpon>Index.razor</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Index.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Index.de-DE.Designer.cs</LastGenOutput>
+        <DependentUpon>_Index.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Scan.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Scan.Designer.cs</LastGenOutput>
+        <DependentUpon>Scan.razor</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Scan.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Scan.de-DE.Designer.cs</LastGenOutput>
+        <DependentUpon>_Scan.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
 
