@@ -58,5 +58,32 @@ namespace LockEscape.Pages {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zurück.
+        /// </summary>
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanne den QR Code der Lehrperson!.
+        /// </summary>
+        internal static string ScanFromTeacher {
+            get {
+                return ResourceManager.GetString("ScanFromTeacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanne den QR Code den du erstellt hast!.
+        /// </summary>
+        internal static string ScanToEdit {
+            get {
+                return ResourceManager.GetString("ScanToEdit", resourceCulture);
+            }
+        }
     }
 }

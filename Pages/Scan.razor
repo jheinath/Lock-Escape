@@ -13,17 +13,17 @@
                     <h4 class="text-white mb-0">
                         @if (_shouldGoToEditPage)
                         {
-                            @("Scan the QR code you created!")
+                            @_Scan.ScanToEdit
                         }
                         else
                         {
-                            @("Scan QR code from your teacher!")
+                            @_Scan.ScanFromTeacher
                         }
                     </h4>
                 </div>
                 <div class="card-body text-white bg-white text-center">
                     <video id="video" width="300px" height="400px"></video>
-                    <a class="btn btn-primary d-block w-auto" href="#" role="button">Back</a>
+                    <a class="btn btn-primary d-block w-auto" href="#" role="button">@_Scan.Back</a>
                 </div>
             </div>
         </div>
