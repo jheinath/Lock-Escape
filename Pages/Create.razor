@@ -117,7 +117,6 @@
                             @if (_creationSucceeded)
                             {
                                 <p>@_Create.CopyQrCodeMessage</p>
-                                <button class="btn btn-primary d-block" onclick="@HandlePrintAndPageReload">@_Create.PrintButton</button>
                             }
                         </div>
                     </form>
@@ -212,11 +211,6 @@
         NavigationManager.NavigateTo(newEditUrl, forceLoad: false);
     }
 
-    private async Task HandlePrintAndPageReload()
-    {
-        await JsRuntime.InvokeVoidAsync("reloadAfterQrCodePrint");
-    }
-    
     private static Language MapCultureInfoToLanguage(string? cultureInfo)
     {
         return cultureInfo switch

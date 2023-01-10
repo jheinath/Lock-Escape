@@ -49,9 +49,6 @@
         <value>Spiel bearbeiten</value>
     </data>
     <data name="CopyQrCodeMessage" xml:space="preserve">
-        <value>Kopieren Sie den QR Code und speichern ihn, speichern als PDF oder drucken:</value>
-    </data>
-    <data name="PrintButton" xml:space="preserve">
-        <value>Drucken / Als PDF speichern</value>
+        <value>Hier QR Code kopieren (Bitte Lehrer Passwort notieren!):</value>
     </data>
 </root>

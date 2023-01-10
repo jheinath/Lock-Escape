@@ -87,7 +87,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy the QR Code, save it. Or print/save this page:.
+        ///   Looks up a localized string similar to Copy the QR Code here for your students (remember teacher password!):.
         /// </summary>
         internal static string CopyQrCodeMessage {
             get {
@@ -146,15 +146,6 @@ namespace LockEscape.Pages {
         internal static string GameSolutionGroup {
             get {
                 return ResourceManager.GetString("GameSolutionGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Print / Save as PDF.
-        /// </summary>
-        internal static string PrintButton {
-            get {
-                return ResourceManager.GetString("PrintButton", resourceCulture);
             }
         }
         

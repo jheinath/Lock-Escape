@@ -16,15 +16,6 @@ function createQrCode(url) {
     new QRCode(document.getElementById("qrcode"), url);
 }
 
-function reloadAfterQrCodePrint() {
-    const url = window.location.href;
-    window.print();
-    setTimeout(() => {
-            window.location.href = url;
-        }
-        , 2000);
-}
-
 (function () {
     //---------------------------------------------------------------------
     // QRCode for JavaScript

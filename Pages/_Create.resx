@@ -49,9 +49,6 @@
         <value>Edit game</value>
     </data>
     <data name="CopyQrCodeMessage" xml:space="preserve">
-        <value>Copy the QR Code, save it. Or print/save this page:</value>
-    </data>
-    <data name="PrintButton" xml:space="preserve">
-        <value>Print / Save as PDF</value>
+        <value>Copy the QR Code here for your students (remember teacher password!):</value>
     </data>
 </root>
