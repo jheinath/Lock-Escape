@@ -4,6 +4,7 @@
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using LockEscape.Services.EncodingToQueryParameters
+@using Microsoft.AspNetCore.WebUtilities
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 @inject ICreateGameCommand CreateGameCommand
@@ -112,6 +113,13 @@
                                 <div id="qrcode"></div>
                             </div>
                         </div>
+                        <div class="row text-center">
+                            @if (_creationSucceeded)
+                            {
+                                <p>@_Create.CopyQrCodeMessage</p>
+                                <button class="btn btn-primary d-block" onclick="@HandlePrintAndPageReload">@_Create.PrintButton</button>
+                            }
+                        </div>
                     </form>
                 </div>
             </div>
@@ -129,6 +137,7 @@
     private Language _language;
     private List<IError> _errors = null!;
     private bool _isEditMode;
+    private bool _creationSucceeded;
         private const string QueryParameterGameData = "gameDataLockEscapeGame";
 
     protected override void OnInitialized()
@@ -139,6 +148,7 @@
         _solutions = new List<string?> { string.Empty };
         _gameSolutions = new List<string?> { string.Empty };
         _isEditMode = false;
+        _creationSucceeded = false;
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
         if (!string.IsNullOrWhiteSpace(gameData))
         {
@@ -197,8 +207,16 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         await JsRuntime.InvokeVoidAsync("createQrCode", url);
+        _creationSucceeded = true;
+        var newEditUrl = currentUrl + "create?" + queryString;
+        NavigationManager.NavigateTo(newEditUrl, forceLoad: false);
     }
 
+    private async Task HandlePrintAndPageReload()
+    {
+        await JsRuntime.InvokeVoidAsync("reloadAfterQrCodePrint");
+    }
+    
     private static Language MapCultureInfoToLanguage(string? cultureInfo)
     {
         return cultureInfo switch

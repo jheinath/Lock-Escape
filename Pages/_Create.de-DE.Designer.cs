@@ -87,6 +87,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kopieren Sie den QR Code und speichern ihn, speichern als PDF oder drucken:.
+        /// </summary>
+        internal static string CopyQrCodeMessage {
+            get {
+                return ResourceManager.GetString("CopyQrCodeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erstellen.
         /// </summary>
         internal static string Create {
@@ -137,6 +146,15 @@ namespace LockEscape.Pages {
         internal static string GameSolutionGroup {
             get {
                 return ResourceManager.GetString("GameSolutionGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drucken / Als PDF speichern.
+        /// </summary>
+        internal static string PrintButton {
+            get {
+                return ResourceManager.GetString("PrintButton", resourceCulture);
             }
         }
         
