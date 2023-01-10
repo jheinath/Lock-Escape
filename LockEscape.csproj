@@ -74,6 +74,16 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>_Scan.de-DE.resx</DependentUpon>
       </Compile>
+      <Compile Update="Pages\_Play.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Play.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Pages\_Play.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Play.de-DE.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -111,6 +121,16 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Scan.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Scan.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Play.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Play.Designer.cs</LastGenOutput>
+        <DependentUpon>Play.razor</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\_Play.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Play.de-DE.Designer.cs</LastGenOutput>
+        <DependentUpon>_Play.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
 

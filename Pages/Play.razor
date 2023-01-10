@@ -1,0 +1,79 @@
+﻿@page "/play"
+@using Application.Enums
+@using FluentResults
+@using LockEscape.Services.DecodingFromQueryParameters
+@inject NavigationManager NavigationManager
+@inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
+
+<PageTitle>Lock Escape</PageTitle>
+
+<div class="container d-flex justify-content-center align-items-center w-100">
+    <div class="row g-2 w-100">
+        <div class="col-12">
+            <div class="card border-success bg-success rounded-0">
+                <div class="card-header text-center">
+                    <h4 class="text-white mb-0">
+                        @if (_IsTeamSelection)
+                        {
+                            @(_Play.SelectYourGroup)
+                        }
+                        else
+                        {
+                            @(_Play.SolveTheRiddleAndOpenTheLock)
+                        }
+                    </h4>
+                </div>
+                <div class="card-body d-flex justify-content-center container bg-white w-100">
+                    @if (_errors.Any())
+                    {
+                        <div class="row w-100">
+                            <div class="col-12">
+                                <div class="alert alert-warning" role="alert">
+                                    @_errors.First().Message
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                    }
+                    <div class="row w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    private Language _language;
+    private List<IError> _errors = null!;
+    private bool _IsTeamSelection;
+        private const string QueryParameterGameData = "gameDataLockEscapeGame";
+
+    protected override void OnInitialized()
+    {
+        _errors = new List<IError>();
+        NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
+        if (!string.IsNullOrWhiteSpace(gameData))
+        {
+            _IsTeamSelection = true;
+            DecodeGameData(gameData);
+        }
+    }
+
+    private void DecodeGameData(string queryParameterValue)
+    {
+        var escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
+        _language = MapCultureInfoToLanguage(escapeGameDto.CultureInfo);
+    }
+
+    private static Language MapCultureInfoToLanguage(string? cultureInfo)
+    {
+        return cultureInfo switch
+        {
+            "de-DE" => Language.German,
+            "en-GB" => Language.English,
+            _ => Language.English
+        };
+    }
+}
