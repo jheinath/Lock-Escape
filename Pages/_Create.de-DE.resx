@@ -49,6 +49,6 @@
         <value>Spiel bearbeiten</value>
     </data>
     <data name="CopyQrCodeMessage" xml:space="preserve">
-        <value>Hier QR Code kopieren (Bitte Lehrer Passwort notieren!):</value>
+        <value>QR Code mit Rechtsklick kopieren oder einen Screenshot machen!</value>
     </data>
 </root>

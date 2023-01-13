@@ -87,7 +87,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hier QR Code kopieren (Bitte Lehrer Passwort notieren!):.
+        ///   Looks up a localized string similar to QR Code mit Rechtsklick kopieren oder einen Screenshot machen!.
         /// </summary>
         internal static string CopyQrCodeMessage {
             get {
