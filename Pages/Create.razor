@@ -4,7 +4,6 @@
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using LockEscape.Services.EncodingToQueryParameters
-@using Microsoft.AspNetCore.WebUtilities
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 @inject ICreateGameCommand CreateGameCommand
@@ -137,7 +136,7 @@
     private List<IError> _errors = null!;
     private bool _isEditMode;
     private bool _creationSucceeded;
-        private const string QueryParameterGameData = "gameDataLockEscapeGame";
+    private const string QueryParameterGameData = "gameDataLockEscapeGame";
 
     protected override void OnInitialized()
     {
