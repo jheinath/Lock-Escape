@@ -18,9 +18,13 @@
             <div class="card border-success bg-success rounded-0">
                 <div class="card-header text-center">
                     <h4 class="text-white mb-0">
-                        @if (_isEditMode)
+                        @if (_isEditMode && !_onlyQrCode)
                         {
                             @(_Create.EditGame)
+                        }
+                        else if (_onlyQrCode)
+                        {
+                            @(_Create.ScanMe)
                         }
                         else
                         {

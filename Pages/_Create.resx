@@ -54,4 +54,7 @@
     <data name="ShowOnlyQr" xml:space="preserve">
         <value>Only show QR Code</value>
     </data>
+    <data name="ScanMe" xml:space="preserve">
+        <value>Scan me</value>
+    </data>
 </root>

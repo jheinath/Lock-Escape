@@ -159,6 +159,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scanne mich.
+        /// </summary>
+        internal static string ScanMe {
+            get {
+                return ResourceManager.GetString("ScanMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nur QR Code anzeigen.
         /// </summary>
         internal static string ShowOnlyQr {
