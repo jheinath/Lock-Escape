@@ -51,4 +51,7 @@
     <data name="CopyQrCodeMessage" xml:space="preserve">
         <value>Copy the QR Code here for your students (remember teacher password!):</value>
     </data>
+    <data name="ShowOnlyQr" xml:space="preserve">
+        <value>Only show QR Code</value>
+    </data>
 </root>

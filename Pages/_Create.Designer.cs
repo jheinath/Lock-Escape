@@ -157,5 +157,14 @@ namespace LockEscape.Pages {
                 return ResourceManager.GetString("RiddleSolution", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only show QR Code.
+        /// </summary>
+        internal static string ShowOnlyQr {
+            get {
+                return ResourceManager.GetString("ShowOnlyQr", resourceCulture);
+            }
+        }
     }
 }
