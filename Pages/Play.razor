@@ -44,7 +44,7 @@
                     {
                         <div class="row w-100">
                             <div class="col">
-                                <div class="btn btn-primary d-block" @onclick="HandleGroupSelection(@gameSolutionForGroup.GroupNumber)">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                                <div class="btn btn-primary d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
                             </div>
                         </div>
                     }

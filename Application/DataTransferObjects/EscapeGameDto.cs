@@ -6,7 +6,7 @@ public class EscapeGameDto
     public string? CultureInfo { get; init; }
     public IEnumerable<GameSolutionForGroupDto> GameSolutionForGroupDtos { get; init; } = null!;
     public IEnumerable<RiddleSolutionDto> RiddleSolutionDtos { get; init; } = null!;
-    public string SelectedGroupNumber { get; set; }
+    public string? SelectedGroupNumber { get; set; }
 }
 
 public class GameSolutionForGroupDto

@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 using Application.DataTransferObjects;
 using Domain.EscapeGames.Aggregate;
 using Domain.EscapeGames.Entities;
@@ -16,7 +15,7 @@ public class EscapeGameDtoConversionService : IEscapeGameDtoConversionService
             IsSolved.Create(x.IsSolved).Value).Value);
         var gameSolutionsForGroups = escapeGameDto.GameSolutionForGroupDtos.Select(x =>
             GameSolutionForGroup.Create(GroupNumber.Create(x.GroupNumber).Value, GameSolution.Create(x.GameSolution).Value).Value);
-        var groupNumber = GroupNumber.Create(int.Parse(escapeGameDto.SelectedGroupNumber)).Value;
+        var groupNumber = escapeGameDto.SelectedGroupNumber is null ? null : GroupNumber.Create(int.Parse(escapeGameDto.SelectedGroupNumber)).Value;
         
         return EscapeGame.Load(cultureInfo, riddles.ToList(), gameSolutionsForGroups,
             CreatorPassword.Create(escapeGameDto.CreatorPassword).Value, groupNumber);
