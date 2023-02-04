@@ -12,14 +12,16 @@ public class EscapeGame
     public IEnumerable<Riddle> Riddles { get; private set; }
     public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
     public CreatorPassword CreatorPassword { get; }
+    public GroupNumber SelectedGroupNumber { get; }
 
     private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
-        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword)
+        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword, GroupNumber selectedGroupNumber)
     {
         CultureInfo = cultureInfo;
         Riddles = riddles;
         GameSolutionForGroups = gameSolutionForGroups;
         CreatorPassword = creatorPassword;
+        SelectedGroupNumber = selectedGroupNumber;
     }
 
     public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles,
@@ -48,6 +50,6 @@ public class EscapeGame
         if (result.IsFailed)
             return result;
 
-        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups, creatorPassword));
+        return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups, creatorPassword, null));
     }
 }

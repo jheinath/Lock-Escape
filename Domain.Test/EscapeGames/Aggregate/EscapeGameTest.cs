@@ -83,5 +83,6 @@ public class EscapeGameTest
         result.Value.GameSolutionForGroups.Should()
             .BeEquivalentTo(new List<GameSolutionForGroup> { gameSolutionForGroup });
         result.Value.CreatorPassword.Should().Be(_defaultCreatorPassword);
+        result.Value.SelectedGroupNumber.Should().BeNull();
     }
 }

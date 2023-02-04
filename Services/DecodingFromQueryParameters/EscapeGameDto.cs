@@ -13,6 +13,7 @@ public class GameSolutionForGroupDto
     // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public int GroupNumber { get; set; }
     public string? GameSolution { get; init; }
+    public bool IsSelected { get; set; }
 }
 
 public class RiddleSolutionDto
