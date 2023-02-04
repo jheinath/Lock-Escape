@@ -45,4 +45,7 @@
     <data name="RiddleSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
         <value>Die Rästellösungen dürfen nicht leer sein.</value>
     </data>
+    <data name="SelectGroupNumberIsNotAvailableErrorMessage" xml:space="preserve">
+        <value>Die gewählte Gruppennummer ist nicht verfügbar.</value>
+    </data>
 </root>

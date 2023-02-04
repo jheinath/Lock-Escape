@@ -2,8 +2,13 @@
 @using Application.Enums
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
+@using Application.DataTransferObjects
+@using Application.Ports
+@using LockEscape.Services.EncodingToQueryParameters
 @inject NavigationManager NavigationManager
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
+@inject IGenerateQueryParametersService GenerateQueryParametersService
+@inject ISelectGroupCommand SelectGroupCommand
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -13,7 +18,7 @@
             <div class="card border-success bg-success rounded-0">
                 <div class="card-header text-center">
                     <h4 class="text-white mb-0">
-                        @if (_IsTeamSelection)
+                        @if (_isTeamSelection)
                         {
                             @(_Play.SelectYourGroup)
                         }
@@ -35,8 +40,14 @@
                         </div>
                         <hr/>
                     }
-                    <div class="row w-100">
-                    </div>
+                    @foreach(var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                    {
+                        <div class="row w-100">
+                            <div class="col">
+                                <div class="btn btn-primary d-block" @onclick="HandleGroupSelection(@gameSolutionForGroup.GroupNumber)">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -45,26 +56,42 @@
 
 @code
 {
-    private Language _language;
     private List<IError> _errors = null!;
-    private bool _IsTeamSelection;
+    public EscapeGameDto _escapeGameDto = null!;
+    private bool _isTeamSelection;
         private const string QueryParameterGameData = "gameDataLockEscapeGame";
 
     protected override void OnInitialized()
     {
         _errors = new List<IError>();
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
-        if (!string.IsNullOrWhiteSpace(gameData))
-        {
-            _IsTeamSelection = true;
-            DecodeGameData(gameData);
-        }
+        if (string.IsNullOrWhiteSpace(gameData)) return;
+        _isTeamSelection = true;
+        DecodeGameData(gameData);
     }
 
     private void DecodeGameData(string queryParameterValue)
     {
-        var escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
-        _language = MapCultureInfoToLanguage(escapeGameDto.CultureInfo);
+        _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
+    }
+
+    private void HandleGroupSelection(int groupNumber)
+    {
+        var result = SelectGroupCommand.Execute(groupNumber, _escapeGameDto);
+
+        if (result.IsFailed)
+        {
+            _errors = result.Errors;
+            return;
+        }
+
+        _isTeamSelection = false;
+        var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
+        var currentUrl = NavigationManager.BaseUri;
+        var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+        queryString.Add(QueryParameterGameData, queryParametersEncoded);
+        var url = currentUrl + "play?" + queryString;
+        NavigationManager.NavigateTo(url, forceLoad: false);
     }
 
     private static Language MapCultureInfoToLanguage(string? cultureInfo)
@@ -74,6 +101,6 @@
             "de-DE" => Language.German,
             "en-GB" => Language.English,
             _ => Language.English
-        };
+            };
     }
 }

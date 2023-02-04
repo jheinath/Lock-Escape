@@ -1,4 +1,6 @@
-﻿namespace LockEscape.Services.DecodingFromQueryParameters;
+﻿using Application.DataTransferObjects;
+
+namespace LockEscape.Services.DecodingFromQueryParameters;
 
 public interface IDecodeFromQueryParametersService
 {

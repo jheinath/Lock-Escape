@@ -16,4 +16,10 @@ public class IsSolved
         var @object = new IsSolved(false);
         return new Result<IsSolved>().WithValue(@object);
     }
+    
+    public static Result<IsSolved> Create(bool value)
+    {
+        var @object = new IsSolved(value);
+        return new Result<IsSolved>().WithValue(@object);
+    }
 }

@@ -60,6 +60,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        internal static string Group {
+            get {
+                return ResourceManager.GetString("Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select your group!.
         /// </summary>
         internal static string SelectYourGroup {

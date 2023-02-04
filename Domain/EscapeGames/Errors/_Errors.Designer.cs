@@ -139,5 +139,14 @@ namespace Domain.EscapeGames.Errors {
                 return ResourceManager.GetString("RiddleSolutionMustNotBeEmptyErrorMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected group number is not configured..
+        /// </summary>
+        internal static string SelectGroupNumberIsNotAvailableErrorMessage {
+            get {
+                return ResourceManager.GetString("SelectGroupNumberIsNotAvailableErrorMessage", resourceCulture);
+            }
+        }
     }
 }

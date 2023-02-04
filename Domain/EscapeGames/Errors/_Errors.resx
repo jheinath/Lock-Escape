@@ -45,4 +45,7 @@
     <data name="CreatorPasswordMustNotBeEmptyErrorMessage" xml:space="preserve">
         <value>Password must not be empty.</value>
     </data>
+    <data name="SelectGroupNumberIsNotAvailableErrorMessage" xml:space="preserve">
+        <value>The selected group number is not configured.</value>
+    </data>
 </root>

@@ -1,4 +1,4 @@
-﻿namespace LockEscape.Services.DecodingFromQueryParameters;
+﻿namespace Application.DataTransferObjects;
 
 public class EscapeGameDto
 {
@@ -6,6 +6,7 @@ public class EscapeGameDto
     public string? CultureInfo { get; init; }
     public IEnumerable<GameSolutionForGroupDto> GameSolutionForGroupDtos { get; init; } = null!;
     public IEnumerable<RiddleSolutionDto> RiddleSolutionDtos { get; init; } = null!;
+    public string SelectedGroupNumber { get; set; }
 }
 
 public class GameSolutionForGroupDto
@@ -13,7 +14,6 @@ public class GameSolutionForGroupDto
     // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public int GroupNumber { get; set; }
     public string? GameSolution { get; init; }
-    public bool IsSelected { get; set; }
 }
 
 public class RiddleSolutionDto

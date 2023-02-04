@@ -1,5 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
+using Application.DataTransferObjects;
+using Domain.EscapeGames.Aggregate;
 using Domain.EscapeGames.ValueObjects;
 using HashidsNet;
 using LockEscape.Helpers;
@@ -19,6 +21,7 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
 
         return new EscapeGameDto
         {
+            SelectedGroupNumber = dic.GetValueOrDefault(nameof(EscapeGame.SelectedGroupNumber)),
             CreatorPassword = dic.GetValueOrDefault(nameof(CreatorPassword)),
             CultureInfo = dic.GetValueOrDefault(nameof(CultureInfo)),
             RiddleSolutionDtos = CreateRiddleSolutionDtos(dic!),

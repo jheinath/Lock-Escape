@@ -24,4 +24,7 @@
     <data name="SolveTheRiddleAndOpenTheLock" xml:space="preserve">
         <value>Löse die Aufgaben und öffne die Schlösser</value>
     </data>
+    <data name="Group" xml:space="preserve">
+        <value>Gruppe</value>
+    </data>
 </root>

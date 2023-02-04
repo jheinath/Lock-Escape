@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         return services
-            .AddTransient<ICreateGameCommand, CreateGameCommand>();
+            .AddTransient<ICreateGameCommand, CreateGameCommand>()
+            .AddTransient<ISelectGroupCommand, SelectGroupCommand>();
     }
 }

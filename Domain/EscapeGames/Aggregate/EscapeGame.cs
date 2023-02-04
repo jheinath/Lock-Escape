@@ -8,11 +8,11 @@ namespace Domain.EscapeGames.Aggregate;
 
 public class EscapeGame
 {
-    public CultureInfo CultureInfo { get; private set; }
-    public IEnumerable<Riddle> Riddles { get; private set; }
-    public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
-    public CreatorPassword CreatorPassword { get; }
-    public GroupNumber SelectedGroupNumber { get; }
+    public CultureInfo CultureInfo { get; private init; }
+    public IEnumerable<Riddle> Riddles { get; private init; }
+    public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; private init; }
+    public CreatorPassword CreatorPassword { get; private init; }
+    public GroupNumber SelectedGroupNumber { get; private set; }
 
     private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
         IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword, GroupNumber selectedGroupNumber)
@@ -24,6 +24,14 @@ public class EscapeGame
         SelectedGroupNumber = selectedGroupNumber;
     }
 
+
+    public static EscapeGame Load(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
+        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword,
+        GroupNumber selectedGroupNumber)
+    {
+        return new EscapeGame(cultureInfo, riddles, gameSolutionForGroups, creatorPassword, selectedGroupNumber);
+    }
+    
     public static Result<EscapeGame> Create(string cultureInfo, IEnumerable<Riddle> riddles,
         IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword)
     {
@@ -51,5 +59,20 @@ public class EscapeGame
             return result;
 
         return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups, creatorPassword, null));
+    }
+
+    public static Result<EscapeGame> SelectGroupNumber(EscapeGame escapeGame, GroupNumber groupNumber)
+    {
+        var result = new Result<EscapeGame>();
+
+        if (escapeGame.GameSolutionForGroups.All(gameSolution => gameSolution.GroupNumber.Value != groupNumber.Value))
+            result.WithError(new SelectGroupNumberIsNotAvailableError());
+
+        if (result.IsFailed)
+            return result;
+
+        escapeGame.SelectedGroupNumber = groupNumber;
+
+        return result.WithValue(escapeGame);
     }
 }

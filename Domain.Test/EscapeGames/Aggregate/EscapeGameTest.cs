@@ -85,4 +85,50 @@ public class EscapeGameTest
         result.Value.CreatorPassword.Should().Be(_defaultCreatorPassword);
         result.Value.SelectedGroupNumber.Should().BeNull();
     }
+
+    [Fact]
+    public void SelectGroupNumber_ValueOutOfRange_ReturnsError()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        var groupNumber = GroupNumber.Create(15).Value;
+        
+        //Act
+        var result = EscapeGame.SelectGroupNumber(escapeGame, groupNumber);
+        
+        //Assert
+        result.Errors.Should().BeEquivalentTo(new List<Error> { new SelectGroupNumberIsNotAvailableError() });
+        result.IsFailed.Should().BeTrue();
+    }
+    
+    [Fact]
+    public void SelectGroupNumber_ValidSelection_ReturnsUpdatedAggregate()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        var groupNumber = GroupNumber.Create(2).Value;
+        
+        //Act
+        var result = EscapeGame.SelectGroupNumber(escapeGame, groupNumber);
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.SelectedGroupNumber));
+        result.Value.SelectedGroupNumber.Value.Should().Be(2);
+    }
+
+
+    private EscapeGame CreateValidEscapeGame()
+    {
+        const string culture = "de-DE";
+        var riddleSolution = RiddleSolution.Create("123").Value;
+        var isSolved = IsSolved.Create().Value;
+        var riddle = Riddle.Create(riddleSolution, isSolved).Value;
+        var gameSolution = GameSolution.Create("SolutionPhrase 123").Value;
+        var groupNumber = GroupNumber.Create(2).Value;
+        var gameSolutionForGroup = GameSolutionForGroup.Create(groupNumber, gameSolution).Value;
+        return EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup }, _defaultCreatorPassword).Value;
+
+    }
 }

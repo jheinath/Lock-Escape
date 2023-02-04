@@ -15,6 +15,8 @@ public class GenerateQueryParametersService : IGenerateQueryParametersService
 
         queryString.Add(nameof(CreatorPassword), escapeGame.CreatorPassword.Value);
         queryString.Add(nameof(CultureInfo), escapeGame.CultureInfo.Name);
+        if (escapeGame.SelectedGroupNumber?.Value is not null)
+            queryString.Add(nameof(EscapeGame.SelectedGroupNumber), escapeGame.SelectedGroupNumber.Value.ToString());
 
         for (var i = 0; i < escapeGame.Riddles.Count(); i++)
         {
