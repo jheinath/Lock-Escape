@@ -43,13 +43,13 @@
                     @if (_isTeamSelection)
                     {
                         <div class="row">
-                        @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
-                        {
+                            @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                            {
                                 <div class="col-6 mt-5 mb-5">
-                                    <div class="btn btn-primary btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                                    <div class="btn btn-@GetColor(gameSolutionForGroup.GroupNumber) btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
                                 </div>
-                        }
-                         </div>
+                            }
+                        </div>
                     }
                 </div>
             </div>
@@ -60,12 +60,32 @@
 @code
 {
     private List<IError> _errors = null!;
-    public EscapeGameDto _escapeGameDto = null!;
+    private EscapeGameDto _escapeGameDto = null!;
     private bool _isTeamSelection;
-        private const string QueryParameterGameData = "gameDataLockEscapeGame";
+    private const string QueryParameterGameData = "gameDataLockEscapeGame";
+    private List<string> _colors = null!;
+
+    private string GetColor(int groupNumber)
+    {
+        var place = groupNumber % 10;
+        return _colors.ElementAt(place);
+    }
 
     protected override void OnInitialized()
     {
+        _colors = new List<string>
+        {
+            "primary",
+            "secondary",
+            "success",
+            "danger",
+            "warning",
+            "info",
+            "primary",
+            "dark",
+            "success",
+            "secondary",
+        };
         _errors = new List<IError>();
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
         if (string.IsNullOrWhiteSpace(gameData)) return;
