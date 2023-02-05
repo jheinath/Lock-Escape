@@ -31,7 +31,7 @@
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
                     @if (_errors.Any())
                     {
-                        <div class="row w-100">
+                        <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-warning" role="alert">
                                     @_errors.First().Message
@@ -40,13 +40,16 @@
                         </div>
                         <hr/>
                     }
-                    @foreach(var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                    @if (_isTeamSelection)
                     {
-                        <div class="row w-100">
-                            <div class="col">
-                                <div class="btn btn-primary d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
-                            </div>
-                        </div>
+                        <div class="row">
+                        @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                        {
+                                <div class="col-6 mt-5 mb-5">
+                                    <div class="btn btn-primary btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                                </div>
+                        }
+                         </div>
                     }
                 </div>
             </div>

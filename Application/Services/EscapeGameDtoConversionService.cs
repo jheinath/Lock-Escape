@@ -18,6 +18,6 @@ public class EscapeGameDtoConversionService : IEscapeGameDtoConversionService
         var groupNumber = escapeGameDto.SelectedGroupNumber is null ? null : GroupNumber.Create(int.Parse(escapeGameDto.SelectedGroupNumber)).Value;
         
         return EscapeGame.Load(cultureInfo, riddles.ToList(), gameSolutionsForGroups,
-            CreatorPassword.Create(escapeGameDto.CreatorPassword).Value, groupNumber);
+            CreatorPassword.Create(escapeGameDto.CreatorPassword).Value, groupNumber!);
     }
 }
