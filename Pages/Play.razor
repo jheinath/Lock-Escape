@@ -29,39 +29,50 @@
                     </h4>
                 </div>
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
-                    @if (_errors.Any())
-                    {
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-warning" role="alert">
-                                    @_errors.First().Message
-                                </div>
-                            </div>
-                        </div>
-                        <hr/>
-                    }
-                    @if (_isTeamSelection)
-                    {
-                        <div class="row">
-                            @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                    <div class="row">
+                        <div class="col">
+                            @if (_errors.Any())
                             {
-                                <div class="col-@GetColumnSize(_escapeGameDto.GameSolutionForGroupDtos.Count()) mt-5 mb-5">
-                                    <div class="btn btn-@GetColor(gameSolutionForGroup.GroupNumber) btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert alert-warning" role="alert">
+                                            @_errors.First().Message
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            }
+                            @if (_isTeamSelection)
+                            {
+                                <div class="row">
+                                    @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
+                                    {
+                                        <div class="col-@GetColumnSize(_escapeGameDto.GameSolutionForGroupDtos.Count()) mt-5 mb-5">
+                                            <div class="btn btn-@GetColor(gameSolutionForGroup.GroupNumber) btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="@($"riddle{CurrentRiddleNumber}")" class="text-center">@_Play.Riddle @(CurrentRiddleNumber + 1)</label>
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber}")">
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber + 1}")">
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber + 2}")">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12">
+                                        <div class="btn btn-primary">@_Play.Open</div>
+                                    </div>
                                 </div>
                             }
                         </div>
-                    }
-                    else
-                    {
-                        <div class="row">
-                            <div class="form-group">
-                                <label for="@($"riddle{CurrentRiddleNumber}")">@_Play.Riddle @(CurrentRiddleNumber + 1)</label>
-                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber}")">
-                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber + 1}")">
-                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber + 2}")">
-                            </div>
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>

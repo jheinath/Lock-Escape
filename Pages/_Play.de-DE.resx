@@ -30,4 +30,7 @@
     <data name="Riddle" xml:space="preserve">
         <value>Rätsel</value>
     </data>
+    <data name="Open" xml:space="preserve">
+        <value>Öffnen</value>
+    </data>
 </root>
