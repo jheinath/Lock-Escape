@@ -51,6 +51,17 @@
                             }
                         </div>
                     }
+                    else
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="@($"riddle{CurrentRiddleNumber}")">@_Play.Riddle @(CurrentRiddleNumber + 1)</label>
+                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber}")">
+                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber + 1}")">
+                                <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control" id="@($"riddle{CurrentRiddleNumber + 2}")">
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -62,8 +73,10 @@
     private List<IError> _errors = null!;
     private EscapeGameDto _escapeGameDto = null!;
     private bool _isTeamSelection;
-    private const string QueryParameterGameData = "gameDataLockEscapeGame";
+        private const string QueryParameterGameData = "gameDataLockEscapeGame";
     private List<string> _colors = null!;
+
+    private int CurrentRiddleNumber => _escapeGameDto.RiddleSolutionDtos.OrderBy(x => x.RiddleSolution).Count(x => x.IsSolved);
 
     private string GetColor(int groupNumber)
     {
@@ -98,7 +111,7 @@
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
     }
 
-    
+
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
 
     private void HandleGroupSelection(int groupNumber)

@@ -15,7 +15,7 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Domain_002FEscapeGames_002FErrors_002F_005FErrors/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FCreate/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FIndex/@EntryIndexedValue">False</s:Boolean>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FPlay/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FPlay/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FScan/@EntryIndexedValue">False</s:Boolean>
 	
 	

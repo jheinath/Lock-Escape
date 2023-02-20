@@ -69,6 +69,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rätsel.
+        /// </summary>
+        internal static string Riddle {
+            get {
+                return ResourceManager.GetString("Riddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wähle deine Gruppe aus!.
         /// </summary>
         internal static string SelectYourGroup {

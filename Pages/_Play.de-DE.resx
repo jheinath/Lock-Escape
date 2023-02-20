@@ -27,4 +27,7 @@
     <data name="Group" xml:space="preserve">
         <value>Gruppe</value>
     </data>
+    <data name="Riddle" xml:space="preserve">
+        <value>Rätsel</value>
+    </data>
 </root>
