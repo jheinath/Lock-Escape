@@ -45,7 +45,7 @@
                         <div class="row">
                             @foreach (var gameSolutionForGroup in _escapeGameDto.GameSolutionForGroupDtos)
                             {
-                                <div class="col-6 mt-5 mb-5">
+                                <div class="col-@GetColumnSize(_escapeGameDto.GameSolutionForGroupDtos.Count()) mt-5 mb-5">
                                     <div class="btn btn-@GetColor(gameSolutionForGroup.GroupNumber) btn-lg d-block" @onclick="@(() => HandleGroupSelection(@gameSolutionForGroup.GroupNumber))">@($"{_Play.Group} {@gameSolutionForGroup.GroupNumber}")</div>
                                 </div>
                             }
@@ -97,6 +97,9 @@
     {
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
     }
+
+    
+    private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
 
     private void HandleGroupSelection(int groupNumber)
     {
