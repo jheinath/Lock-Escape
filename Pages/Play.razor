@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-12">
-                                        <div class="btn btn-primary">@_Play.Open</div>
+                                        <div class="btn btn-primary" @onclick="HandleTrySolveRiddle">@_Play.Open</div>
                                     </div>
                                 </div>
                             }
@@ -129,6 +129,11 @@
 
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
 
+    private void HandleTrySolveRiddle()
+    {
+        
+    }
+
     private void HandleGroupSelection(int groupNumber)
     {
         var result = SelectGroupCommand.Execute(groupNumber, _escapeGameDto);
@@ -146,15 +151,5 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
-    }
-
-    private static Language MapCultureInfoToLanguage(string? cultureInfo)
-    {
-        return cultureInfo switch
-        {
-            "de-DE" => Language.German,
-            "en-GB" => Language.English,
-            _ => Language.English
-            };
     }
 }

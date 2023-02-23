@@ -48,4 +48,13 @@
     <data name="SelectGroupNumberIsNotAvailableErrorMessage" xml:space="preserve">
         <value>Die gewählte Gruppennummer ist nicht verfügbar.</value>
     </data>
+    <data name="RiddleNotFoundErrorMessage" xml:space="preserve">
+        <value>Das angegebene Rätsel ist nicht vorhanden.</value>
+    </data>
+    <data name="RiddleIsAlreadySolvedErrorMessage" xml:space="preserve">
+        <value>Das Rätsel ist bereits gelöst.</value>
+    </data>
+    <data name="RiddleSolutionIsNotCorrectErrorMessage" xml:space="preserve">
+        <value>Die Lösung ist nicht korrekt.</value>
+    </data>
 </root>

@@ -48,4 +48,13 @@
     <data name="SelectGroupNumberIsNotAvailableErrorMessage" xml:space="preserve">
         <value>The selected group number is not configured.</value>
     </data>
+    <data name="RiddleNotFoundErrorMessage" xml:space="preserve">
+        <value>The given riddle is not avaliable.</value>
+    </data>
+    <data name="RiddleIsAlreadySolvedErrorMessage" xml:space="preserve">
+        <value>The riddle is already solved.</value>
+    </data>
+    <data name="RiddleSolutionIsNotCorrectErrorMessage" xml:space="preserve">
+        <value>Riddle solution is not correct.</value>
+    </data>
 </root>

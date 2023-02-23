@@ -2,6 +2,7 @@
 using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Extensions;
 using FluentResults;
 
 namespace Domain.EscapeGames.Aggregate;
@@ -9,7 +10,7 @@ namespace Domain.EscapeGames.Aggregate;
 public class EscapeGame
 {
     public CultureInfo CultureInfo { get; private init; }
-    public IEnumerable<Riddle> Riddles { get; private init; }
+    public IEnumerable<Riddle> Riddles { get; private set; }
     public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; private init; }
     public CreatorPassword CreatorPassword { get; private init; }
     public GroupNumber SelectedGroupNumber { get; private set; }
@@ -72,6 +73,29 @@ public class EscapeGame
             return result;
 
         escapeGame.SelectedGroupNumber = groupNumber;
+
+        return result.WithValue(escapeGame);
+    }
+
+    public static Result<EscapeGame> SolveRiddle(EscapeGame escapeGame, string valueToSolveRiddle, int riddleNumber)
+    {
+        var result = new Result<EscapeGame>();
+
+        var riddleToSolve = escapeGame.Riddles.ElementAtOrDefault(riddleNumber);
+
+        if (riddleToSolve is null)
+        {
+            result.WithError(new RiddleNotFoundError());
+            return result;
+        }
+
+        var riddleResult = Riddle.Solved(riddleToSolve, valueToSolveRiddle);
+        
+        
+        if (riddleResult.IsFailed)
+            return Result.Fail(riddleResult.Errors);
+
+        escapeGame.Riddles.ToList().Replace(riddleNumber, riddleResult.Value);
 
         return result.WithValue(escapeGame);
     }

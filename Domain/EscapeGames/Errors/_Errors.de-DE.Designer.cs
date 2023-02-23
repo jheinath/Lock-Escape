@@ -105,6 +105,24 @@ namespace Domain.EscapeGames.Errors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Das Rätsel ist bereits gelöst..
+        /// </summary>
+        internal static string RiddleIsAlreadySolvedErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddleIsAlreadySolvedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Das angegebene Rätsel ist nicht vorhanden..
+        /// </summary>
+        internal static string RiddleNotFoundErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddleNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Es muss mindestens ein Rätsel geben..
         /// </summary>
         internal static string RiddlesMustNotBeEmptyErrorMessage {
@@ -128,6 +146,15 @@ namespace Domain.EscapeGames.Errors {
         internal static string RiddleSolutionInvalidLengthErrorMessage {
             get {
                 return ResourceManager.GetString("RiddleSolutionInvalidLengthErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Die Lösung ist nicht korrekt..
+        /// </summary>
+        internal static string RiddleSolutionIsNotCorrectErrorMessage {
+            get {
+                return ResourceManager.GetString("RiddleSolutionIsNotCorrectErrorMessage", resourceCulture);
             }
         }
         
