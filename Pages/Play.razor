@@ -122,6 +122,8 @@
     private void DecodeGameData(string queryParameterValue)
     {
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
+        if (_escapeGameDto.SelectedGroupNumber is not null)
+            _isTeamSelection = false;
     }
 
 
