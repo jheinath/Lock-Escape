@@ -7,11 +7,11 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Application.dll": "sha256-YR2Gg+\/UkVnTT1kK6\/sXVUY6Uz5CXUB0mb+pnLtDSBk=",
-      "Domain.dll": "sha256-COB3rO5UWHrwzH64YAmpFsi9Z5PXuImoigbayDIdLIc=",
+      "Application.dll": "sha256-X3opLw72dE7RVkFnc\/gvfmbkQJ4Ie6sgUspJ28noIog=",
+      "Domain.dll": "sha256-7IZ1w4XwGEznEr2BVZj9gsehKJVQGjz3fYGEFeBpeoA=",
       "FluentResults.dll": "sha256-rEYXqU+zMyuFYuv2s8S3Ks1ysWovhsbLTHFOtRtmhSo=",
       "Hashids.net.dll": "sha256-rBnNXlI53XwbIf761QW5ZerGOhBTBs4qQ6mPjfLXQsQ=",
-      "LockEscape.dll": "sha256-ykj\/LqpqLyeTl3cUCiHGKlE+yKDk3d9Hb3GB8+lFNn0=",
+      "LockEscape.dll": "sha256-Rs9k0Sl427lEiLnq5mbyKYoEzgQH5Q\/TE2pixRnVNNQ=",
       "Microsoft.AspNetCore.Components.dll": "sha256-YB\/i7KSP6HMgZgAxAdIpbo2M2BSPtyiNeq2GiIvuk+g=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-W71JEJNb\/1MpHUcLB4OZhvbqAA9g1ZeNuLPxXvBqOTE=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-hHzV6m5nKSxTWKQJGUfxHHYBxQnLAVGs3Ejy5PwjyrE=",
@@ -76,7 +76,7 @@
     },
     "satelliteResources": {
       "de-DE": {
-        "de-DE\/Domain.resources.dll": "sha256-bZI+Ra1L6zo7irQRTixWMAz7\/bxfuqM\/QLyZ1Dny3Ek=",
+        "de-DE\/Domain.resources.dll": "sha256-NJqXd+tH1E4s9TPsGO+4Q4JQquDPSEvg25d5JtTuZlA=",
         "de-DE\/LockEscape.resources.dll": "sha256-76oaUH4TlRUCuUy06ocDeQOOJbZdvwYgfR4PpgwQnCM="
       }
     }
