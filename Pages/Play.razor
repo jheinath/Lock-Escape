@@ -58,10 +58,10 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="@($"riddle{CurrentRiddleNumber}")" class="text-center">@_Play.Riddle @(CurrentRiddleNumber + 1)</label>
-                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber}")">
-                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber + 1}")">
-                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2" id="@($"riddle{CurrentRiddleNumber + 2}")">
+                                            <label for="@($"riddle{CurrentRiddleNumber}")" class="text-center">@_Play.Riddle @(CurrentRiddleNumber + 1 + " - " + _Play.Group + SelectedGroupNumber)</label>
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2 w-25" id="@($"riddle{CurrentRiddleNumber}")">
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 1}")">
+                                            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 2}")">
                                         </div>
                                     </div>
                                 </div>
@@ -84,10 +84,11 @@
     private List<IError> _errors = null!;
     private EscapeGameDto _escapeGameDto = null!;
     private bool _isTeamSelection;
-        private const string QueryParameterGameData = "gameDataLockEscapeGame";
+    private const string QueryParameterGameData = "gameDataLockEscapeGame";
     private List<string> _colors = null!;
 
     private int CurrentRiddleNumber => _escapeGameDto.RiddleSolutionDtos.OrderBy(x => x.RiddleSolution).Count(x => x.IsSolved);
+    private string? SelectedGroupNumber => _escapeGameDto.SelectedGroupNumber;
 
     private string GetColor(int groupNumber)
     {
