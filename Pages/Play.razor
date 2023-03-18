@@ -1,5 +1,4 @@
 ﻿@page "/play"
-@using Application.Enums
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using Application.DataTransferObjects
@@ -9,6 +8,7 @@
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject ISelectGroupCommand SelectGroupCommand
+@inject ISolveRiddleCommand SolveRiddleCommand
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -40,7 +40,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr/>
                             }
                             @if (_isTeamSelection)
                             {
@@ -60,9 +59,9 @@
                                         <div class="form-group">
                                             <label for="@($"riddle{CurrentRiddleNumber}")" class="mb-4">@_Play.Riddle @(CurrentRiddleNumber + 1 + " - " + _Play.Group + " " + SelectedGroupNumber)</label>
                                             <i class="gg-lock"></i>
-                                            <input style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-4 w-25" id="@($"riddle{CurrentRiddleNumber}")">
-                                            <input style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 1}")">
-                                            <input style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 mb-3 w-25" id="@($"riddle{CurrentRiddleNumber + 2}")">
+                                            <input @bind="_valueOne" style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-4 w-25" id="@($"riddle{CurrentRiddleNumber}")">
+                                            <input @bind="_valueTwo" style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 1}")">
+                                            <input @bind="_valueThree" style="z-index: 2;" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 mb-3 w-25" id="@($"riddle{CurrentRiddleNumber + 2}")">
                                         </div>
                                     </div>
                                 </div>
@@ -90,6 +89,9 @@
 
     private int CurrentRiddleNumber => _escapeGameDto.RiddleSolutionDtos.OrderBy(x => x.RiddleSolution).Count(x => x.IsSolved);
     private string? SelectedGroupNumber => _escapeGameDto.SelectedGroupNumber;
+    private string? _valueOne;
+    private string? _valueTwo;
+    private string? _valueThree;
 
     private string GetColor(int groupNumber)
     {
@@ -131,7 +133,21 @@
 
     private void HandleTrySolveRiddle()
     {
-        
+        var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree, _escapeGameDto, CurrentRiddleNumber);
+        if (result.IsFailed)
+        {
+            _errors = result.Errors;
+            return;
+        }
+
+        _errors = new List<IError>();
+        var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
+        var currentUrl = NavigationManager.BaseUri;
+        var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+        queryString.Add(QueryParameterGameData, queryParametersEncoded);
+        var url = currentUrl + "play?" + queryString;
+        NavigationManager.NavigateTo(url, forceLoad: false);
+        DecodeGameData(queryParametersEncoded);
     }
 
     private void HandleGroupSelection(int groupNumber)
