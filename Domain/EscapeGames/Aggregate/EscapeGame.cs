@@ -89,7 +89,7 @@ public class EscapeGame
             return result;
         }
 
-        var riddleResult = Riddle.Solved(riddleToSolve, valueToSolveRiddle);
+        var riddleResult = Riddle.Solve(riddleToSolve, valueToSolveRiddle);
         
         
         if (riddleResult.IsFailed)

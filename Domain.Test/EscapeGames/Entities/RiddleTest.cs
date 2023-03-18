@@ -1,6 +1,8 @@
 ﻿using Domain.EscapeGames.Entities;
+using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
 using FluentAssertions;
+using FluentResults;
 using Xunit;
 
 namespace Domain.Test.EscapeGames.Entities;
@@ -22,5 +24,54 @@ public class RiddleTest
         result.Errors.Should().BeEmpty();
         result.Value.IsSolved.Should().BeEquivalentTo(isSolved);
         result.Value.RiddleSolution.Should().BeEquivalentTo(riddleSolution);
+    }
+
+    [Fact]
+    public void Solve_AlreadySolved_ReturnsAlreadySolvedError()
+    {
+        //Arrange
+        var riddleSolution = RiddleSolution.Create("123").Value;
+        var isSolved = IsSolved.Create(true).Value;
+        var riddle = Riddle.Create(riddleSolution, isSolved).Value;
+        
+        //Act
+        var result = Riddle.Solve(riddle, "123");
+        
+        //Assert
+        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleIsAlreadySolvedError() });
+        result.IsFailed.Should().BeTrue();
+    }
+    
+    [Fact]
+    public void Solve_WrongValue_ReturnsRiddleSolutionNotCorrectError()
+    {
+        //Arrange
+        var riddleSolution = RiddleSolution.Create("123").Value;
+        var isSolved = IsSolved.Create().Value;
+        var riddle = Riddle.Create(riddleSolution, isSolved).Value;
+        
+        //Act
+        var result = Riddle.Solve(riddle, "124");
+        
+        //Assert
+        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleSolutionIsNotCorrectError() });
+        result.IsFailed.Should().BeTrue();
+    }
+    
+    [Fact]
+    public void Solve_CorrectValue_ReturnsSolvedRiddle()
+    {
+        //Arrange
+        var riddleSolution = RiddleSolution.Create("123").Value;
+        var isSolved = IsSolved.Create().Value;
+        var riddle = Riddle.Create(riddleSolution, isSolved).Value;
+        
+        //Act
+        var result = Riddle.Solve(riddle, "123");
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.IsSuccess.Should().BeTrue();
+        result.Value.IsSolved.Value.Should().BeTrue();
     }
 }

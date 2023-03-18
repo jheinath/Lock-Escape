@@ -20,7 +20,7 @@ public class Riddle
         return new Result<Riddle>().WithValue(new Riddle(riddleSolution, isSolved));
     }
 
-    public static Result<Riddle> Solved(Riddle riddle, string valueToSolveRiddle)
+    public static Result<Riddle> Solve(Riddle riddle, string valueToSolveRiddle)
     {
         var result = new Result<Riddle>();
 
