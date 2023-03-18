@@ -52,7 +52,7 @@
                                     }
                                 </div>
                             }
-                            else
+                            else if (_escapeGameDto.RiddleSolutionDtos.Any(x => !x.IsSolved))
                             {
                                 <div class="row">
                                     <div class="col-12">
@@ -70,6 +70,10 @@
                                         <div class="btn btn-primary" @onclick="HandleTrySolveRiddle">@_Play.Open</div>
                                     </div>
                                 </div>
+                            }
+                            else
+                            {
+                                <div class="alert-success">Passwort @_escapeGameDto.GameSolutionForGroupDtos.Single(x => x.GroupNumber.ToString() == SelectedGroupNumber).GameSolution</div>
                             }
                         </div>
                     </div>
