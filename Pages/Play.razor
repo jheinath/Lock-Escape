@@ -137,7 +137,8 @@
 
     private void HandleTrySolveRiddle()
     {
-        var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree, _escapeGameDto, CurrentRiddleNumber);
+        var riddleNumber = CurrentRiddleNumber;
+        var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree, _escapeGameDto, riddleNumber);
         if (result.IsFailed)
         {
             _errors = result.Errors;

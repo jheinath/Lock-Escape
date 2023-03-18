@@ -49,12 +49,20 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
 
     private static IEnumerable<RiddleSolutionDto> CreateRiddleSolutionDtos(Dictionary<string, string?> dic)
     {
-        var solutions = dic.Where(x => x.Key.StartsWith(nameof(RiddleSolution))).OrderBy(x => x.Key);
+        var solutions = dic.Where(x => x.Key.StartsWith(nameof(RiddleSolution))).OrderBy(x => x.Key).ToList();
+        var isSolvedValues = dic.Where(x => x.Key.StartsWith(nameof(IsSolved))).OrderBy(x => x.Key).ToList();
 
-        return solutions.Select(x => new RiddleSolutionDto()
+        var dtos = new List<RiddleSolutionDto>();
+        for (var i = 0; i < solutions.Count; i++)
         {
-            RiddleSolution = x.Value,
-        }).ToList();
+            dtos.Add(new RiddleSolutionDto()
+            {
+                RiddleSolution = solutions.ElementAt(i).Value,
+                IsSolved = bool.Parse(isSolvedValues.ElementAt(i).Value ?? bool.FalseString)
+            });
+        }
+
+        return dtos;
     }
 
     private static byte[] FromHex(string hex)
