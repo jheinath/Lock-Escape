@@ -118,6 +118,50 @@ public class EscapeGameTest
         result.Value.SelectedGroupNumber.Value.Should().Be(2);
     }
 
+    [Fact]
+    public void SolveRiddle_NonExistingRiddle_ReturnsRiddleNotFoundError()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        
+        //Act
+        var result = EscapeGame.SolveRiddle(escapeGame, "123", 999);
+        
+        //Assert
+        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleNotFoundError() });
+        result.IsSuccess.Should().BeFalse();
+    }
+    
+    [Fact]
+    public void SolveRiddle_WrongValue_ReturnsRiddleSolutionNotCorrectError()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        
+        //Act
+        var result = EscapeGame.SolveRiddle(escapeGame, "124", 0);
+        
+        //Assert
+        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleSolutionIsNotCorrectError() });
+        result.IsSuccess.Should().BeFalse();
+    }
+    
+    [Fact]
+    public void SolveRiddle_CorrectValue_ReturnsUpdatedEscapeGame()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        
+        //Act
+        var result = EscapeGame.SolveRiddle(escapeGame, "123", 0);
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.Riddles));
+        result.Value.Riddles.ElementAt(0).IsSolved.Value.Should().BeTrue();
+    }
+
 
     private EscapeGame CreateValidEscapeGame()
     {
