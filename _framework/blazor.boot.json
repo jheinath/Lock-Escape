@@ -11,7 +11,7 @@
       "Domain.dll": "sha256-KImzCuWsZ20PJ6RrjjEfBbpdtif0dB\/mCPaDpc6lvck=",
       "FluentResults.dll": "sha256-rEYXqU+zMyuFYuv2s8S3Ks1ysWovhsbLTHFOtRtmhSo=",
       "Hashids.net.dll": "sha256-rBnNXlI53XwbIf761QW5ZerGOhBTBs4qQ6mPjfLXQsQ=",
-      "LockEscape.dll": "sha256-k\/5jmuOmBAiPxWSVL7BFDi9\/kpQU34SHBH\/kCsk04j8=",
+      "LockEscape.dll": "sha256-ATii6VdjbmlTDKfNz+u6I\/0DNOcji6wX04N8pZzKKO8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-YB\/i7KSP6HMgZgAxAdIpbo2M2BSPtyiNeq2GiIvuk+g=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-W71JEJNb\/1MpHUcLB4OZhvbqAA9g1ZeNuLPxXvBqOTE=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-hHzV6m5nKSxTWKQJGUfxHHYBxQnLAVGs3Ejy5PwjyrE=",
@@ -77,7 +77,7 @@
     "satelliteResources": {
       "de-DE": {
         "de-DE\/Domain.resources.dll": "sha256-NJqXd+tH1E4s9TPsGO+4Q4JQquDPSEvg25d5JtTuZlA=",
-        "de-DE\/LockEscape.resources.dll": "sha256-rQlFs4CkfjJwyaHdjkLfNtus4gIwAU\/XD9lTKDzFliE="
+        "de-DE\/LockEscape.resources.dll": "sha256-8bHbJHcd2L4dqglAqg9xR51QfY36rwYFKM6hD9EOBIE="
       }
     }
   }
