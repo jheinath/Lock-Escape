@@ -175,5 +175,14 @@ namespace LockEscape.Pages {
                 return ResourceManager.GetString("ShowOnlyQr", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Testspiel starten.
+        /// </summary>
+        internal static string TestPlay {
+            get {
+                return ResourceManager.GetString("TestPlay", resourceCulture);
+            }
+        }
     }
 }

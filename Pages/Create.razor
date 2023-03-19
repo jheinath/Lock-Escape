@@ -131,6 +131,12 @@
                                         <label class="form-check-label" for="toggle">@_Create.ShowOnlyQr</label>
                                     </div>
                                 </div>
+                                if (!_onlyQrCode)
+                                {
+                                    <div class="d-flex justify-content-center">
+                                        <a class="btn btn-primary w-50" href="@_playUri" target="_blank" rel="noopener noreferrer">@_Create.TestPlay</a>
+                                    </div>
+                                }
                             }
                         </div>
                     </form>
@@ -152,7 +158,8 @@
     private bool _isEditMode;
     private bool _creationSucceeded;
     private bool _onlyQrCode;
-    private const string QueryParameterGameData = "gameDataLockEscapeGame";
+    private Uri? _playUri;
+        private const string QueryParameterGameData = "gameDataLockEscapeGame";
 
     protected override void OnInitialized()
     {
@@ -165,6 +172,7 @@
         _creationSucceeded = false;
         _onlyQrCode = false;
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
+
         if (!string.IsNullOrWhiteSpace(gameData))
         {
             _isEditMode = true;
@@ -231,6 +239,7 @@
         await JsRuntime.InvokeVoidAsync("createQrCode", url);
         _creationSucceeded = true;
         var newEditUrl = currentUrl + "create?" + queryString;
+        _playUri = new Uri(currentUrl + "play?" + queryString);
         NavigationManager.NavigateTo(newEditUrl, forceLoad: false);
     }
 
@@ -241,6 +250,6 @@
             "de-DE" => Language.German,
             "en-GB" => Language.English,
             _ => Language.English
-        };
+            };
     }
 }

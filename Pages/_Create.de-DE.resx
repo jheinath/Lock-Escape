@@ -57,4 +57,7 @@
     <data name="ScanMe" xml:space="preserve">
         <value>Scanne mich</value>
     </data>
+    <data name="TestPlay" xml:space="preserve">
+        <value>Testspiel starten</value>
+    </data>
 </root>
