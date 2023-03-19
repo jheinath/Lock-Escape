@@ -22,9 +22,13 @@
                         {
                             @(_Play.SelectYourGroup)
                         }
-                        else
+                        else if (!IsGameFinished)
                         {
                             @(_Play.SolveTheRiddleAndOpenTheLock)
+                        }
+                        else
+                        {
+                            @($"{_Play.Group} {_escapeGameDto.GameSolutionForGroupDtos.Single(x => x.GroupNumber.ToString() == SelectedGroupNumber).GroupNumber} {_Play.FinishedLabel}")
                         }
                     </h4>
                 </div>
@@ -52,7 +56,7 @@
                                     }
                                 </div>
                             }
-                            else if (_escapeGameDto.RiddleSolutionDtos.Any(x => !x.IsSolved))
+                            else if (!IsGameFinished)
                             {
                                 <div class="row">
                                     <div class="col-12">
@@ -103,12 +107,14 @@
     private string? _valueTwo;
     private string? _valueThree;
 
+    private bool IsGameFinished => _escapeGameDto.RiddleSolutionDtos.All(x => x.IsSolved);
+    
     private string GetColor(int groupNumber)
     {
         var place = groupNumber % 10;
         return _colors.ElementAt(place);
     }
-
+    
     protected override void OnInitialized()
     {
         _colors = new List<string>
@@ -138,7 +144,6 @@
             _isTeamSelection = false;
     }
 
-
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
 
     private void HandleTrySolveRiddle()
@@ -159,6 +164,7 @@
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
         DecodeGameData(queryParametersEncoded);
+        ClearInputs();
     }
 
     private void HandleGroupSelection(int groupNumber)
@@ -179,5 +185,12 @@
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
         DecodeGameData(queryParametersEncoded);
+    }
+
+    private void ClearInputs()
+    {
+        _valueOne = string.Empty;
+        _valueTwo = string.Empty;
+        _valueThree = string.Empty;
     }
 }

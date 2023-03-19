@@ -60,6 +60,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hat es geschafft!.
+        /// </summary>
+        internal static string FinishedLabel {
+            get {
+                return ResourceManager.GetString("FinishedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gruppe.
         /// </summary>
         internal static string Group {

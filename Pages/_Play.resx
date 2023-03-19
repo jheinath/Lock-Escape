@@ -36,4 +36,7 @@
     <data name="SolvedMessage" xml:space="preserve">
         <value>You solved all riddles! Go to your teacher and give him your group number and this password:</value>
     </data>
+    <data name="FinishedLabel" xml:space="preserve">
+        <value>you did it!</value>
+    </data>
 </root>
