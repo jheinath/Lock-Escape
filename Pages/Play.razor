@@ -172,5 +172,6 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
+        DecodeGameData(queryParametersEncoded);
     }
 }
