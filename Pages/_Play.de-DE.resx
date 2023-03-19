@@ -33,4 +33,7 @@
     <data name="Open" xml:space="preserve">
         <value>Öffnen</value>
     </data>
+    <data name="SolvedMessage" xml:space="preserve">
+        <value>Alle Rätsel gelöst! Geh zu deiner Lehrperson und gib ihr deine Gruppennummer und folgendes Passwort:</value>
+    </data>
 </root>

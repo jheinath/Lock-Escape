@@ -73,7 +73,13 @@
                             }
                             else
                             {
-                                <div class="alert-success">Passwort @_escapeGameDto.GameSolutionForGroupDtos.Single(x => x.GroupNumber.ToString() == SelectedGroupNumber).GameSolution</div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert alert-success" role="alert">
+                                            @_Play.SolvedMessage @_escapeGameDto.GameSolutionForGroupDtos.Single(x => x.GroupNumber.ToString() == SelectedGroupNumber).GameSolution
+                                        </div>
+                                    </div>
+                                </div>
                             }
                         </div>
                     </div>

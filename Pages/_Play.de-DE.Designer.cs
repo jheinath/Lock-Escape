@@ -96,6 +96,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alle Rätsel gelöst! Geh zu deiner Lehrperson und gib ihr deine Gruppennummer und folgendes Passwort:.
+        /// </summary>
+        internal static string SolvedMessage {
+            get {
+                return ResourceManager.GetString("SolvedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Löse die Aufgaben und öffne die Schlösser.
         /// </summary>
         internal static string SolveTheRiddleAndOpenTheLock {
