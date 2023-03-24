@@ -39,4 +39,7 @@
     <data name="FinishedLabel" xml:space="preserve">
         <value>you did it!</value>
     </data>
+    <data name="ResetGame" xml:space="preserve">
+        <value>Restart Game</value>
+    </data>
 </root>

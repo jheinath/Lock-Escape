@@ -102,12 +102,13 @@ public class EscapeGame
 
     public static Result<EscapeGame> RestartGame(EscapeGame escapeGame)
     {
-        escapeGame.Riddles = new List<Riddle>();
-        foreach (var escapeGameRiddle in escapeGame.Riddles)
+        var resetRiddles = new List<Riddle>();
+        for (var i = 0; i < escapeGame.Riddles.Count(); i++)
         {
-            escapeGame.Riddles = escapeGame.Riddles.Append(Riddle.Reset(escapeGameRiddle).Value);
+            resetRiddles.Add(Riddle.Reset(escapeGame.Riddles.ElementAt(i)).Value);
         }
 
+        escapeGame.Riddles = resetRiddles;
         return escapeGame;
     }
 }

@@ -87,6 +87,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restart Game.
+        /// </summary>
+        internal static string ResetGame {
+            get {
+                return ResourceManager.GetString("ResetGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Riddle.
         /// </summary>
         internal static string Riddle {

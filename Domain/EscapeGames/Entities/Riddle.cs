@@ -41,6 +41,6 @@ public class Riddle
     public static Result<Riddle> Reset(Riddle riddle)
     {
         riddle.IsSolved = IsSolved.Create(false).Value;
-        return new Result<Riddle>().WithValue(riddle);
+        return riddle;
     }
 }

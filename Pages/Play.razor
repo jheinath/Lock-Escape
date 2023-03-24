@@ -9,6 +9,7 @@
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject ISelectGroupCommand SelectGroupCommand
 @inject ISolveRiddleCommand SolveRiddleCommand
+@inject IResetGameCommand ResetGameCommand
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -84,6 +85,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-primary" @onclick="HandleResetGame">@_Play.ResetGame</div>
+                                </div>
                             }
                         </div>
                     </div>
@@ -108,13 +112,13 @@
     private string? _valueThree;
 
     private bool IsGameFinished => _escapeGameDto.RiddleSolutionDtos.All(x => x.IsSolved);
-    
+
     private string GetColor(int groupNumber)
     {
         var place = groupNumber % 10;
         return _colors.ElementAt(place);
     }
-    
+
     protected override void OnInitialized()
     {
         _colors = new List<string>
@@ -165,6 +169,25 @@
         NavigationManager.NavigateTo(url, forceLoad: false);
         DecodeGameData(queryParametersEncoded);
         ClearInputs();
+    }
+    
+    private void HandleResetGame()
+    {
+        var result = ResetGameCommand.Execute(_escapeGameDto);
+        if (result.IsFailed)
+        {
+            _errors = result.Errors;
+            return;
+        }
+
+        _errors = new List<IError>();
+        var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
+        var currentUrl = NavigationManager.BaseUri;
+        var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+        queryString.Add(QueryParameterGameData, queryParametersEncoded);
+        var url = currentUrl + "play?" + queryString;
+        NavigationManager.NavigateTo(url, forceLoad: false);
+        DecodeGameData(queryParametersEncoded);
     }
 
     private void HandleGroupSelection(int groupNumber)

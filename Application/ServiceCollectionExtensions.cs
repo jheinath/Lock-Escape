@@ -13,6 +13,7 @@ public static class ServiceCollectionExtensions
             .AddTransient<IEscapeGameDtoConversionService, EscapeGameDtoConversionService>()
             .AddTransient<ICreateGameCommand, CreateGameCommand>()
             .AddTransient<ISolveRiddleCommand, SolveRiddleCommand>()
+            .AddTransient<IResetGameCommand, ResetGameCommand>()
             .AddTransient<ISelectGroupCommand, SelectGroupCommand>();
     }
 }

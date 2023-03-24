@@ -181,16 +181,17 @@ public class EscapeGameTest
     {
         //Arrange
         var escapeGame = CreateValidEscapeGame();
-        EscapeGame.SolveRiddle(escapeGame, "123", 0);
+        var solvedEscapeGame = EscapeGame.SolveRiddle(escapeGame, "123", 0);
         
         //Act
-        var result = EscapeGame.RestartGame(escapeGame);
+        var result = EscapeGame.RestartGame(solvedEscapeGame.Value);
         
         //Assert
         result.Errors.Should().BeEmpty();
         result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.Riddles));
         result.Value.Riddles.Should().BeEquivalentTo(escapeGame.Riddles, options => options.Excluding(x => x.IsSolved));
         result.Value.Riddles.Should().AllSatisfy(riddle => riddle.IsSolved.Value.Should().BeFalse());
+        result.Value.Riddles.Count().Should().Be(1);
     }
 
 
