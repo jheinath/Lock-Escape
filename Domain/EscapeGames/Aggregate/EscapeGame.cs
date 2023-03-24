@@ -9,10 +9,10 @@ namespace Domain.EscapeGames.Aggregate;
 
 public class EscapeGame
 {
-    public CultureInfo CultureInfo { get; private init; }
+    public CultureInfo CultureInfo { get; }
     public IEnumerable<Riddle> Riddles { get; private set; }
-    public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; private init; }
-    public CreatorPassword CreatorPassword { get; private init; }
+    public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
+    public CreatorPassword CreatorPassword { get; }
     public GroupNumber SelectedGroupNumber { get; private set; }
 
     private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
@@ -98,5 +98,16 @@ public class EscapeGame
         escapeGame.Riddles.ToList().Replace(riddleNumber, riddleResult.Value);
 
         return result.WithValue(escapeGame);
+    }
+
+    public static Result<EscapeGame> RestartGame(EscapeGame escapeGame)
+    {
+        escapeGame.Riddles = new List<Riddle>();
+        foreach (var escapeGameRiddle in escapeGame.Riddles)
+        {
+            escapeGame.Riddles = escapeGame.Riddles.Append(Riddle.Reset(escapeGameRiddle).Value);
+        }
+
+        return escapeGame;
     }
 }

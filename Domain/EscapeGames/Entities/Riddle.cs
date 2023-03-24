@@ -37,4 +37,10 @@ public class Riddle
 
         return Result.Ok(riddle);
     }
+
+    public static Result<Riddle> Reset(Riddle riddle)
+    {
+        riddle.IsSolved = IsSolved.Create(false).Value;
+        return new Result<Riddle>().WithValue(riddle);
+    }
 }

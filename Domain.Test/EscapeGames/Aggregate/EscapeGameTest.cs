@@ -162,6 +162,37 @@ public class EscapeGameTest
         result.Value.Riddles.ElementAt(0).IsSolved.Value.Should().BeTrue();
     }
 
+    [Fact]
+    public void ResetGame_NoSolvedRiddle_ReturnsOriginalEscapeGame()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        
+        //Act
+        var result = EscapeGame.RestartGame(escapeGame);
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.Value.Should().BeEquivalentTo(escapeGame);
+    }
+    
+    [Fact]
+    public void ResetGame_OneOrMoreSolvedStartedGame_ReturnsEscapeGameWithNoSolvedRiddles()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        EscapeGame.SolveRiddle(escapeGame, "123", 0);
+        
+        //Act
+        var result = EscapeGame.RestartGame(escapeGame);
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.Riddles));
+        result.Value.Riddles.Should().BeEquivalentTo(escapeGame.Riddles, options => options.Excluding(x => x.IsSolved));
+        result.Value.Riddles.Should().AllSatisfy(riddle => riddle.IsSolved.Value.Should().BeFalse());
+    }
+
 
     private EscapeGame CreateValidEscapeGame()
     {
@@ -173,6 +204,5 @@ public class EscapeGameTest
         var groupNumber = GroupNumber.Create(2).Value;
         var gameSolutionForGroup = GameSolutionForGroup.Create(groupNumber, gameSolution).Value;
         return EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup }, _defaultCreatorPassword).Value;
-
     }
 }
