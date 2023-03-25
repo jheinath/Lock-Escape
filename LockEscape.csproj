@@ -84,6 +84,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>_Play.de-DE.resx</DependentUpon>
       </Compile>
+      <Compile Update="Pages\Components\_Popup.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Popup.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -131,6 +136,11 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Play.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Play.resx</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Pages\Components\_Popup.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Popup.Designer.cs</LastGenOutput>
+        <DependentUpon>Popup.razor</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
 

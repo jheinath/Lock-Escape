@@ -3,6 +3,7 @@
 @using LockEscape.Services.DecodingFromQueryParameters
 @using Application.DataTransferObjects
 @using Application.Ports
+@using LockEscape.Pages.Components
 @using LockEscape.Services.EncodingToQueryParameters
 @inject NavigationManager NavigationManager
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
@@ -86,7 +87,10 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <div class="btn btn-primary" @onclick="HandleResetGame">@_Play.ResetGame</div>
+                                    <div class="btn btn-primary" @onclick="ShowRestartPopup">@_Play.ResetGame</div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <Popup @ref="_popupRef"/>
                                 </div>
                             }
                         </div>
@@ -99,6 +103,7 @@
 
 @code
 {
+    private Popup _popupRef = null!;
     private List<IError> _errors = null!;
     private EscapeGameDto _escapeGameDto = null!;
     private bool _isTeamSelection;
@@ -150,6 +155,11 @@
 
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
 
+    private void ShowRestartPopup()
+    {
+        _popupRef.Show(_Play.PopupTextRestart, _Play.PopupLabelRestart, HandleResetGame);
+    }
+
     private void HandleTrySolveRiddle()
     {
         var riddleNumber = CurrentRiddleNumber;
@@ -170,7 +180,7 @@
         DecodeGameData(queryParametersEncoded);
         ClearInputs();
     }
-    
+
     private void HandleResetGame()
     {
         var result = ResetGameCommand.Execute(_escapeGameDto);
@@ -188,6 +198,7 @@
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
         DecodeGameData(queryParametersEncoded);
+        StateHasChanged();
     }
 
     private void HandleGroupSelection(int groupNumber)

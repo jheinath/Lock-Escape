@@ -87,6 +87,24 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wirklich neustarten?.
+        /// </summary>
+        internal static string PopupLabelRestart {
+            get {
+                return ResourceManager.GetString("PopupLabelRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Willst du wirklich neustarten? Dein gesamter Fortschritt wird zurückgesetzt!.
+        /// </summary>
+        internal static string PopupTextRestart {
+            get {
+                return ResourceManager.GetString("PopupTextRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spiel neustarten.
         /// </summary>
         internal static string ResetGame {

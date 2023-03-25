@@ -114,7 +114,7 @@ namespace Domain.EscapeGames.Errors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given riddle is not avaliable..
+        ///   Looks up a localized string similar to The given riddle is not available..
         /// </summary>
         internal static string RiddleNotFoundErrorMessage {
             get {

@@ -42,4 +42,10 @@
     <data name="ResetGame" xml:space="preserve">
         <value>Restart Game</value>
     </data>
+    <data name="PopupTextRestart" xml:space="preserve">
+        <value>Do you really want to restart? All progress is being reset!</value>
+    </data>
+    <data name="PopupLabelRestart" xml:space="preserve">
+        <value>Really restart?</value>
+    </data>
 </root>

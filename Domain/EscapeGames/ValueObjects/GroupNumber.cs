@@ -12,9 +12,9 @@ public class GroupNumber
         Value = value;
     }
     
-    public static Result<GroupNumber> Create(int value)
+    public static Result<GroupNumber?> Create(int value)
     {
-        var result = new Result<GroupNumber>();
+        var result = new Result<GroupNumber?>();
 
         if (value < 1)
             result.WithError(new GroupNumberMustBeAtLeastOneError());
@@ -24,6 +24,6 @@ public class GroupNumber
         
         var @object = new GroupNumber(value);
         
-        return new Result<GroupNumber>().WithValue(@object);
+        return new Result<GroupNumber?>().WithValue(@object);
     }
 }

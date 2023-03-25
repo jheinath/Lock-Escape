@@ -49,7 +49,7 @@
         <value>The selected group number is not configured.</value>
     </data>
     <data name="RiddleNotFoundErrorMessage" xml:space="preserve">
-        <value>The given riddle is not avaliable.</value>
+        <value>The given riddle is not available.</value>
     </data>
     <data name="RiddleIsAlreadySolvedErrorMessage" xml:space="preserve">
         <value>The riddle is already solved.</value>

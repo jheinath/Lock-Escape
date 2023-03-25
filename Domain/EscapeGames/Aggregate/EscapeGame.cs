@@ -13,10 +13,10 @@ public class EscapeGame
     public IEnumerable<Riddle> Riddles { get; private set; }
     public IEnumerable<GameSolutionForGroup> GameSolutionForGroups { get; }
     public CreatorPassword CreatorPassword { get; }
-    public GroupNumber SelectedGroupNumber { get; private set; }
+    public GroupNumber? SelectedGroupNumber { get; private set; }
 
     private EscapeGame(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
-        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword, GroupNumber selectedGroupNumber)
+        IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword, GroupNumber? selectedGroupNumber)
     {
         CultureInfo = cultureInfo;
         Riddles = riddles;
@@ -28,7 +28,7 @@ public class EscapeGame
 
     public static EscapeGame Load(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
         IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword,
-        GroupNumber selectedGroupNumber)
+        GroupNumber? selectedGroupNumber)
     {
         return new EscapeGame(cultureInfo, riddles, gameSolutionForGroups, creatorPassword, selectedGroupNumber);
     }
@@ -62,7 +62,7 @@ public class EscapeGame
         return result.WithValue(new EscapeGame(new CultureInfo(cultureInfo), riddles, gameSolutionForGroups, creatorPassword, null));
     }
 
-    public static Result<EscapeGame> SelectGroupNumber(EscapeGame escapeGame, GroupNumber groupNumber)
+    public static Result<EscapeGame> SelectGroupNumber(EscapeGame escapeGame, GroupNumber? groupNumber)
     {
         var result = new Result<EscapeGame>();
 
