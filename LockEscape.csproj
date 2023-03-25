@@ -89,6 +89,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>_Popup.resx</DependentUpon>
       </Compile>
+      <Compile Update="Pages\Components\_Popup.de-DE.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>_Popup.de-DE.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -142,8 +147,9 @@
         <LastGenOutput>_Popup.Designer.cs</LastGenOutput>
         <DependentUpon>Popup.razor</DependentUpon>
       </EmbeddedResource>
-      <EmbeddedResource Update="Pages\Components\_Popup.de-de.resx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <EmbeddedResource Update="Pages\Components\_Popup.de-DE.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>_Popup.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Popup.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>

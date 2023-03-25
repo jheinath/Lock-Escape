@@ -151,6 +151,13 @@
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
         if (_escapeGameDto.SelectedGroupNumber is not null)
             _isTeamSelection = false;
+
+        ApplyGivenCulture(_escapeGameDto.CultureInfo);
+    }
+
+    private void ApplyGivenCulture(string? cultureInfo)
+    {
+        //Implement setting the UI culture with the given string
     }
 
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;

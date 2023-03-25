@@ -12,8 +12,10 @@
 &lt;/SessionState&gt;</s:String>
 	
 	
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Domain_002FEscapeGames_002FErrors_002F_005FErrors/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002FComponents_002F_005FPopup/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Domain_002FEscapeGames_002FErrors_002F_005FErrors/@EntryIndexedValue">False</s:Boolean>
+	
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002FComponents_002F_005FPopup/@EntryIndexedValue">True</s:Boolean>
+	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FCreate/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FIndex/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=LockEscape_002FPages_002F_005FPlay/@EntryIndexedValue">False</s:Boolean>
