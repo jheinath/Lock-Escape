@@ -144,6 +144,7 @@
       </EmbeddedResource>
       <EmbeddedResource Update="Pages\Components\_Popup.de-de.resx">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <DependentUpon>_Popup.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
 
