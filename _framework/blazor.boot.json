@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "Application.dll": "sha256-s52pHaF4tjp+Yku5LLincvz7v2rkn41ocGi4MCJNUk8=",
-      "Domain.dll": "sha256-88yzMvYUVXIGT0OsS4Ah2fxBIJgHuVUWZ44clWXOb4s=",
+      "Domain.dll": "sha256-oueYoqMLelKi2tK0n0EF7mG4RVfbwWvPfggrSKn0gr8=",
       "FluentResults.dll": "sha256-vvYhEMiJr7tGoss8vyqaG1h5BHtaurcBQ29lBW1sc10=",
       "Hashids.net.dll": "sha256-Vx\/2gF+g5Qeo3\/atJT4TiG7xBBX1oBtWjTh3YNipxK0=",
       "LockEscape.dll": "sha256-AMeWYiDPqnIGj4eDlgzodwyq63IxI07ThY7SfCrFuDY=",
