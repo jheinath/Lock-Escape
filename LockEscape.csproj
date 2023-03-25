@@ -142,6 +142,9 @@
         <LastGenOutput>_Popup.Designer.cs</LastGenOutput>
         <DependentUpon>Popup.razor</DependentUpon>
       </EmbeddedResource>
+      <EmbeddedResource Update="Pages\Components\_Popup.de-de.resx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
