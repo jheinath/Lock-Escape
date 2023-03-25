@@ -26,7 +26,6 @@ public class EscapeGame
         SelectedGroupNumber = selectedGroupNumber;
     }
 
-
     public static EscapeGame Load(CultureInfo cultureInfo, IEnumerable<Riddle> riddles,
         IEnumerable<GameSolutionForGroup> gameSolutionForGroups, CreatorPassword creatorPassword,
         GroupNumber? selectedGroupNumber)
@@ -74,14 +73,12 @@ public class EscapeGame
             return result;
 
         escapeGame.SelectedGroupNumber = groupNumber;
-
         return result.WithValue(escapeGame);
     }
 
     public static Result<EscapeGame> SolveRiddle(EscapeGame escapeGame, string valueToSolveRiddle, int riddleNumber)
     {
         var result = new Result<EscapeGame>();
-
         var riddleToSolve = escapeGame.Riddles.ElementAtOrDefault(riddleNumber);
 
         if (riddleToSolve is null)
@@ -96,7 +93,6 @@ public class EscapeGame
             return Result.Fail(riddleResult.Errors);
 
         escapeGame.Riddles.ToList().Replace(riddleNumber, riddleResult.Value);
-
         return result.WithValue(escapeGame);
     }
 
