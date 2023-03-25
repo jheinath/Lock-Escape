@@ -149,8 +149,7 @@
     private void DecodeGameData(string queryParameterValue)
     {
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
-        if (_escapeGameDto.SelectedGroupNumber is not null)
-            _isTeamSelection = false;
+        _isTeamSelection = _escapeGameDto.SelectedGroupNumber is null;
 
         ApplyGivenCulture(_escapeGameDto.CultureInfo);
     }

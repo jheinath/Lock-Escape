@@ -115,7 +115,7 @@ public class EscapeGameTest
         result.Errors.Should().BeEmpty();
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.SelectedGroupNumber));
-        result.Value.SelectedGroupNumber.Value.Should().Be(2);
+        result.Value.SelectedGroupNumber?.Value.Should().Be(2);
     }
 
     [Fact]
@@ -192,6 +192,21 @@ public class EscapeGameTest
         result.Value.Riddles.Should().BeEquivalentTo(escapeGame.Riddles, options => options.Excluding(x => x.IsSolved));
         result.Value.Riddles.Should().AllSatisfy(riddle => riddle.IsSolved.Value.Should().BeFalse());
         result.Value.Riddles.Count().Should().Be(1);
+    }
+    
+    [Fact]
+    public void ResetGame_OneOrMoreSolvedStartedGame_ReturnsEscapeGameWithSelectedGroupNumberReset()
+    {
+        //Arrange
+        var escapeGame = CreateValidEscapeGame();
+        var solvedEscapeGame = EscapeGame.SolveRiddle(escapeGame, "123", 0);
+        
+        //Act
+        var result = EscapeGame.RestartGame(solvedEscapeGame.Value);
+        
+        //Assert
+        result.Errors.Should().BeEmpty();
+        result.Value.SelectedGroupNumber.Should().BeNull();
     }
 
 

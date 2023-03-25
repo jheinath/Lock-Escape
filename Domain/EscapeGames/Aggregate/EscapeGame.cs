@@ -108,6 +108,7 @@ public class EscapeGame
             resetRiddles.Add(Riddle.Reset(escapeGame.Riddles.ElementAt(i)).Value);
         }
 
+        escapeGame.SelectedGroupNumber = null;
         escapeGame.Riddles = resetRiddles;
         return escapeGame;
     }
