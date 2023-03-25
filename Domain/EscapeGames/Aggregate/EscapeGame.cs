@@ -92,7 +92,6 @@ public class EscapeGame
 
         var riddleResult = Riddle.Solve(riddleToSolve, valueToSolveRiddle);
         
-        
         if (riddleResult.IsFailed)
             return Result.Fail(riddleResult.Errors);
 
