@@ -4,6 +4,7 @@ using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
 using Domain.Extensions;
 using FluentResults;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace Domain.EscapeGames.Aggregate;
 
@@ -66,7 +67,7 @@ public class EscapeGame
     {
         var result = new Result<EscapeGame>();
 
-        if (escapeGame.GameSolutionForGroups.All(gameSolution => gameSolution.GroupNumber.Value != groupNumber.Value))
+        if (escapeGame.GameSolutionForGroups.All(gameSolution => gameSolution?.GroupNumber?.Value != groupNumber?.Value))
             result.WithError(new SelectGroupNumberIsNotAvailableError());
 
         if (result.IsFailed)
