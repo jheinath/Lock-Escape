@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Hashids.net" Version="1.6.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.10" PrivateAssets="all" />
+        <PackageReference Include="Hashids.net" Version="1.7.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.4" PrivateAssets="all" />
         <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.1" />
-        <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.4" />
+        <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -162,8 +162,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.deps.json" />
-      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net6.0\Domain.Test.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net7.0\Domain.Test.deps.json" />
+      <_ContentIncludedByDefault Remove="Domain.Test\bin\Debug\net7.0\Domain.Test.runtimeconfig.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\Domain.Test.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="Domain.Test\obj\project.packagespec.json" />

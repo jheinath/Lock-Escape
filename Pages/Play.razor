@@ -5,6 +5,7 @@
 @using Application.Ports
 @using LockEscape.Pages.Components
 @using LockEscape.Services.EncodingToQueryParameters
+@using System.Globalization
 @inject NavigationManager NavigationManager
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
 @inject IGenerateQueryParametersService GenerateQueryParametersService
@@ -145,6 +146,7 @@
         _isTeamSelection = true;
         DecodeGameData(gameData);
     }
+    
 
     private void DecodeGameData(string queryParameterValue)
     {
@@ -154,9 +156,12 @@
         ApplyGivenCulture(_escapeGameDto.CultureInfo);
     }
 
-    private void ApplyGivenCulture(string? cultureInfo)
+    private static void ApplyGivenCulture(string? cultureInfo)
     {
-        //Implement setting the UI culture with the given string
+        var givenCulture = new CultureInfo(cultureInfo!);
+        
+        CultureInfo.DefaultThreadCurrentCulture = givenCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = givenCulture;
     }
 
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
