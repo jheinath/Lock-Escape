@@ -60,4 +60,7 @@
     <data name="TestPlay" xml:space="preserve">
         <value>Play Test Game</value>
     </data>
+    <data name="Enter" xml:space="preserve">
+        <value>Enter</value>
+    </data>
 </root>

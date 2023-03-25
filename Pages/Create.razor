@@ -34,111 +34,130 @@
                 </div>
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
                     <form class="w-100">
-                        @if (!_onlyQrCode)
+                        @if (_isPasswordProvided)
                         {
-                            @if (_errors.Any())
+                            @if (!_onlyQrCode)
                             {
+                                @if (_errors.Any())
+                                {
+                                    <div class="row w-100">
+                                        <div class="col-12">
+                                            <div class="alert alert-warning" role="alert">
+                                                @_errors.First().Message
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                }
                                 <div class="row w-100">
-                                    <div class="col-12">
-                                        <div class="alert alert-warning" role="alert">
-                                            @_errors.First().Message
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="lang">@_Create.GameLanguage</label>
+                                            <select class="form-control" id="lang" @bind="_language">
+                                                <option value="@Language.English">@Language.English.ToString()</option>
+                                                <option value="@Language.German">@Language.German.ToString()</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="countRiddles">@_Create.AmountRiddles</label>
+                                            <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row w-100">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="password">@_Create.CreatorPassword</label>
+                                            <input type="text" class="form-control" id="password" @bind="_creatorPassword">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="countGroups">@_Create.AmountGroups</label>
+                                            <input type="number" min="1" max="30" class="form-control" id="countGroups" @bind="_amountGroups">
                                         </div>
                                     </div>
                                 </div>
                                 <hr/>
-                            }
-                            <div class="row w-100">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="lang">@_Create.GameLanguage</label>
-                                        <select class="form-control" id="lang" @bind="_language">
-                                            <option value="@Language.English">@Language.English.ToString()</option>
-                                            <option value="@Language.German">@Language.German.ToString()</option>
-                                        </select>
+                                <div class="row">
+                                    @for (var i = 0; i < _amountGroups; i++)
+                                    {
+                                        var j = i;
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="@($"group{i}game-solution")">@_Create.GameSolutionGroup @(j + 1)</label>
+                                                <input value="@_gameSolutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    @for (var i = 0; i < _amountGames; i++)
+                                    {
+                                        var j = i;
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="@($"solution{i}")">@_Create.RiddleSolution @(j + 1)</label>
+                                                <input value="@_solutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="row mt-4 mb-4">
+                                    <div class="col">
+                                        <a class="btn btn-primary d-block" href="#" role="button">@_Create.Back</a>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn btn-primary d-block" @onclick="@HandleCreate">@_Create.Create</div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="countRiddles">@_Create.AmountRiddles</label>
-                                        <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
-                                    </div>
+                            }
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center mt-2">
+                                    <div id="qrcode" class="opacity-0"></div>
                                 </div>
                             </div>
+                            <div class="row text-center mt-2">
+                                @if (_creationSucceeded)
+                                {
+                                    if (!_onlyQrCode)
+                                    {
+                                        <p>@_Create.CopyQrCodeMessage</p>
+                                    }
+                                    <div class="d-flex justify-content-center">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" onclick="@HandleOnlyShowQrCode" id="toggle">
+                                            <label class="form-check-label" for="toggle">@_Create.ShowOnlyQr</label>
+                                        </div>
+                                    </div>
+                                    if (!_onlyQrCode)
+                                    {
+                                        <div class="d-flex justify-content-center">
+                                            <a class="btn btn-primary w-50" href="@_playUri" target="_blank" rel="noopener noreferrer">@_Create.TestPlay</a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                        else
+                        {
                             <div class="row w-100">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="password">@_Create.CreatorPassword</label>
-                                        <input type="text" class="form-control" id="password" @bind="_creatorPassword">
+                                        <input type="password" class="form-control" id="givenPassword" @bind="_givenPassword">
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="countGroups">@_Create.AmountGroups</label>
-                                        <input type="number" min="1" max="30" class="form-control" id="countGroups" @bind="_amountGroups">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="row">
-                                @for (var i = 0; i < _amountGroups; i++)
-                                {
-                                    var j = i;
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="@($"group{i}game-solution")">@_Create.GameSolutionGroup @(j + 1)</label>
-                                            <input value="@_gameSolutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"group{i}game-solution")" @onchange="@(e => OnChangeGameSolutionItem(e, j))">
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                            <hr/>
-                            <div class="row">
-                                @for (var i = 0; i < _amountGames; i++)
-                                {
-                                    var j = i;
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="@($"solution{i}")">@_Create.RiddleSolution @(j + 1)</label>
-                                            <input value="@_solutions.ElementAtOrDefault(j)" type="text" class="form-control" id="@($"solution{i}")" @onchange="@(e => OnChangeSolutionItem(e, j))">
-                                        </div>
-                                    </div>
-                                }
                             </div>
                             <div class="row mt-4 mb-4">
                                 <div class="col">
-                                    <a class="btn btn-primary d-block" href="#" role="button">@_Create.Back</a>
-                                </div>
-                                <div class="col">
-                                    <div class="btn btn-primary d-block" @onclick="@HandleCreate">@_Create.Create</div>
+                                    <div class="btn btn-primary d-block" @onclick="@HandleInsertPassword">@_Create.Enter</div>
                                 </div>
                             </div>
                         }
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center mt-2">
-                                <div id="qrcode" class="opacity-0"></div>
-                            </div>
-                        </div>
-                        <div class="row text-center mt-2">
-                            @if (_creationSucceeded)
-                            {
-                                if (!_onlyQrCode)
-                                {
-                                    <p>@_Create.CopyQrCodeMessage</p>
-                                }
-                                <div class="d-flex justify-content-center">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" onclick="@HandleOnlyShowQrCode" id="toggle">
-                                        <label class="form-check-label" for="toggle">@_Create.ShowOnlyQr</label>
-                                    </div>
-                                </div>
-                                if (!_onlyQrCode)
-                                {
-                                    <div class="d-flex justify-content-center">
-                                        <a class="btn btn-primary w-50" href="@_playUri" target="_blank" rel="noopener noreferrer">@_Create.TestPlay</a>
-                                    </div>
-                                }
-                            }
-                        </div>
                     </form>
                 </div>
             </div>
@@ -152,6 +171,7 @@
     private List<string?> _solutions = null!;
     private List<string?> _gameSolutions = null!;
     private string? _creatorPassword;
+    private string? _givenPassword;
     private int _amountGroups;
     private Language _language;
     private List<IError> _errors = null!;
@@ -159,6 +179,7 @@
     private bool _creationSucceeded;
     private bool _onlyQrCode;
     private Uri? _playUri;
+    private bool _isPasswordProvided;
         private const string QueryParameterGameData = "gameDataLockEscapeGame";
 
     protected override void OnInitialized()
@@ -171,15 +192,23 @@
         _isEditMode = false;
         _creationSucceeded = false;
         _onlyQrCode = false;
+        _isPasswordProvided = true;
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
 
         if (!string.IsNullOrWhiteSpace(gameData))
         {
             _isEditMode = true;
+            _isPasswordProvided = false;
             DecodeGameData(gameData);
         }
     }
 
+    private void HandleInsertPassword()
+    {
+        if (_creatorPassword == _givenPassword)
+            _isPasswordProvided = true;
+    }
+    
     private void HandleOnlyShowQrCode()
     {
         _onlyQrCode = !_onlyQrCode;
