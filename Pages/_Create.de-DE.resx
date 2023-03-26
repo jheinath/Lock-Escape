@@ -63,4 +63,7 @@
     <data name="Enter" xml:space="preserve">
         <value>Senden</value>
     </data>
+    <data name="BadPassword" xml:space="preserve">
+        <value>Passwort nicht korrekt!</value>
+    </data>
 </root>

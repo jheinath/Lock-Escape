@@ -87,6 +87,15 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passwort nicht korrekt!.
+        /// </summary>
+        internal static string BadPassword {
+            get {
+                return ResourceManager.GetString("BadPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QR Code mit Rechtsklick kopieren oder einen Screenshot machen!.
         /// </summary>
         internal static string CopyQrCodeMessage {
