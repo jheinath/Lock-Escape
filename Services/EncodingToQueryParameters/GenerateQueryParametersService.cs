@@ -26,7 +26,7 @@ public class GenerateQueryParametersService : IGenerateQueryParametersService
         
         for (var i = 0; i < escapeGame.GameSolutionForGroups.Count(); i++)
         {
-            queryString.Add(nameof(GroupNumber) + i, escapeGame.GameSolutionForGroups.ElementAt(i).GroupNumber.Value.ToString());
+            queryString.Add(nameof(GroupNumber) + i, escapeGame.GameSolutionForGroups.ElementAt(i).GroupNumber!.Value.ToString());
             queryString.Add(nameof(GameSolution) + i, escapeGame.GameSolutionForGroups.ElementAt(i).GameSolution.Value);
         }
 
