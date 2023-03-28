@@ -163,10 +163,8 @@
         if (cultureInfo is null)
             return;
 
-        Console.WriteLine(cultureInfo);
         if (await LocalStorage.GetItemAsync<string>("culture") != cultureInfo)
         {
-            Console.WriteLine(await LocalStorage.GetItemAsync<string>("culture"));
             await LocalStorage.SetItemAsync("culture", cultureInfo);
             NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
         }

@@ -66,4 +66,13 @@
     <data name="BadPassword" xml:space="preserve">
         <value>Password is not correct!</value>
     </data>
+    <data name="ChangeLanguage" xml:space="preserve">
+        <value>Change language for this page</value>
+    </data>
+    <data name="German" xml:space="preserve">
+        <value>German</value>
+    </data>
+    <data name="English" xml:space="preserve">
+        <value>English</value>
+    </data>
 </root>

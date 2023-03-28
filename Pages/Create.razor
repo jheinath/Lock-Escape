@@ -4,11 +4,14 @@
 @using FluentResults
 @using LockEscape.Services.DecodingFromQueryParameters
 @using LockEscape.Services.EncodingToQueryParameters
+@using System.Globalization
+@using Blazored.LocalStorage
 @inject IJSRuntime JsRuntime
 @inject NavigationManager NavigationManager
 @inject ICreateGameCommand CreateGameCommand
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
+@inject ILocalStorageService LocalStorageService
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -30,8 +33,12 @@
                         {
                             @(_Create.CreateNewGame)
                         }
+                        @if (!_onlyQrCode)
+                        {
+                        }
                     </h4>
                 </div>
+
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
                     <div class="w-100">
                         @if (_isPasswordProvided)
@@ -106,6 +113,13 @@
                                     }
                                 </div>
                                 <div class="row mt-4 mb-4">
+                                    <div class="col">
+                                        <select class="form-select" aria-label="Label" @onchange="HandleChangeLanguage">
+                                            <option selected value="none">@_Create.ChangeLanguage</option>
+                                            <option value="de-DE">@_Create.German</option>
+                                            <option value="en-GB">@_Create.English</option>
+                                        </select>
+                                    </div>
                                     <div class="col">
                                         <a class="btn btn-primary d-block" href="#" role="button">@_Create.Back</a>
                                     </div>
@@ -210,6 +224,17 @@
         }
     }
 
+    private void HandleChangeLanguage(ChangeEventArgs @event)
+    {
+        if ((string)@event.Value! == "none")
+            return;
+        
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(@event.Value?.ToString()!);
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(@event.Value?.ToString()!);
+        
+        LocalStorageService.SetItemAsync("culture", @event.Value!.ToString());
+    }
+    
     private void HandleInsertPassword()
     {
         if (_creatorPassword == _givenPassword)
@@ -236,6 +261,12 @@
         _amountGroups = escapeGameDto.GameSolutionForGroupDtos.Count();
         _solutions = escapeGameDto.RiddleSolutionDtos.Select(x => x.RiddleSolution).ToList();
         _gameSolutions = escapeGameDto.GameSolutionForGroupDtos.Select(x => x.GameSolution).ToList();
+    }
+
+    private static void OnLanguageSelected(string selection)
+    {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(selection);
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(selection);
     }
 
     private void OnChangeSolutionItem(ChangeEventArgs e, int j)
