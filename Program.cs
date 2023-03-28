@@ -1,4 +1,5 @@
 using Application;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using LockEscape;
@@ -12,5 +13,8 @@ builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.H
 builder.Services.AddApplicationServices();
 builder.Services.AddRestServices();
 builder.Services.AddLocalization();
+builder.Services.AddBlazoredLocalStorage();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+await host.SetDefaultCulture(); // Retrieves local storage value and sets the thread's current culture.
+await host.RunAsync();

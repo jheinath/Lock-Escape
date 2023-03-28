@@ -5,13 +5,14 @@
 @using Application.Ports
 @using LockEscape.Pages.Components
 @using LockEscape.Services.EncodingToQueryParameters
-@using System.Globalization
+@using Blazored.LocalStorage
 @inject NavigationManager NavigationManager
 @inject IDecodeFromQueryParametersService DecodeFromQueryParametersService
 @inject IGenerateQueryParametersService GenerateQueryParametersService
 @inject ISelectGroupCommand SelectGroupCommand
 @inject ISolveRiddleCommand SolveRiddleCommand
 @inject IResetGameCommand ResetGameCommand
+@inject ILocalStorageService LocalStorage
 
 <PageTitle>Lock Escape</PageTitle>
 
@@ -125,7 +126,7 @@
         return _colors.ElementAt(place);
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         _colors = new List<string>
         {
@@ -144,24 +145,31 @@
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
         if (string.IsNullOrWhiteSpace(gameData)) return;
         _isTeamSelection = true;
-        DecodeGameData(gameData);
+        await DecodeGameData(gameData);
+        await base.OnInitializedAsync();
     }
     
 
-    private void DecodeGameData(string queryParameterValue)
+    private async Task DecodeGameData(string queryParameterValue)
     {
         _escapeGameDto = DecodeFromQueryParametersService.DecodeToEscapeGameDto(queryParameterValue);
         _isTeamSelection = _escapeGameDto.SelectedGroupNumber is null;
 
-        ApplyGivenCulture(_escapeGameDto.CultureInfo);
+        await ApplyGivenCulture(_escapeGameDto.CultureInfo);
     }
 
-    private static void ApplyGivenCulture(string? cultureInfo)
+    private async Task ApplyGivenCulture(string? cultureInfo)
     {
-        var givenCulture = new CultureInfo(cultureInfo!);
-        
-        CultureInfo.DefaultThreadCurrentCulture = givenCulture;
-        CultureInfo.DefaultThreadCurrentUICulture = givenCulture;
+        if (cultureInfo is null)
+            return;
+
+        Console.WriteLine(cultureInfo);
+        if (await LocalStorage.GetItemAsync<string>("culture") != cultureInfo)
+        {
+            Console.WriteLine(await LocalStorage.GetItemAsync<string>("culture"));
+            await LocalStorage.SetItemAsync("culture", cultureInfo);
+            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        }
     }
 
     private static int GetColumnSize(int countItems) => countItems == 1 ? 12 : 6;
@@ -188,7 +196,7 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
-        DecodeGameData(queryParametersEncoded);
+        DecodeGameData(queryParametersEncoded).WaitAsync(CancellationToken.None);
         ClearInputs();
     }
 
@@ -208,7 +216,7 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
-        DecodeGameData(queryParametersEncoded);
+        DecodeGameData(queryParametersEncoded).WaitAsync(CancellationToken.None);
         StateHasChanged();
     }
 
@@ -229,7 +237,7 @@
         queryString.Add(QueryParameterGameData, queryParametersEncoded);
         var url = currentUrl + "play?" + queryString;
         NavigationManager.NavigateTo(url, forceLoad: false);
-        DecodeGameData(queryParametersEncoded);
+        DecodeGameData(queryParametersEncoded).WaitAsync(CancellationToken.None);
     }
 
     private void ClearInputs()
