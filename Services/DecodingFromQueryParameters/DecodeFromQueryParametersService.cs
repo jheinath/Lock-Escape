@@ -51,8 +51,8 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
     {
         var solutions = dic.Where(x => x.Key.StartsWith(nameof(RiddleSolution))).OrderBy(x => x.Key).ToList();
         var isSolvedValues = dic.Where(x => x.Key.StartsWith(nameof(IsSolved))).OrderBy(x => x.Key).ToList();
-
         var dtos = new List<RiddleSolutionDto>();
+        
         for (var i = 0; i < solutions.Count; i++)
         {
             dtos.Add(new RiddleSolutionDto()
@@ -73,6 +73,7 @@ public class DecodeFromQueryParametersService : IDecodeFromQueryParametersServic
         {
             raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
         }
+        
         return raw;
     }
 }

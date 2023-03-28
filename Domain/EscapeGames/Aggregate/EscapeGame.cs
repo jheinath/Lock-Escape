@@ -99,6 +99,7 @@ public class EscapeGame
     public static Result<EscapeGame> RestartGame(EscapeGame escapeGame)
     {
         var resetRiddles = new List<Riddle>();
+        
         for (var i = 0; i < escapeGame.Riddles.Count(); i++)
         {
             resetRiddles.Add(Riddle.Reset(escapeGame.Riddles.ElementAt(i)).Value);

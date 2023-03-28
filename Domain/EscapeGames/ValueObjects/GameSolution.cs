@@ -15,6 +15,7 @@ public class GameSolution
     public static Result<GameSolution> Create(string? gameSolution)
     {
         var result = new Result<GameSolution>();
+        
         if (string.IsNullOrWhiteSpace(gameSolution))
             result.WithError(new GameSolutionMustNotBeEmptyError());
 

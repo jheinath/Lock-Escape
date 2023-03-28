@@ -15,6 +15,7 @@ public class CreatorPassword
     public static Result<CreatorPassword> Create(string? value)
     {
         var result = new Result<CreatorPassword>();
+        
         if (string.IsNullOrWhiteSpace(value))
             result.WithError(new CreatorPasswordMustNotBeEmptyError());
 

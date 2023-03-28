@@ -15,6 +15,7 @@ public class RiddleSolution
     public static Result<RiddleSolution> Create(string? riddleSolution)
     {
         var result = new Result<RiddleSolution>();
+        
         if (string.IsNullOrWhiteSpace(riddleSolution))
             result.WithError(new RiddleSolutionMustNotBeEmptyError());
 
@@ -32,6 +33,5 @@ public class RiddleSolution
         return result;
     }
     
-    private static bool IsDigitsOnly(string? str) => 
-        str is not null && str.All(char.IsDigit);
+    private static bool IsDigitsOnly(string? str) => str is not null && str.All(char.IsDigit);
 }
