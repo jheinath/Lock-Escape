@@ -39,16 +39,6 @@
                 <div class="card-body d-flex justify-content-center container bg-white w-100">
                     <div class="row">
                         <div class="col">
-                            @if (_errors.Any())
-                            {
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="alert alert-warning" role="alert">
-                                            @_errors.First().Message
-                                        </div>
-                                    </div>
-                                </div>
-                            }
                             @if (_isTeamSelection)
                             {
                                 <div class="row">
@@ -75,7 +65,7 @@
                                 </div>
                                 <div class="row mt-5">
                                     <div class="col-12">
-                                        <div class="btn btn-primary" @onclick="HandleTrySolveRiddle">@_Play.Open</div>
+                                        <div class="@(_shakeOnError ? "btn btn-primary horizontal-shake" : "btn btn-primary")" @onclick="HandleTrySolveRiddle">@_Play.Open</div>
                                     </div>
                                 </div>
                             }
@@ -106,7 +96,7 @@
 @code
 {
     private Popup _popupRef = null!;
-    private List<IError> _errors = null!;
+    private bool _shakeOnError;
     private EscapeGameDto _escapeGameDto = null!;
     private bool _isTeamSelection;
         private const string QueryParameterGameData = "gameDataLockEscapeGame";
@@ -141,7 +131,6 @@
             "success",
             "secondary",
         };
-        _errors = new List<IError>();
         NavigationManager.TryGetQueryString(QueryParameterGameData, out string gameData);
         if (string.IsNullOrWhiteSpace(gameData)) return;
         _isTeamSelection = true;
@@ -183,11 +172,10 @@
         var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree, _escapeGameDto, riddleNumber);
         if (result.IsFailed)
         {
-            _errors = result.Errors;
+            Task.Run(ShakeOnError);
             return;
         }
 
-        _errors = new List<IError>();
         var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
         var currentUrl = NavigationManager.BaseUri;
         var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -198,16 +186,23 @@
         ClearInputs();
     }
 
+    private async Task ShakeOnError()
+    {
+        _shakeOnError = true;
+        StateHasChanged();
+        await Task.Delay(1500);
+        _shakeOnError = false;
+        StateHasChanged();
+    }
+
     private void HandleResetGame()
     {
         var result = ResetGameCommand.Execute(_escapeGameDto);
         if (result.IsFailed)
         {
-            _errors = result.Errors;
             return;
         }
 
-        _errors = new List<IError>();
         var queryParametersEncoded = GenerateQueryParametersService.GenerateQueryParameters(result.Value);
         var currentUrl = NavigationManager.BaseUri;
         var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -224,7 +219,6 @@
 
         if (result.IsFailed)
         {
-            _errors = result.Errors;
             return;
         }
 
