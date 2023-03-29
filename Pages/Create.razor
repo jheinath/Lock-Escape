@@ -265,12 +265,6 @@
         _gameSolutions = escapeGameDto.GameSolutionForGroupDtos.Select(x => x.GameSolution).ToList();
     }
 
-    private static void OnLanguageSelected(string selection)
-    {
-        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(selection);
-        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(selection);
-    }
-
     private void OnChangeSolutionItem(ChangeEventArgs e, int j)
     {
         var listElement = _solutions.ElementAtOrDefault(j);
