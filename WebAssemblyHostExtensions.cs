@@ -13,7 +13,7 @@ public static class WebAssemblyHostExtensions
         
         var cultureInfo = !string.IsNullOrWhiteSpace(cultureString) 
             ? new CultureInfo(cultureString) 
-            : new CultureInfo("de-DE");
+            : new CultureInfo("en-GB");
         
         CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
         CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
