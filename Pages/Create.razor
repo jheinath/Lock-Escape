@@ -58,6 +58,16 @@
                                 <div class="row w-100">
                                     <div class="col-6">
                                         <div class="form-group">
+                                            <label for="lang">@_Create.GameLanguage</label>
+                                            <select class="form-control" id="lang" @bind="_language">
+                                                <option value="@Language.English">@_Create.English</option>
+                                                <option value="@Language.German">@_Create.German</option>
+                                                <option value="@Language.French">@_Create.French</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
                                             <label for="countRiddles">@_Create.AmountRiddles</label>
                                             <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
                                         </div>
