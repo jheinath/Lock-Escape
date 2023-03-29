@@ -21,14 +21,14 @@ namespace LockEscape.Pages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class _Create_de_DE {
+    internal class _Create_fr_FR {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Create_de_DE() {
+        internal _Create_fr_FR() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace LockEscape.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LockEscape.Pages._Create.fr-FR", typeof(_Create_fr_FR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LockEscape.Pages._Create.de-DE", typeof(_Create_de_DE).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nombre de groupes.
+        ///   Looks up a localized string similar to Anzahl Gruppen.
         /// </summary>
         internal static string AmountGroups {
             get {
@@ -69,7 +69,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nombre d&apos;énigmes.
+        ///   Looks up a localized string similar to Anzahl Rätsel.
         /// </summary>
         internal static string AmountRiddles {
             get {
@@ -78,7 +78,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retour.
+        ///   Looks up a localized string similar to Zurück.
         /// </summary>
         internal static string Back {
             get {
@@ -87,7 +87,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mot de passe incorrect!.
+        ///   Looks up a localized string similar to Passwort nicht korrekt!.
         /// </summary>
         internal static string BadPassword {
             get {
@@ -96,7 +96,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Changer la langue de cette page.
+        ///   Looks up a localized string similar to Sprache für diese Seite ändern.
         /// </summary>
         internal static string ChangeLanguage {
             get {
@@ -105,7 +105,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copier le code QR par un clic droit ou faire une capture d&apos;écran!.
+        ///   Looks up a localized string similar to QR Code mit Rechtsklick kopieren oder einen Screenshot machen!.
         /// </summary>
         internal static string CopyQrCodeMessage {
             get {
@@ -114,7 +114,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Créer.
+        ///   Looks up a localized string similar to Erstellen.
         /// </summary>
         internal static string Create {
             get {
@@ -123,7 +123,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Créer un nouveau jeu.
+        ///   Looks up a localized string similar to Neues Spiel erstellen.
         /// </summary>
         internal static string CreateNewGame {
             get {
@@ -132,7 +132,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mot de passe enseignant.
+        ///   Looks up a localized string similar to Lehrerpasswort.
         /// </summary>
         internal static string CreatorPassword {
             get {
@@ -141,7 +141,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier le jeu.
+        ///   Looks up a localized string similar to Spiel bearbeiten.
         /// </summary>
         internal static string EditGame {
             get {
@@ -150,7 +150,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anglais.
+        ///   Looks up a localized string similar to Englisch.
         /// </summary>
         internal static string English {
             get {
@@ -159,7 +159,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Envoyer.
+        ///   Looks up a localized string similar to Senden.
         /// </summary>
         internal static string Enter {
             get {
@@ -168,7 +168,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Langue du jeu.
+        ///   Looks up a localized string similar to Spielsprache.
         /// </summary>
         internal static string GameLanguage {
             get {
@@ -177,7 +177,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Solution du jeu Groupe.
+        ///   Looks up a localized string similar to Spiellösung Gruppe.
         /// </summary>
         internal static string GameSolutionGroup {
             get {
@@ -186,7 +186,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allemand.
+        ///   Looks up a localized string similar to Deutsch.
         /// </summary>
         internal static string German {
             get {
@@ -195,7 +195,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Solution de l&apos;énigme.
+        ///   Looks up a localized string similar to Rätsel Lösung.
         /// </summary>
         internal static string RiddleSolution {
             get {
@@ -204,7 +204,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scanne-moi.
+        ///   Looks up a localized string similar to Scanne mich.
         /// </summary>
         internal static string ScanMe {
             get {
@@ -213,7 +213,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Afficher uniquement le code QR.
+        ///   Looks up a localized string similar to Nur QR Code anzeigen.
         /// </summary>
         internal static string ShowOnlyQr {
             get {
@@ -222,7 +222,7 @@ namespace LockEscape.Pages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Démarrer le jeu de test.
+        ///   Looks up a localized string similar to Testspiel starten.
         /// </summary>
         internal static string TestPlay {
             get {

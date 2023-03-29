@@ -96,6 +96,11 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>_Popup.de-DE.resx</DependentUpon>
         </Compile>
+        <Compile Update="Pages\_Create.fr-FR.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>_Create.fr-FR.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -153,6 +158,11 @@
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>_Popup.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Popup.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Pages\_Create.fr-FR.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>_Create.de-DE.Designer.cs</LastGenOutput>
+          <DependentUpon>_Create.resx</DependentUpon>
         </EmbeddedResource>
     </ItemGroup>
 

@@ -1,0 +1,53 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="CreatorPasswordMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Le mot de passe de l'enseignant ne doit pas être vide.</value>
+    </data>
+    <data name="GameSolutionForGroupsMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Aucune solution ne doit être vide pour un groupe.</value>
+    </data>
+    <data name="GameSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Aucune solution ne doit être vide pour un groupe.</value>
+    </data>
+    <data name="GroupNumberMustBeAtLeastOneErrorMessage" xml:space="preserve">
+        <value>Le numéro de groupe doit être au moins égal à 1.</value>
+    </data>
+    <data name="InvalidCultureErrorMessage" xml:space="preserve">
+        <value>Mauvaise traduction</value>
+    </data>
+    <data name="RiddleIsAlreadySolvedErrorMessage" xml:space="preserve">
+        <value>L'énigme est déjà résolue.</value>
+    </data>
+    <data name="RiddleNotFoundErrorMessage" xml:space="preserve">
+        <value>Le casse-tête indiqué n'existe pas.</value>
+    </data>
+    <data name="RiddlesMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Il doit y avoir au moins une énigme.</value>
+    </data>
+    <data name="RiddleSolutionInvalidFormatErrorMessage" xml:space="preserve">
+        <value>La solution de l'énigme ne peut contenir que des chiffres de 0 à 9.</value>
+    </data>
+    <data name="RiddleSolutionInvalidLengthErrorMessage" xml:space="preserve">
+        <value>La solution de l'énigme doit comporter {0} caractères.</value>
+    </data>
+    <data name="RiddleSolutionIsNotCorrectErrorMessage" xml:space="preserve">
+        <value>La solution n'est pas correcte.</value>
+    </data>
+    <data name="RiddleSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
+        <value>Les solutions d'espaces ne doivent pas être vides.</value>
+    </data>
+    <data name="SelectGroupNumberIsNotAvailableErrorMessage" xml:space="preserve">
+        <value>Le numéro de groupe sélectionné n'est pas disponible.</value>
+    </data>
+</root>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="GameLanguage" xml:space="preserve">
+        <value>Langue du jeu</value>
+    </data>
+    <data name="AmountRiddles" xml:space="preserve">
+        <value>Nombre d'énigmes</value>
+    </data>
+    <data name="CreateNewGame" xml:space="preserve">
+        <value>Créer un nouveau jeu</value>
+    </data>
+    <data name="CreatorPassword" xml:space="preserve">
+        <value>Mot de passe enseignant</value>
+    </data>
+    <data name="AmountGroups" xml:space="preserve">
+        <value>Nombre de groupes</value>
+    </data>
+    <data name="GameSolutionGroup" xml:space="preserve">
+        <value>Solution du jeu Groupe</value>
+    </data>
+    <data name="RiddleSolution" xml:space="preserve">
+        <value>Solution de l'énigme</value>
+    </data>
+    <data name="Back" xml:space="preserve">
+        <value>Retour</value>
+    </data>
+    <data name="Create" xml:space="preserve">
+        <value>Créer</value>
+    </data>
+    <data name="EditGame" xml:space="preserve">
+        <value>Modifier le jeu</value>
+    </data>
+    <data name="CopyQrCodeMessage" xml:space="preserve">
+        <value>Copier le code QR par un clic droit ou faire une capture d'écran!</value>
+    </data>
+    <data name="ShowOnlyQr" xml:space="preserve">
+        <value>Afficher uniquement le code QR</value>
+    </data>
+    <data name="ScanMe" xml:space="preserve">
+        <value>Scanne-moi</value>
+    </data>
+    <data name="TestPlay" xml:space="preserve">
+        <value>Démarrer le jeu de test</value>
+    </data>
+    <data name="Enter" xml:space="preserve">
+        <value>Envoyer</value>
+    </data>
+    <data name="BadPassword" xml:space="preserve">
+        <value>Mot de passe incorrect!</value>
+    </data>
+    <data name="ChangeLanguage" xml:space="preserve">
+        <value>Changer la langue de cette page</value>
+    </data>
+    <data name="German" xml:space="preserve">
+        <value>Allemand</value>
+    </data>
+    <data name="English" xml:space="preserve">
+        <value>Anglais</value>
+    </data>
+</root>
