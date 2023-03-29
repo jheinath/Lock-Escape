@@ -74,6 +74,7 @@ public class CreateGameCommand : ICreateGameCommand
         {
             Language.English => "en-GB",
             Language.German => "de-DE",
+            Language.French => "fr-FR",
             _ => "en-GB"
         };
     }

@@ -58,15 +58,6 @@
                                 <div class="row w-100">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="lang">@_Create.GameLanguage</label>
-                                            <select class="form-control" id="lang" @bind="_language">
-                                                <option value="@Language.English">@_Create.English</option>
-                                                <option value="@Language.German">@_Create.German</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
                                             <label for="countRiddles">@_Create.AmountRiddles</label>
                                             <input type="number" min="1" max="30" class="form-control" id="countRiddles" @bind="_amountGames">
                                         </div>
@@ -118,6 +109,7 @@
                                             <option selected value="none">@_Create.ChangeLanguage</option>
                                             <option value="de-DE">@_Create.German</option>
                                             <option value="en-GB">@_Create.English</option>
+                                            <option value="fr-FR">@_Create.French</option>
                                         </select>
                                     </div>
                                     <div class="col">
@@ -322,6 +314,7 @@
         {
             "de-DE" => Language.German,
             "en-GB" => Language.English,
+            "fr-FR" => Language.French,
             _ => Language.English
             };
     }

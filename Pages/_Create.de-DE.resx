@@ -75,4 +75,7 @@
     <data name="English" xml:space="preserve">
         <value>Englisch</value>
     </data>
+    <data name="French" xml:space="preserve">
+        <value>Französisch</value>
+    </data>
 </root>

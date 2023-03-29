@@ -38,7 +38,7 @@ namespace LockEscape.Pages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LockEscape.Pages._Create.fr-FR", typeof(_Create_fr_FR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LockEscape.Pages._Create.de-DE", typeof(_Create_de_DE).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -164,6 +164,15 @@ namespace LockEscape.Pages {
         internal static string Enter {
             get {
                 return ResourceManager.GetString("Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Français.
+        /// </summary>
+        internal static string French {
+            get {
+                return ResourceManager.GetString("French", resourceCulture);
             }
         }
         

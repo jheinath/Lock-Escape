@@ -3,5 +3,6 @@
 public enum Language
 {
     English,
-    German
+    German,
+    French
 }
