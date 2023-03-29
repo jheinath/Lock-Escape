@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="@($"riddle{CurrentRiddleNumber}")" class="mb-4">@_Play.Riddle @(CurrentRiddleNumber + 1 + " - " + _Play.Group + " " + SelectedGroupNumber)</label>
+                                            <label for="@($"riddle{CurrentRiddleNumber}")" class="mb-4"><b>@_Play.Riddle @(CurrentRiddleNumber + 1 + " - " + _Play.Group + " " + SelectedGroupNumber)</b></label>
                                             <i class="gg-lock"></i>
                                             <input @bind="_valueOne" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-4 w-25" id="@($"riddle{CurrentRiddleNumber}")">
                                             <input @bind="_valueTwo" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 1}")">
