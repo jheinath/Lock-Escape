@@ -22,6 +22,9 @@
         <LastGenOutput>_Errors.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Errors.resx</DependentUpon>
       </EmbeddedResource>
+      <EmbeddedResource Update="EscapeGames\Errors\_Errors.fr-fr.resx">
+        <DependentUpon>_Errors.resx</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -29,11 +32,6 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Errors.resx</DependentUpon>
-      </Compile>
-      <Compile Update="EscapeGames\Errors\_Errors.de-DE.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>_Errors.de-DE.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

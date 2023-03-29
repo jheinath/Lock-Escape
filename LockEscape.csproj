@@ -46,11 +46,6 @@
         <Compile Remove="Domain\**" />
         <Compile Remove="Application\**" />
         <Compile Remove="Domain.Tests\**" />
-        <Compile Update="Pages\_Create.de-DE.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>_Create.de-DE.resx</DependentUpon>
-        </Compile>
         <Compile Update="Pages\_Create.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
@@ -61,45 +56,20 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>_Index.resx</DependentUpon>
         </Compile>
-        <Compile Update="Pages\_Index.de-DE.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>_Index.de-DE.resx</DependentUpon>
-        </Compile>
         <Compile Update="Pages\_Scan.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>_Scan.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Pages\_Scan.de-DE.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>_Scan.de-DE.resx</DependentUpon>
         </Compile>
         <Compile Update="Pages\_Play.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>_Play.resx</DependentUpon>
         </Compile>
-        <Compile Update="Pages\_Play.de-DE.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>_Play.de-DE.resx</DependentUpon>
-        </Compile>
         <Compile Update="Pages\Components\_Popup.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>_Popup.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Pages\Components\_Popup.de-DE.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>_Popup.de-DE.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Pages\_Create.fr-FR.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>_Create.fr-FR.resx</DependentUpon>
         </Compile>
     </ItemGroup>
 
@@ -163,6 +133,18 @@
           <Generator>ResXFileCodeGenerator</Generator>
           <LastGenOutput>_Create.de-DE.Designer.cs</LastGenOutput>
           <DependentUpon>_Create.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Pages\_Index.fr-fr.resx">
+          <DependentUpon>_Index.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Pages\_Play.fr-fr.resx">
+          <DependentUpon>_Play.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Pages\_Scan.fr-fr.resx">
+          <DependentUpon>_Scan.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Pages\Components\_Popup.fr-fr.resx">
+          <DependentUpon>_Popup.resx</DependentUpon>
         </EmbeddedResource>
     </ItemGroup>
 
