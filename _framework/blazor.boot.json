@@ -76,13 +76,13 @@
       }
     },
     "satelliteResources": {
-      "de-DE": {
-        "de-DE\/Domain.resources.dll": "sha256-8RZwS7UZ8I0hNiI+ldB7DifshODFw2dUpTk8fCzuFqI=",
-        "de-DE\/LockEscape.resources.dll": "sha256-4rj3i4T\/ygi39WNZzbks2XddCHo4EJg3LRMMXn268Ns="
+      "de": {
+        "de\/Domain.resources.dll": "sha256-emNAeZ1N7VRIZHu9f03mMIsNhfKgDSsxL9vd+rJ3TTo=",
+        "de\/LockEscape.resources.dll": "sha256-mo\/uNQ\/Lb\/WuHQ57w5tkpqj7WqTUJxjVJG3R3WBxkhQ="
       },
-      "fr-fr": {
-        "fr-fr\/Domain.resources.dll": "sha256-rdexLcyFQn+UCMftNMpbMVH\/2DrhlFjUFh334C1haRo=",
-        "fr-fr\/LockEscape.resources.dll": "sha256-x4P4DQwLAR7SaS058z4DZ0OMmfhaPOmNWDCp6SJInDE="
+      "fr": {
+        "fr\/Domain.resources.dll": "sha256-G+ZiPLe1cT0NQF+rGHwnLuzkKDi+MNlGVeD5uQ8R0pM=",
+        "fr\/LockEscape.resources.dll": "sha256-rER0P3\/rV8kBS0qXKBFfOxycTvqmKLpwPwkZjKWLjlQ="
       }
     }
   }
