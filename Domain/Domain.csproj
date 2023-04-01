@@ -17,12 +17,12 @@
         <LastGenOutput>_Errors.Designer.cs</LastGenOutput>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
-      <EmbeddedResource Update="EscapeGames\Errors\_Errors.de-DE.resx">
+      <EmbeddedResource Update="EscapeGames\Errors\_Errors.de.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>_Errors.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Errors.resx</DependentUpon>
       </EmbeddedResource>
-      <EmbeddedResource Update="EscapeGames\Errors\_Errors.fr-fr.resx">
+      <EmbeddedResource Update="EscapeGames\Errors\_Errors.fr.resx">
         <DependentUpon>_Errors.resx</DependentUpon>
       </EmbeddedResource>
     </ItemGroup>
