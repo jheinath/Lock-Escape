@@ -226,7 +226,7 @@
         }
     }
 
-    private void HandleChangeLanguage(ChangeEventArgs @event)
+    private async Task HandleChangeLanguage(ChangeEventArgs @event)
     {
         if ((string)@event.Value! == "none")
             return;
@@ -234,7 +234,13 @@
         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(@event.Value?.ToString()!);
         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(@event.Value?.ToString()!);
         
-        LocalStorageService.SetItemAsync("culture", @event.Value!.ToString());
+        await LocalStorageService.SetItemAsync("culture", @event.Value!.ToString());
+        
+        if (await LocalStorageService.GetItemAsync<string>("culture") != @event.Value!.ToString())
+        {
+            await LocalStorageService.SetItemAsync("culture", @event.Value!.ToString());
+            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        }
     }
     
     private void HandleInsertPassword()
@@ -320,6 +326,6 @@
             "en-GB" => Language.English,
             "fr-FR" => Language.French,
             _ => Language.English
-            };
+        };
     }
 }
