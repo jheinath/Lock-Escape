@@ -19,7 +19,6 @@
       </EmbeddedResource>
       <EmbeddedResource Update="EscapeGames\Errors\_Errors.de.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>_Errors.de-DE.Designer.cs</LastGenOutput>
         <DependentUpon>_Errors.resx</DependentUpon>
       </EmbeddedResource>
       <EmbeddedResource Update="EscapeGames\Errors\_Errors.fr.resx">

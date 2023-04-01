@@ -80,7 +80,6 @@
         <EmbeddedResource Remove="Domain.Tests\**" />
         <EmbeddedResource Update="Pages\_Create.de.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>_Create.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Create.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Create.resx">
@@ -96,7 +95,6 @@
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Index.de.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>_Index.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Index.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Scan.resx">
@@ -106,7 +104,6 @@
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Scan.de.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>_Scan.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Scan.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Play.resx">
@@ -116,7 +113,6 @@
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Play.de.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>_Play.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Play.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\Components\_Popup.resx">
@@ -126,12 +122,10 @@
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\Components\_Popup.de.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>_Popup.de-DE.Designer.cs</LastGenOutput>
             <DependentUpon>_Popup.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Create.fr.resx">
           <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>_Create.de-DE.Designer.cs</LastGenOutput>
           <DependentUpon>_Create.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Update="Pages\_Index.fr.resx">
