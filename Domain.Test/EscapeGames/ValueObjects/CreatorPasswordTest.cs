@@ -1,5 +1,6 @@
 ﻿using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using FluentResults;
 using Xunit;
@@ -21,8 +22,8 @@ public class CreatorPasswordTest
         var result = CreatorPassword.Create(input);
         
         //Assert
+        result.Errors.Should().BeSingleErrorListWith(expectedError);
         result.IsFailed.Should().BeTrue();
-        result.Errors.Should().BeEquivalentTo(new List<Error> { expectedError });
     }
 
     [Fact]

@@ -55,14 +55,20 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="@($"riddle{CurrentRiddleNumber}")" class="mb-4"><b>@_Play.Riddle @(CurrentRiddleNumber + 1 + " - " + _Play.Group + " " + SelectedGroupNumber)</b></label>
-                                            <i class="gg-lock"></i>
+                                            <i class="gg-lock @(CurrentRiddleLength == 4 ? "extra-size": "")"></i>
                                             <input @bind="_valueOne" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-4 w-25" id="@($"riddle{CurrentRiddleNumber}")">
                                             <input @bind="_valueTwo" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 w-25" id="@($"riddle{CurrentRiddleNumber + 1}")">
                                             <input @bind="_valueThree" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 mb-3 w-25" id="@($"riddle{CurrentRiddleNumber + 2}")">
+                                            @if (CurrentRiddleLength == 4)
+                                            {
+                                                <input @bind="_valueFour" style="z-index: 2;" type="text" pattern="[0-9]*" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="form-control ms-4 mt-2 mb-3 w-25" id="@($"riddle{CurrentRiddleNumber + 3}")">
+                                                
+                                            }
+                                            <br class="mt-5"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-5">
+                                <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="@(_shakeOnError ? "btn btn-primary horizontal-shake" : "btn btn-primary")" @onclick="HandleTrySolveRiddle">@_Play.Open</div>
                                     </div>
@@ -106,8 +112,10 @@
     private string? _valueOne;
     private string? _valueTwo;
     private string? _valueThree;
+    private string? _valueFour;
 
     private bool IsGameFinished => _escapeGameDto.RiddleSolutionDtos.All(x => x.IsSolved);
+    private int CurrentRiddleLength => _escapeGameDto.RiddleSolutionDtos.ElementAt(CurrentRiddleNumber).RiddleSolution!.Length;
 
     private string GetColor(int groupNumber)
     {
@@ -167,8 +175,9 @@
 
     private void HandleTrySolveRiddle()
     {
+        var test = _escapeGameDto;
         var riddleNumber = CurrentRiddleNumber;
-        var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree, _escapeGameDto, riddleNumber);
+        var result = SolveRiddleCommand.Execute(_valueOne + _valueTwo + _valueThree + _valueFour, _escapeGameDto, riddleNumber);
         if (result.IsFailed)
         {
             Task.Run(ShakeOnError);
@@ -236,5 +245,6 @@
         _valueOne = string.Empty;
         _valueTwo = string.Empty;
         _valueThree = string.Empty;
+        _valueFour = string.Empty;
     }
 }

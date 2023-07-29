@@ -1,6 +1,7 @@
 ﻿using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using FluentResults;
 using Xunit;
@@ -38,7 +39,7 @@ public class RiddleTest
         var result = Riddle.Solve(riddle, "123");
         
         //Assert
-        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleIsAlreadySolvedError() });
+        result.Errors.Should().BeSingleErrorListWith(new RiddleIsAlreadySolvedError());
         result.IsFailed.Should().BeTrue();
     }
     
@@ -54,7 +55,7 @@ public class RiddleTest
         var result = Riddle.Solve(riddle, "124");
         
         //Assert
-        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleSolutionIsNotCorrectError() });
+        result.Errors.Should().BeSingleErrorListWith(new RiddleSolutionIsNotCorrectError());
         result.IsFailed.Should().BeTrue();
     }
     

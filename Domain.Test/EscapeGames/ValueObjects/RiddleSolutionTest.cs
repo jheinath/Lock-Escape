@@ -1,5 +1,6 @@
 ﻿using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using Xunit;
 
@@ -20,8 +21,8 @@ public class RiddleSolutionTest
         var result = RiddleSolution.Create(inputValue);
         
         //Assert
-        result.IsFailed.Should().BeTrue();
         result.Errors.Should().ContainEquivalentOf(expectedError);
+        result.IsFailed.Should().BeTrue();
     }
     
     [Fact]
@@ -34,14 +35,14 @@ public class RiddleSolutionTest
         var result = RiddleSolution.Create("A12");
         
         //Assert
+        result.Errors.Should().BeSingleErrorListWith(expectedError);
         result.IsFailed.Should().BeTrue();
-        result.Errors.Should().ContainEquivalentOf(expectedError);
     }
     
     [Theory]
     [InlineData("1")]
     [InlineData("22")]
-    [InlineData("4444")]
+    [InlineData("44442")]
     public void Create_InvalidLength_ReturnsRiddleSolutionInvalidLengthError(string inputValue)
     {
         //Arrange
@@ -51,22 +52,21 @@ public class RiddleSolutionTest
         var result = RiddleSolution.Create(inputValue);
         
         //Assert
+        result.Errors.Should().BeSingleErrorListWith(expectedError);
         result.IsFailed.Should().BeTrue();
-        result.Errors.Should().ContainEquivalentOf(expectedError);
     }
-
-    [Fact]
-    public void Create_ValidInput_CreateRiddleSolutionCorrectly()
+    
+    [Theory]
+    [InlineData("165")]
+    [InlineData("2226")]
+    public void Create_ValidInput_CreateRiddleSolutionCorrectly(string inputValue)
     {
-        //Arrange
-        const string input = "245";
-        
         //Act
-        var result = RiddleSolution.Create(input);
+        var result = RiddleSolution.Create(inputValue);
         
         //Assert
         result.IsSuccess.Should().BeTrue();
         result.Errors.Should().BeEmpty();
-        result.Value.Value.Should().Be(input);
+        result.Value.Value.Should().Be(inputValue);
     }
 }

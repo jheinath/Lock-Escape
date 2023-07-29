@@ -11,7 +11,9 @@ public class RiddleSolution
     {
         Value = value;
     }
-    
+
+    private static IEnumerable<int> AllowedSolutionLengths => new[] { 3, 4 }; 
+
     public static Result<RiddleSolution> Create(string? riddleSolution)
     {
         var result = new Result<RiddleSolution>();
@@ -22,7 +24,8 @@ public class RiddleSolution
         if (!IsDigitsOnly(riddleSolution))
             result.WithError(new RiddleSolutionInvalidFormatError());
 
-        if (riddleSolution?.Trim().Length != 3)
+        var length = riddleSolution?.Trim().Length ?? 0;
+        if (!AllowedSolutionLengths.Contains(length))
             result.WithError(new RiddleSolutionInvalidLengthError(expectedLength: 3));
 
         if (result.IsFailed)

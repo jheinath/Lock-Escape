@@ -3,6 +3,7 @@ using Domain.EscapeGames.Aggregate;
 using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using FluentResults;
 using Xunit;
@@ -28,8 +29,8 @@ public class EscapeGameTest
         var result = EscapeGame.Create(null!, new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
+        result.Errors.Should().BeSingleErrorListWith(expectedError);
         result.IsFailed.Should().BeTrue();
-        result.Errors.Should().BeEquivalentTo(new List<Error>() { expectedError });
     }
     
     [Fact]
@@ -42,8 +43,8 @@ public class EscapeGameTest
         var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
-        result.IsFailed.Should().BeTrue();
         result.Errors.Should().ContainEquivalentOf(expectedError);
+        result.IsFailed.Should().BeTrue();
     }
     
     [Fact]
@@ -56,8 +57,8 @@ public class EscapeGameTest
         var result = EscapeGame.Create("de-DE", new List<Riddle>(), new List<GameSolutionForGroup>(), _defaultCreatorPassword);
         
         //Assert
-        result.IsFailed.Should().BeTrue();
         result.Errors.Should().ContainEquivalentOf(expectedError);
+        result.IsFailed.Should().BeTrue();
     }
 
     [Fact]
@@ -97,7 +98,7 @@ public class EscapeGameTest
         var result = EscapeGame.SelectGroupNumber(escapeGame, groupNumber);
         
         //Assert
-        result.Errors.Should().BeEquivalentTo(new List<Error> { new SelectGroupNumberIsNotAvailableError() });
+        result.Errors.Should().BeSingleErrorListWith(new SelectGroupNumberIsNotAvailableError());
         result.IsFailed.Should().BeTrue();
     }
     
@@ -128,7 +129,7 @@ public class EscapeGameTest
         var result = EscapeGame.SolveRiddle(escapeGame, "123", 999);
         
         //Assert
-        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleNotFoundError() });
+        result.Errors.Should().BeSingleErrorListWith(new RiddleNotFoundError());
         result.IsSuccess.Should().BeFalse();
     }
     
@@ -142,7 +143,7 @@ public class EscapeGameTest
         var result = EscapeGame.SolveRiddle(escapeGame, "124", 0);
         
         //Assert
-        result.Errors.Should().BeEquivalentTo(new List<Error> { new RiddleSolutionIsNotCorrectError() });
+        result.Errors.Should().BeSingleErrorListWith(new RiddleSolutionIsNotCorrectError());
         result.IsSuccess.Should().BeFalse();
     }
     
