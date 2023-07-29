@@ -94,6 +94,10 @@ a, .btn-link {
     z-index: 1;
 }
 
+.extra-size::after {
+    height: 210px;
+}
+
 .horizontal-shake {
     animation: horizontal-shaking 0.35s infinite;
 }
