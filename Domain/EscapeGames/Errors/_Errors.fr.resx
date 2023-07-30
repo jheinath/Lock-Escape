@@ -39,7 +39,7 @@
         <value>La solution de l'énigme ne peut contenir que des chiffres de 0 à 9.</value>
     </data>
     <data name="RiddleSolutionInvalidLengthErrorMessage" xml:space="preserve">
-        <value>La solution de l'énigme doit comporter {0} caractères.</value>
+        <value>Les solutions de l'énigme doivent avoir l'une des longueurs suivantes : {0}</value>
     </data>
     <data name="RiddleSolutionIsNotCorrectErrorMessage" xml:space="preserve">
         <value>La solution n'est pas correcte.</value>

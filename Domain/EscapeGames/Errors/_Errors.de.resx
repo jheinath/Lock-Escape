@@ -40,7 +40,7 @@
         <value>Die Rätsellösung darf nur Zahlen von 0-9 enthalten.</value>
     </data>
     <data name="RiddleSolutionInvalidLengthErrorMessage" xml:space="preserve">
-        <value>Die Rätsellösung muss {0} Zeichen lang sein.</value>
+        <value>Die Rätsellösungen müssen eine der folgenden Längen haben: {0}</value>
     </data>
     <data name="RiddleSolutionMustNotBeEmptyErrorMessage" xml:space="preserve">
         <value>Die Rästellösungen dürfen nicht leer sein.</value>

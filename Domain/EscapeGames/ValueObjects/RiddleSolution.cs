@@ -26,7 +26,7 @@ public class RiddleSolution
 
         var length = riddleSolution?.Trim().Length ?? 0;
         if (!AllowedSolutionLengths.Contains(length))
-            result.WithError(new RiddleSolutionInvalidLengthError(expectedLength: 3));
+            result.WithError(new RiddleSolutionInvalidLengthError(AllowedSolutionLengths.ToArray()));
 
         if (result.IsFailed)
             return result;

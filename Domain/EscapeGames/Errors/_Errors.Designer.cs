@@ -141,7 +141,7 @@ namespace Domain.EscapeGames.Errors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Riddle solution must have length {0}..
+        ///   Looks up a localized string similar to Riddle solutions must have one of the following lengths: {0}.
         /// </summary>
         internal static string RiddleSolutionInvalidLengthErrorMessage {
             get {
