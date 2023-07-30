@@ -1,5 +1,6 @@
 ﻿using Domain.EscapeGames.Entities;
 using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using Xunit;
 
@@ -18,8 +19,7 @@ public class GameSolutionForGroupTest
         var result = GameSolutionForGroup.Create(groupNumber, gameSolution);
 
         //Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Errors.Should().BeEmpty();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.GameSolution.Should().BeEquivalentTo(gameSolution);
         result.Value.GroupNumber.Should().BeEquivalentTo(groupNumber);
     }

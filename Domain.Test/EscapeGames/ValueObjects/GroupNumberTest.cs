@@ -37,7 +37,7 @@ public class GroupNumberTest
         var result = GroupNumber.Create(input);
         
         //Assert
-        result.IsSuccess.Should().BeTrue();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value!.Value.Should().Be(input);
     }
 }

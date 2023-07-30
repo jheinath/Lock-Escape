@@ -1,4 +1,5 @@
 ﻿using Domain.EscapeGames.ValueObjects;
+using Domain.Test.Lib;
 using FluentAssertions;
 using Xunit;
 
@@ -13,8 +14,7 @@ public class IsSolvedTest
         var result = IsSolved.Create();
         
         //Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Errors.Should().BeEmpty();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.Value.Should().BeFalse();
     }
 }

@@ -46,7 +46,7 @@ public class RiddleSolutionTest
     public void Create_InvalidLength_ReturnsRiddleSolutionInvalidLengthError(string inputValue)
     {
         //Arrange
-        var expectedError = new RiddleSolutionInvalidLengthError(3);
+        var expectedError = new RiddleSolutionInvalidLengthError(RiddleSolution.AllowedSolutionLengths.ToArray());
         
         //Act
         var result = RiddleSolution.Create(inputValue);
@@ -65,8 +65,7 @@ public class RiddleSolutionTest
         var result = RiddleSolution.Create(inputValue);
         
         //Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Errors.Should().BeEmpty();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.Value.Should().Be(inputValue);
     }
 }

@@ -12,7 +12,7 @@ public class RiddleSolution
         Value = value;
     }
 
-    private static IEnumerable<int> AllowedSolutionLengths => new[] { 3, 4 }; 
+    public static IEnumerable<int> AllowedSolutionLengths => new[] { 3, 4 }; 
 
     public static Result<RiddleSolution> Create(string? riddleSolution)
     {

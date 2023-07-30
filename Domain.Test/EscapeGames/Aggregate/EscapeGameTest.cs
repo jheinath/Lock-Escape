@@ -77,8 +77,7 @@ public class EscapeGameTest
         var result = EscapeGame.Create(culture, new[] { riddle }, new []{ gameSolutionForGroup }, _defaultCreatorPassword);
         
         //Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Errors.Should().BeEmpty();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.CultureInfo.Should().BeEquivalentTo(new CultureInfo(culture));
         result.Value.Riddles.Should().BeEquivalentTo(new[] { riddle });
         result.Value.GameSolutionForGroups.Should()
@@ -113,8 +112,7 @@ public class EscapeGameTest
         var result = EscapeGame.SelectGroupNumber(escapeGame, groupNumber);
         
         //Assert
-        result.Errors.Should().BeEmpty();
-        result.IsSuccess.Should().BeTrue();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.SelectedGroupNumber));
         result.Value.SelectedGroupNumber?.Value.Should().Be(2);
     }
@@ -157,8 +155,7 @@ public class EscapeGameTest
         var result = EscapeGame.SolveRiddle(escapeGame, "123", 0);
         
         //Assert
-        result.Errors.Should().BeEmpty();
-        result.IsSuccess.Should().BeTrue();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.Should().BeEquivalentTo(escapeGame, options => options.Excluding(x => x.Riddles));
         result.Value.Riddles.ElementAt(0).IsSolved.Value.Should().BeTrue();
     }

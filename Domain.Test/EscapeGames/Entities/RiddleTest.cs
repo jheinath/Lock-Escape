@@ -21,8 +21,7 @@ public class RiddleTest
         var result = Riddle.Create(riddleSolution, isSolved);
 
         //Assert
-        result.IsSuccess.Should().BeTrue();
-        result.Errors.Should().BeEmpty();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.IsSolved.Should().BeEquivalentTo(isSolved);
         result.Value.RiddleSolution.Should().BeEquivalentTo(riddleSolution);
     }
@@ -71,8 +70,7 @@ public class RiddleTest
         var result = Riddle.Solve(riddle, "123");
         
         //Assert
-        result.Errors.Should().BeEmpty();
-        result.IsSuccess.Should().BeTrue();
+        result.Should().BeSuccessfulWithoutErrors();
         result.Value.IsSolved.Value.Should().BeTrue();
     }
 }
