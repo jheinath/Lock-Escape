@@ -7,15 +7,9 @@ using FluentResults;
 
 namespace Application.Commands;
 
-public class SelectGroupCommand : ISelectGroupCommand
+public class SelectGroupCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
+    : ISelectGroupCommand
 {
-    private readonly IEscapeGameDtoConversionService _escapeGameDtoConversionService;
-
-    public SelectGroupCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
-    {
-        _escapeGameDtoConversionService = escapeGameDtoConversionService;
-    }
-    
     public Result<EscapeGame> Execute(int groupNumber, EscapeGameDto escapeGameDto)
     {
         var groupNumberValueObjectResult = GroupNumber.Create(groupNumber);
@@ -23,7 +17,7 @@ public class SelectGroupCommand : ISelectGroupCommand
         if (groupNumberValueObjectResult.IsFailed)
             return Result.Fail(groupNumberValueObjectResult.Errors);
 
-        var escapeGame = _escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
+        var escapeGame = escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
         
         return EscapeGame.SelectGroupNumber(escapeGame, groupNumberValueObjectResult.Value);
     }

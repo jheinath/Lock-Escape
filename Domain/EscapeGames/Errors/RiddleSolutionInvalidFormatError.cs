@@ -2,9 +2,4 @@
 
 namespace Domain.EscapeGames.Errors;
 
-public class RiddleSolutionInvalidFormatError : Error
-{
-    public RiddleSolutionInvalidFormatError()
-        : base(_Errors.RiddleSolutionInvalidFormatErrorMessage)
-    { }
-}
+public class RiddleSolutionInvalidFormatError() : Error(_Errors.RiddleSolutionInvalidFormatErrorMessage);

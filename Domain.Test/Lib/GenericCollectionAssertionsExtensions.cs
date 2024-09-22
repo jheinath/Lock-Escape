@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using FluentAssertions.Collections;
+﻿using FluentAssertions.Collections;
 using FluentResults;
 
 namespace Domain.Test.Lib;

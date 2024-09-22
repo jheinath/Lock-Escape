@@ -2,9 +2,4 @@
 
 namespace Domain.EscapeGames.Errors;
 
-public class GameSolutionMustNotBeEmptyError : Error
-{
-    public GameSolutionMustNotBeEmptyError()
-        : base(_Errors.GameSolutionMustNotBeEmptyErrorMessage)
-    { }
-}
+public class GameSolutionMustNotBeEmptyError() : Error(_Errors.GameSolutionMustNotBeEmptyErrorMessage);

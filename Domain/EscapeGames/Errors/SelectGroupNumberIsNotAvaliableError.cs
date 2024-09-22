@@ -2,9 +2,4 @@
 
 namespace Domain.EscapeGames.Errors;
 
-public class SelectGroupNumberIsNotAvailableError : Error
-{
-    public SelectGroupNumberIsNotAvailableError()
-        : base(_Errors.SelectGroupNumberIsNotAvailableErrorMessage)
-    { }
-}
+public class SelectGroupNumberIsNotAvailableError() : Error(_Errors.SelectGroupNumberIsNotAvailableErrorMessage);

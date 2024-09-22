@@ -2,7 +2,6 @@
 using Domain.EscapeGames.ValueObjects;
 using Domain.Test.Lib;
 using FluentAssertions;
-using FluentResults;
 using Xunit;
 
 namespace Domain.Test.EscapeGames.ValueObjects;

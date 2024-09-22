@@ -6,18 +6,12 @@ using FluentResults;
 
 namespace Application.Commands;
 
-public class ResetGameCommand : IResetGameCommand
+public class ResetGameCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
+    : IResetGameCommand
 {
-    private readonly IEscapeGameDtoConversionService _escapeGameDtoConversionService;
-
-    public ResetGameCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
-    {
-        _escapeGameDtoConversionService = escapeGameDtoConversionService;
-    }
-    
     public Result<EscapeGame> Execute(EscapeGameDto escapeGameDto)
     {
-        var escapeGame = _escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
+        var escapeGame = escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
         
         return EscapeGame.RestartGame(escapeGame);
     }

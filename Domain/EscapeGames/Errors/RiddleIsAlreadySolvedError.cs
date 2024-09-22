@@ -2,9 +2,4 @@
 
 namespace Domain.EscapeGames.Errors;
 
-public class RiddleIsAlreadySolvedError : Error
-{
-    public RiddleIsAlreadySolvedError()
-        : base(_Errors.RiddleIsAlreadySolvedErrorMessage)
-    { }
-}
+public class RiddleIsAlreadySolvedError() : Error(_Errors.RiddleIsAlreadySolvedErrorMessage);

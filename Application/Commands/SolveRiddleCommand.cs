@@ -6,18 +6,12 @@ using FluentResults;
 
 namespace Application.Commands;
 
-public class SolveRiddleCommand : ISolveRiddleCommand
+public class SolveRiddleCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
+    : ISolveRiddleCommand
 {
-    private readonly IEscapeGameDtoConversionService _escapeGameDtoConversionService;
-
-    public SolveRiddleCommand(IEscapeGameDtoConversionService escapeGameDtoConversionService)
-    {
-        _escapeGameDtoConversionService = escapeGameDtoConversionService;
-    }
-    
     public Result<EscapeGame> Execute(string valueToSolveRiddle, EscapeGameDto escapeGameDto, int riddleNumber)
     {
-        var escapeGame = _escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
+        var escapeGame = escapeGameDtoConversionService.ConvertToDomainObject(escapeGameDto);
         
         return EscapeGame.SolveRiddle(escapeGame, valueToSolveRiddle, riddleNumber);
     }

@@ -5,20 +5,14 @@ using Domain.EscapeGames.Errors;
 using Domain.EscapeGames.ValueObjects;
 using Domain.Test.Lib;
 using FluentAssertions;
-using FluentResults;
 using Xunit;
 
 namespace Domain.Test.EscapeGames.Aggregate;
 
 public class EscapeGameTest
 {
-    private readonly CreatorPassword _defaultCreatorPassword;
+    private readonly CreatorPassword _defaultCreatorPassword = CreatorPassword.Create("PasswordIsABadPassword").Value;
 
-    public EscapeGameTest()
-    {
-        _defaultCreatorPassword = CreatorPassword.Create("PasswordIsABadPassword").Value;
-    }
-    
     [Fact]
     public void Create_InvalidCultureInput_ReturnInvalidCultureError()
     {

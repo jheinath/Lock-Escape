@@ -2,9 +2,4 @@
 
 namespace Domain.EscapeGames.Errors;
 
-public class RiddlesMustNotBeEmptyError : Error
-{
-    public RiddlesMustNotBeEmptyError()
-        : base(_Errors.RiddlesMustNotBeEmptyErrorMessage)
-    { }
-}
+public class RiddlesMustNotBeEmptyError() : Error(_Errors.RiddlesMustNotBeEmptyErrorMessage);
