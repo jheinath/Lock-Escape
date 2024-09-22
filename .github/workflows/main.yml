@@ -13,9 +13,9 @@ jobs:
         dotnet-version: ['8.0.401']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.7
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4.0.0
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
@@ -31,10 +31,10 @@ jobs:
     needs: [build]
     steps:
       # uses GitHub's checkout action to checkout code form the master branch
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.7
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4.0.1
         with:
           dotnet-version: '8.0.401'
       - run: dotnet build
