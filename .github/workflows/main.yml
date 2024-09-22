@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['7.0.202']
+        dotnet-version: ['8.0.401']
 
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.403' # Check for latest at link at .NET 6 download page
+          dotnet-version: '8.0.401'
       - run: dotnet build
       - run: dotnet publish LockEscape.csproj -c Release -o release --nologo
       
