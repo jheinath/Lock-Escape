@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "LockEscape",
   "resources": {
-    "hash": "sha256-jIYpXuQZH8gSgEgw06OKGeOXgh9Nt1KAhcHoWGzIzOM=",
+    "hash": "sha256-t8hoA31k0fy0puKIQsYyShlgkczx4pmA7PonJIX1vsQ=",
     "jsModuleNative": {
       "dotnet.native.8.0.8.746giovk6l.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
     },
@@ -15,12 +15,12 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
-      "Application.wasm": "sha256-yj/6Sw9qqxteFOTFp3F12v9tgkT32JxjAI7mXhX26xo=",
+      "Application.wasm": "sha256-+WlaQN3M/ZAlnURg1kRiV8q9UIey/sL10SjUz+guwtU=",
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "Domain.wasm": "sha256-tWxWqbMDLt29KT8nnldG8pcOIoRrYzcILcEv4CWUAc4=",
+      "Domain.wasm": "sha256-zabjSRVZD8YDKyGFhmJ8rzXcR6eRpfKuEDwUpDXMPvM=",
       "FluentResults.wasm": "sha256-DehpuVkMHWR0LJWsjczt30pKYexic13RqF2qBX4z9+U=",
       "Hashids.net.wasm": "sha256-eS1mXQ/0gcZCq3ydf1v9azNAmsGXvrWtxIY9W+RSSUE=",
-      "LockEscape.wasm": "sha256-V5p2oQt5KrQygzUFvz3lz58XhSlQDEpg48bBJ1B+d84=",
+      "LockEscape.wasm": "sha256-GAh7qYty0gDJCSRdtbAvMKGcITkzhiASRle4l9mucnM=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-txcgbtrxpnx3S2TNf9EmTZundFol4HoJ0XFyIbfRG6U=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-spyk6aOlBqGuXrgkag654fMJljJemLYToKEcwC5Nvgo=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Q4gQS+wAI/o1p0ABACPX+vUj06GrNg33CWKIBqv9S0w=",
@@ -65,12 +65,12 @@
     },
     "satelliteResources": {
       "de": {
-        "Domain.resources.wasm": "sha256-eFjm5BI7W5eUoBzBEAHVrGeugpvAO6JuNqvqZE6HvY4=",
-        "LockEscape.resources.wasm": "sha256-TSfx2iYCRPFBu5zN6NS8WbR8gfVzbYFFvrSlqDpJtWY="
+        "Domain.resources.wasm": "sha256-R6hWQfG84x9Ca8MhW8G5Jtfqkk5bdGNCvjqIJFvIMl0=",
+        "LockEscape.resources.wasm": "sha256-bYZkKWN3UGAgS/rLTqk17c84xFu6qCXaGPMkj5ZhaiA="
       },
       "fr": {
-        "Domain.resources.wasm": "sha256-P83gn2zqDUe2odmpLWTpFq8eHzo0wyy6TR09xa5qp2A=",
-        "LockEscape.resources.wasm": "sha256-SYtul8LNSHR7DHDCYy5HZRKE+JcM2+lk0zGV+zeJgrg="
+        "Domain.resources.wasm": "sha256-1zYKc8A4hZWwdT0MIrw4Tyy9uB0ZlA2EnYHwE2kcFJE=",
+        "LockEscape.resources.wasm": "sha256-EzttIVq2QHE5PHl/Y+KONhZxED91a6P5wBsy89UFud8="
       }
     }
   },
